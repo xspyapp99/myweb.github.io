@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- =================================================================== -->
+    <!-- निर्देश: SEO (सर्च इंजन ऑप्टिमाइजेशन) के लिए नीचे दिए गए टैग्स को बदलें -->
+    <!-- =================================================================== -->
+
+    <!-- SEO: वेबसाइट का टाइटल (यह Google में सबसे ऊपर दिखेगा) -->
     <title>NexusControl - The Ultimate Parental Monitoring App</title>
     
+    <!-- SEO: वेबसाइट का विवरण (यह Google में टाइटल के नीचे दिखेगा) -->
     <meta name="description" content="NexusControl is a powerful tool for modern parents. Ensure your child's safety in the digital world bymonitoring their activities.">
     
+    <!-- SEO: वेबसाइट के कीवर्ड्स (ये Google को बताते हैं कि आपकी वेबसाइट किस बारे में है) -->
     <meta name="keywords" content="parental control, monitoring app, child safety, gps tracker, nexuscontrol, faq, install guide">
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* बेसिक रीसेट और कोर स्टाइल */
+        /* CSS स्टाइल यहाँ हैं, इनमें बदलाव की आवश्यकता नहीं है */
         :root {
             --color-purple-400: #a78bfa;
             --color-purple-500: #8b5cf6;
@@ -117,8 +125,6 @@
         .happy-users-card { background: rgba(255, 255, 255, 0.05); border-radius: 1rem; padding: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); display: inline-block; margin-bottom: 3rem; }
         .happy-users-count { font-size: 2.25rem; font-weight: 900; color: var(--color-purple-400); }
         .happy-users-text { color: var(--color-gray-300); }
-        
-        /* About Us Section Styles */
         .about-card { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; background: rgba(255, 255, 255, 0.05); border-radius: 1rem; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.1); }
         @media (min-width: 768px) { .about-card { padding: 3rem; } }
         .about-text { color: var(--color-gray-400); line-height: 1.6; }
@@ -126,23 +132,12 @@
         .stat-item { text-align: center; }
         .stat-item .stat-number { font-size: 2.25rem; font-weight: 900; color: var(--color-purple-400); }
         .stat-item .stat-label { color: var(--color-gray-300); }
-        
-        /* ***सुधार: About Us के आँकड़ों को मोबाइल पर सही दिखाने के लिए मीडिया क्वेरी*** */
-        @media (max-width: 767px) {
-            .about-stats {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-        
-        /* Disclaimer Section Styles */
+        @media (max-width: 767px) { .about-stats { flex-direction: column; align-items: center; } }
         .disclaimer-card { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 1rem; padding: 2rem; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .disclaimer-card > div { text-align: left; } /* ***सुधार: पॉलिसी टेक्स्ट को लेफ्ट-अलाइंड करने के लिए*** */
+        .disclaimer-card > div { text-align: left; }
         @media (min-width: 768px) { .disclaimer-card { flex-direction: row; } }
         .disclaimer-icon { color: var(--color-purple-400); width: 3rem; height: 3rem; flex-shrink: 0; }
         .disclaimer-text { color: var(--color-gray-400); }
-
-        /* Footer Styles */
         .footer { background-color: var(--color-black); padding-top: 4rem; padding-bottom: 2rem; }
         .footer-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem; text-align: center; }
         @media (min-width: 640px) { .footer-grid { grid-template-columns: repeat(2, 1fr); text-align: left;} }
@@ -164,13 +159,21 @@
 </head>
 <body>
 
+    <!-- ================================================== -->
+    <!-- हेडर और नेविगेशन बार (Header and Navigation) -->
+    <!-- ================================================== -->
     <header id="header" class="header">
         <div class="container">
             <div class="nav-container">
+                
+                <!-- निर्देश: लोगो (Logo) बदलने के लिए -->
+                <!-- तरीका 1 (टेक्स्ट लोगो): नीचे दिए गए 'Nexus' और 'Control' टेक्स्ट को अपने ब्रांड नाम से बदलें। -->
+                <!-- तरीका 2 (इमेज लोगो): इस पूरे <a> टैग को <a href="#home" class="logo"><img src="path/to/your/logo.png" alt="Logo" style="height: 40px;"></a> से बदलें। 'path/to/your/logo.png' में अपनी इमेज का सही पता डालें। -->
                 <a href="#home" class="logo">
                     <span>Nexus</span>Control
                 </a>
                 
+                <!-- निर्देश: यह डेस्कटॉप का मेनू है। हर मेनू आइटम का लिंक बदलने के लिए, a href="..." में # की जगह अपना असली URL डालें। -->
                 <nav class="main-nav">
                     <a href="#home">Home</a>
                     <a href="#features">Features</a>
@@ -184,6 +187,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="svg-icon"><line x1="3" x2="21" y1="12" y2="12"></line><line x1="3" x2="21" y1="6" y2="6"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg>
                 </button>
             </div>
+            
+            <!-- निर्देश: यह मोबाइल का मेनू है। हर मेनू आइटम का लिंक बदलने के लिए, a href="..." में # की जगह अपना असली URL डालें। -->
             <div id="mobile-menu">
                 <a href="#home">Home</a>
                 <a href="#features">Features</a>
@@ -197,23 +202,31 @@
     </header>
 
     <main>
+        <!-- ================================== -->
+        <!-- हीरो सेक्शन (Hero Section) -->
+        <!-- ================================== -->
         <section id="home" class="hero-bg">
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="hero-title fade-in-up">
-                        The Ultimate <span>Parental Monitoring</span> App
-                    </h1>
-                    <p class="hero-subtitle fade-in-up" style="transition-delay: 150ms;">
-                        Ensure your child's safety in the digital world. NexusControl is a powerful, free tool for modern parents.
-                    </p>
+                    <h1 class="hero-title fade-in-up">The Ultimate <span>Parental Monitoring</span> App</h1>
+                    <p class="hero-subtitle fade-in-up" style="transition-delay: 150ms;">Ensure your child's safety in the digital world. NexusControl is a powerful, free tool for modern parents.</p>
                     <div class="hero-actions fade-in-up" style="transition-delay: 300ms;">
+                        
+                        <!-- निर्देश: लॉगिन/साइनअप बटन का लिंक बदलने के लिए -->
+                        <!-- नीचे href="..." में #YOUR_LOGIN_SIGNUP_URL की जगह अपना असली लॉगिन पेज का URL डालें। -->
                         <a href="#YOUR_LOGIN_SIGNUP_URL" class="btn-3d">Login / Signup</a>
+                        
+                        <!-- निर्देश: APK डाउनलोड बटन का लिंक बदलने के लिए -->
+                        <!-- नीचे href="..." में #YOUR_APK_DOWNLOAD_LINK की जगह अपनी APK फाइल का डाउनलोड लिंक डालें। -->
                         <a href="#YOUR_APK_DOWNLOAD_LINK" class="btn-3d">Download APK</a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ================================== -->
+        <!-- कैसे काम करता है सेक्शन (How it Works Section) -->
+        <!-- ================================== -->
         <section id="install-guide" class="features-section">
             <div class="container">
                 <div class="section-header">
@@ -221,23 +234,17 @@
                 </div>
                 <div class="steps-grid">
                     <div class="step-card fade-in-up" style="transition-delay: 200ms;">
-                        <div class="card-icon-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="card-icon"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="17" y1="11" x2="23" y2="11"/></svg>
-                        </div>
+                        <div class="card-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="card-icon"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="17" y1="11" x2="23" y2="11"/></svg></div>
                         <h3 class="card-title">Register Free Account</h3>
                         <p class="card-description">Create your free account on our website to get started. No payment information required.</p>
                     </div>
                     <div class="step-card fade-in-up" style="transition-delay: 300ms;">
-                        <div class="card-icon-wrapper">
-                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="card-icon"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
-                        </div>
+                        <div class="card-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="card-icon"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
                         <h3 class="card-title">Install on Child's Phone</h3>
                         <p class="card-description">Download and install the app on your child's Android device and configure the necessary permissions.</p>
                     </div>
                     <div class="step-card fade-in-up" style="transition-delay: 400ms;">
-                        <div class="card-icon-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="card-icon"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
-                        </div>
+                        <div class="card-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="card-icon"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div>
                         <h3 class="card-title">Track from Browser</h3>
                         <p class="card-description">Log in to your account from any web browser to view all the monitored data from the device.</p>
                     </div>
@@ -245,114 +252,53 @@
             </div>
         </section>
 
+        <!-- ================================== -->
+        <!-- फीचर्स सेक्शन (Features Section) -->
+        <!-- ================================== -->
         <section id="features" class="features-section" style="padding-top:0;">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title fade-in-up">A Powerful Suite of Features</h2>
-                    <p class="section-subtitle fade-in-up" style="transition-delay: 150ms;">
-                        Discover the extensive range of monitoring tools designed to give you complete peace of mind.
-                    </p>
+                    <p class="section-subtitle fade-in-up" style="transition-delay: 150ms;">Discover the extensive range of monitoring tools designed to give you complete peace of mind.</p>
                 </div>
+                
+                <!-- निर्देश: हर फीचर कार्ड एक लिंक है। अगर आप चाहते हैं कि किसी फीचर पर क्लिक करके नया पेज खुले, तो हर <a> टैग में href="#" की जगह उस पेज का URL डालें। -->
                 <div class="features-grid">
-                    <a href="#" class="feature-card fade-in-up">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                            <h3 class="card-title">Live Location</h3>
-                        </div>
-                        <span class="card-details-link">More Details &rarr;</span>
-                    </a>
-                    <a href="#" class="feature-card fade-in-up">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-                            <h3 class="card-title">Photos</h3>
-                        </div>
-                        <span class="card-details-link">More Details &rarr;</span>
-                    </a>
-                    <a href="#" class="feature-card fade-in-up">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="7" y1="7" x2="7.01" y2="7"></line><line x1="11" y1="7" x2="11.01" y2="7"></line><line x1="15" y1="7" x2="15.01" y2="7"></line><line x1="7" y1="11" x2="7.01" y2="11"></line><line x1="11" y1="11" x2="11.01" y2="11"></line><line x1="15" y1="11" x2="15.01" y2="11"></line><line x1="7" y1="15" x2="7.01" y2="15"></line><line x1="11" y1="15" x2="11.01" y2="15"></line><line x1="15" y1="15" x2="15.01" y2="15"></line></svg>
-                            <h3 class="card-title">Keylogger</h3>
-                        </div>
-                        <span class="card-details-link">More Details &rarr;</span>
-                    </a>
-                    <a href="#" class="feature-card fade-in-up">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                            <h3 class="card-title">SMS</h3>
-                        </div>
-                        <span class="card-details-link">More Details &rarr;</span>
-                    </a>
-                    <a href="#" class="feature-card fade-in-up">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-                            <h3 class="card-title">Notifications</h3>
-                        </div>
-                        <span class="card-details-link">More Details &rarr;</span>
-                    </a>
-                    <a href="#" class="feature-card fade-in-up">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
-                            <h3 class="card-title">Screenshot</h3>
-                        </div>
-                        <span class="card-details-link">More Details &rarr;</span>
-                    </a>
-                    <a href="#" class="feature-card fade-in-up">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
-                            <h3 class="card-title">File Manager</h3>
-                        </div>
-                        <span class="card-details-link">More Details &rarr;</span>
-                    </a>
-                     <a href="#" class="feature-card fade-in-up">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                            <h3 class="card-title">Call Recording</h3>
-                        </div>
-                        <span class="card-details-link">More Details &rarr;</span>
-                    </a>
-                    <a href="#" class="feature-card fade-in-up">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
-                            <h3 class="card-title">Voice Recording</h3>
-                        </div>
-                        <span class="card-details-link">More Details &rarr;</span>
-                    </a>
-                    <a href="#" class="feature-card fade-in-up">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/><circle cx="12" cy="12" r="4"/><path d="m12 10-1.7 2.8"/></svg>
-                            <h3 class="card-title">Hidden Password</h3>
-                        </div>
-                        <span class="card-details-link">More Details &rarr;</span>
-                    </a>
-                    <a href="#" class="feature-card fade-in-up">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="card-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"></path></svg>
-                            <h3 class="card-title">Social Apps</h3>
-                        </div>
-                        <span class="card-details-link">More Details &rarr;</span>
-                    </a>
-                    <a href="#" class="feature-card fade-in-up">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
-                            <h3 class="card-title">Live Screen</h3>
-                        </div>
-                        <span class="card-details-link">More Details &rarr;</span>
-                    </a>
+                    <a href="#" class="feature-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><h3 class="card-title">Live Location</h3></div><span class="card-details-link">More Details &rarr;</span></a>
+                    <a href="#" class="feature-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><h3 class="card-title">Photos</h3></div><span class="card-details-link">More Details &rarr;</span></a>
+                    <a href="#" class="feature-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="7" y1="7" x2="7.01" y2="7"></line><line x1="11" y1="7" x2="11.01" y2="7"></line><line x1="15" y1="7" x2="15.01" y2="7"></line><line x1="7" y1="11" x2="7.01" y2="11"></line><line x1="11" y1="11" x2="11.01" y2="11"></line><line x1="15" y1="11" x2="15.01" y2="11"></line><line x1="7" y1="15" x2="7.01" y2="15"></line><line x1="11" y1="15" x2="11.01" y2="15"></line><line x1="15" y1="15" x2="15.01" y2="15"></line></svg><h3 class="card-title">Keylogger</h3></div><span class="card-details-link">More Details &rarr;</span></a>
+                    <a href="#" class="feature-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><h3 class="card-title">SMS</h3></div><span class="card-details-link">More Details &rarr;</span></a>
+                    <a href="#" class="feature-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><h3 class="card-title">Notifications</h3></div><span class="card-details-link">More Details &rarr;</span></a>
+				    <a href="#" class="feature-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" class="card-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"></path></svg><h3 class="card-title">Social Apps</h3></div><span class="card-details-link">More Details &rarr;</span></a>
+                    <a href="#" class="feature-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg><h3 class="card-title">File Manager</h3></div><span class="card-details-link">More Details &rarr;</span></a>
+                    <a href="#" class="feature-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><h3 class="card-title">Call Recording</h3></div><span class="card-details-link">More Details &rarr;</span></a>
+                    <a href="#" class="feature-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg><h3 class="card-title">Voice Recording</h3></div><span class="card-details-link">More Details &rarr;</span></a>
+                    <a href="#" class="feature-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/><circle cx="12" cy="12" r="4"/><path d="m12 10-1.7 2.8"/></svg><h3 class="card-title">Hidden Password</h3></div><span class="card-details-link">More Details &rarr;</span></a>
+                                        <a href="#" class="feature-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><h3 class="card-title">Screenshot</h3></div><span class="card-details-link">More Details &rarr;</span></a>
+                    <a href="#" class="feature-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="card-icon"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg><h3 class="card-title">Live Screen</h3></div><span class="card-details-link">More Details &rarr;</span></a>
                 </div>
             </div>
         </section>
 
+        <!-- ================================================== -->
+        <!-- डैशबोर्ड इमेज सेक्शन (Dashboard Image Section) -->
+        <!-- ================================================== -->
         <section id="dashboard" class="features-section">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title fade-in-up">Parents Panel Dashboard</h2>
                 </div>
+                <!-- निर्देश: डैशबोर्ड की इमेज बदलने के लिए, नीचे src="..." में दिए गए यूआरएल को अपनी इमेज के पते से बदलें। -->
+                <!-- निर्देश: इमेज का सही साइज 1000 पिक्सल चौड़ाई और 600 पिक्सल ऊंचाई (1000x600) होना चाहिए। -->
                 <div class="dashboard-image-wrapper fade-in-up">
                     <img src="https://placehold.co/1000x600/0a0a1a/a78bfa?text=NexusControl+Dashboard" alt="Parents Panel Dashboard">
                 </div>
             </div>
         </section>
 
+        <!-- ================================== -->
+        <!-- फायदे सेक्शन (Advantages Section) -->
+        <!-- ================================== -->
         <section id="advantages" class="features-section">
             <div class="container">
                 <div class="section-header">
@@ -360,16 +306,19 @@
                     <p class="section-subtitle fade-in-up">Here are a few more points why you should choose NexusControl.</p>
                 </div>
                 <div class="advantages-grid">
-                    <div class="advantage-card fade-in-up"><div class="advantage-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg></div><div><h3 class="advantage-title">Easy Install</h3><p class="advantage-text">It takes up to 5 minutes to set up the app. No jailbreak or root required.</p></div></div>
-                    <div class="advantage-card fade-in-up"><div class="advantage-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.092 1.21-.138 2.43-.138 3.662s.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.092-1.21.138-2.43.138-3.662z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg></div><div><h3 class="advantage-title">Real-time Updates</h3><p class="advantage-text">Information about all activities on the device updates every 5 min remotely.</p></div></div>
-                    <div class="advantage-card fade-in-up"><div class="advantage-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg></div><div><h3 class="advantage-title">Protected Data</h3><p class="advantage-text">All information is securely stored and protected. Only you have access to it.</p></div></div>
-                    <div class="advantage-card fade-in-up"><div class="advantage-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg></div><div><h3 class="advantage-title">Top Service</h3><p class="advantage-text">87% of our users are totally satisfied with our service and support.</p></div></div>
-                    <div class="advantage-card fade-in-up"><div class="advantage-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div><div><h3 class="advantage-title">24/7 Support</h3><p class="advantage-text">If you need assistance, we are happy to help at any time!</p></div></div>
-                    <div class="advantage-card fade-in-up"><div class="advantage-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 19.5v-8.25M12 4.875A2.625 2.625 0 1012 10.125 2.625 2.625 0 0012 4.875z" /><path stroke-linecap="round" stroke-linejoin="round" d="M18.75 11.25c0-1.036-.84-1.875-1.875-1.875s-1.875.84-1.875 1.875.84 1.875 1.875 1.875 1.875-.84 1.875-1.875zM4.125 11.25c0-1.036.84-1.875 1.875-1.875s1.875.84 1.875 1.875-.84 1.875-1.875 1.875-1.875-.84-1.875-1.875z" /></svg></div><div><h3 class="advantage-title">Totally Free</h3><p class="advantage-text">No hidden charges, lifetime free access to all core features.</p></div></div>
+                    <div class="advantage-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg></div><div><h3 class="advantage-title">Easy Install</h3><p class="advantage-text">It takes up to 5 minutes to set up the app. No jailbreak or root required.</p></div></div>
+                    <div class="advantage-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.092 1.21-.138 2.43-.138 3.662s.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.092-1.21.138-2.43.138-3.662z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg></div><div><h3 class="advantage-title">Real-time Updates</h3><p class="advantage-text">Information about all activities on the device updates every 5 min remotely.</p></div></div>
+                    <div class="advantage-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg></div><div><h3 class="advantage-title">Protected Data</h3><p class="advantage-text">All information is securely stored and protected. Only you have access to it.</p></div></div>
+                    <div class="advantage-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" /></svg></div><div><h3 class="advantage-title">Top Service</h3><p class="advantage-text">87% of our users are totally satisfied with our service and support.</p></div></div>
+                    <div class="advantage-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div><div><h3 class="advantage-title">24/7 Support</h3><p class="advantage-text">If you need assistance, we are happy to help at any time!</p></div></div>
+                    <div class="advantage-card fade-in-up"><div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 19.5v-8.25M12 4.875A2.625 2.625 0 1012 10.125 2.625 2.625 0 0012 4.875z" /><path stroke-linecap="round" stroke-linejoin="round" d="M18.75 11.25c0-1.036-.84-1.875-1.875-1.875s-1.875.84-1.875 1.875.84 1.875 1.875 1.875 1.875-.84 1.875-1.875zM4.125 11.25c0-1.036.84-1.875 1.875-1.875s1.875.84 1.875 1.875-.84 1.875-1.875 1.875-1.875-.84-1.875-1.875z" /></svg></div><div><h3 class="advantage-title">Totally Free</h3><p class="advantage-text">No hidden charges, lifetime free access to all core features.</p></div></div>
                 </div>
             </div>
         </section>
         
+        <!-- ================================== -->
+        <!-- अबाउट अस सेक्शन (About Us Section) -->
+        <!-- ================================== -->
         <section id="about-us-section" class="features-section">
             <div class="container">
                 <div class="about-card fade-in-up">
@@ -391,6 +340,9 @@
             </div>
         </section>
 
+        <!-- ================================== -->
+        <!-- ग्लोबल यूजर रेटिंग्स सेक्शन (Global User Ratings Section) -->
+        <!-- ================================== -->
         <section id="ratings" class="features-section">
             <div class="container">
                 <div class="section-header">
@@ -419,6 +371,9 @@
             </div>
         </section>
 
+        <!-- ================================== -->
+        <!-- डिस्क्लेमर सेक्शन (Disclaimer Section) -->
+        <!-- ================================== -->
         <section id="disclaimer" class="features-section">
             <div class="container">
                 <div class="disclaimer-card fade-in-up">
@@ -432,18 +387,24 @@
                 </div>
             </div>
         </section>
-
     </main>
 
+    <!-- ================================== -->
+    <!-- फुटर (Footer) -->
+    <!-- ================================== -->
     <footer id="contact" class="footer">
         <div class="container">
             <div class="footer-grid">
+                <!-- About -->
                 <div id="about-footer" class="fade-in-up">
                     <h4 class="footer-title">NexusControl</h4>
                     <p>Providing parents with the tools they need to ensure their children's digital safety.</p>
                 </div>
+                <!-- Quick Links -->
                 <div class="fade-in-up" style="transition-delay: 150ms;">
                     <h4 class="footer-title">Quick Links</h4>
+                    
+                    <!-- निर्देश: फुटर के लिंक बदलने के लिए, नीचे हर <li><a> टैग में href="#" की जगह अपना असली URL डालें -->
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#features">Features</a></li>
@@ -451,18 +412,26 @@
                         <li><a href="#faq-footer">FAQ</a></li>
                     </ul>
                 </div>
+                <!-- Resources -->
                 <div class="fade-in-up" style="transition-delay: 300ms;">
                     <h4 class="footer-title">Resources</h4>
+                    
+                    <!-- निर्देश: फुटर के रिसोर्स लिंक बदलने के लिए, नीचे हर <li><a> टैग में href="#" की जगह अपना असली URL डालें -->
                      <ul class="footer-links">
                         <li id="privacy-footer"><a href="#">Privacy Policy</a></li>
                         <li><a href="#about-footer">About Us</a></li>
                         <li><a href="#contact">Contact</a></li>
-                         <li><a href="#YOUR_SITEMAP_URL">Sitemap</a></li>
+                         
+                         <!-- निर्देश: साइटमैप लिंक बदलने के लिए, #YOUR_SITEMAP_URL की जगह अपना असली URL डालें -->
+                        <li><a href="#YOUR_SITEMAP_URL">Sitemap</a></li>
                     </ul>
                 </div>
+                <!-- Social Media -->
                 <div class="fade-in-up" style="transition-delay: 450ms;">
                     <h4 class="footer-title">Follow Us</h4>
                     <div class="footer-socials">
+                        
+                        <!-- निर्देश: सोशल मीडिया लिंक बदलने के लिए, नीचे हर <a> टैग में href="#" की जगह अपने प्रोफाइल का URL डालें -->
                         <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
                         <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
                         <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44c0-.795-.645-1.44-1.441-1.44z"/></svg></a>
@@ -477,7 +446,7 @@
     </footer>
 
     <script>
-        // Animations और mobile menu के लिए Javascript
+        // Animations और mobile menu के लिए Javascript (इसमें बदलाव की आवश्यकता नहीं है)
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -486,7 +455,6 @@
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => { if (window.scrollY > 50) { header.classList.add('scrolled'); } else { header.classList.remove('scrolled'); } });
             
-            // एनीमेशन वाला काउंटर
             const animateCounter = (counter) => {
                 const finalNumber = parseInt(counter.getAttribute('data-final-number'));
                 let start = 0;
@@ -500,7 +468,6 @@
                 window.requestAnimationFrame(step);
             };
 
-            // स्क्रॉल पर एनीमेशन शुरू करने के लिए
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {

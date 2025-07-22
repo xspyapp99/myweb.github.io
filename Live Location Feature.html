@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- निर्देश: SEO (सर्च इंजन ऑप्टिमाइजेशन) के लिए नीचे दिए गए टैग्स को बदलें -->
+    <title>Live Location Tracking Feature - NexusControl</title>
+    <meta name="description" content="Discover the real-time Live Location tracking feature of NexusControl. Keep your child safe by knowing their whereabouts with our advanced GPS tracking.">
+    <meta name="keywords" content="live location, gps tracking, child safety, parental control, nexuscontrol">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* कस्टम सीएसएस आपकी वेबसाइट के डिज़ाइन से मेल खाने के लिए */
+        :root {
+            --color-purple-400: #a78bfa;
+            --color-purple-500: #8b5cf6;
+            --color-purple-600: #7c3aed;
+            --color-gray-300: #d1d5db;
+            --color-gray-400: #9ca3af;
+            --color-gray-500: #6b7280;
+            --color-gray-800: #1f2937;
+            --color-gray-900: #111827;
+            --color-white: #ffffff;
+            --color-black: #000000;
+            --bg-dark: #0a0a1a;
+            --bg-dark-secondary: #111827;
+            --border-color: rgba(167, 223, 255, 0.1);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--color-gray-300);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .glass-effect {
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+        }
+        .footer { background-color: var(--color-black); }
+        .feature-icon {
+            background: linear-gradient(145deg, var(--color-purple-500), var(--color-purple-600));
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- ================================================== -->
+    <!-- हेडर और नेविगेशन बार -->
+    <!-- ================================================== -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out bg-black/80 backdrop-blur-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- निर्देश: लोगो का टेक्स्ट या इमेज बदलने के लिए इस लाइन को एडिट करें -->
+                <a href="website.html" class="text-2xl lg:text-3xl font-black text-white tracking-wider">
+                    <span class="text-purple-400">Nexus</span>Control
+                </a>
+                
+                <!-- निर्देश: डेस्कटॉप मेनू के लिंक यहाँ हैं। href="..." में अपना URL डालें। -->
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="website.html#home" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Home</a>
+                    <a href="website.html#features" class="text-purple-400 font-semibold">Features</a>
+                    <a href="about-us.html" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">About Us</a>
+                    <a href="faq.html" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">FAQ</a>
+                    <a href="privacy-policy.html" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Privacy Policy</a>
+                    <a href="website.html#contact" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Contact</a>
+                </nav>
+
+                <button id="mobile-menu-button" class="lg:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            
+            <!-- निर्देश: मोबाइल मेनू के लिंक यहाँ हैं। href="..." में अपना URL डालें। -->
+            <div id="mobile-menu" class="hidden lg:hidden bg-gray-900/95">
+                <a href="website.html#home" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Home</a>
+                <a href="website.html#features" class="block text-center py-3 text-white border-t border-gray-800 bg-purple-600">Features</a>
+                <a href="about-us.html" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">About Us</a>
+                <a href="faq.html" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">FAQ</a>
+                <a href="privacy-policy.html" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Privacy Policy</a>
+                <a href="website.html#contact" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- ================================== -->
+        <!-- हीरो सेक्शन -->
+        <!-- ================================== -->
+        <section class="relative py-20 md:py-32 bg-gradient-to-b from-black to-bg-dark">
+            <div class="absolute inset-0 bg-[url('https://www.transparent-textures.com/patterns/cubes.png')] opacity-5"></div>
+            <div class="container mx-auto px-4 text-center relative z-10">
+                <!-- निर्देश: पेज का मुख्य शीर्षक यहाँ बदलें। -->
+                <h1 class="text-4xl md:text-6xl font-black text-white leading-tight">
+                    Live Location <span class="text-purple-400">Tracking</span>
+                </h1>
+                <!-- निर्देश: शीर्षक के नीचे का उप-शीर्षक यहाँ बदलें। -->
+                <p class="mt-4 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+                    Gain peace of mind by knowing your child's whereabouts in real-time. Our advanced GPS tracking ensures you are always connected to their safety.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================================== -->
+        <!-- फीचर विवरण सेक्शन -->
+        <!-- ================================== -->
+        <section class="py-12 md:py-20">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-center lg:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Always Know They Are Safe</h2>
+                        <!-- निर्देश: फीचर का विस्तृत विवरण यहाँ बदलें। -->
+                        <p class="mt-4 text-gray-400 text-lg">
+                            In today's fast-paced world, knowing your child is safe is more important than ever. NexusControl's Live Location feature provides you with a reliable and accurate way to see your child's location on a detailed map, directly from your parent dashboard. Whether they are at school, a friend's house, or on their way home, you can check in anytime, anywhere.
+                        </p>
+                        <a href="website.html#home" class="mt-8 inline-block bg-purple-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors">
+                            Start Monitoring Now
+                        </a>
+                    </div>
+                    <div>
+                        <!-- निर्देश: इस इमेज को बदलने के लिए, src="..." में दिए गए URL को अपनी इमेज के URL से बदलें। आदर्श साइज़ 600x500 पिक्सल है। -->
+                        <img src="https://xspyapp.com/images/download.png" alt="Live map showing child's location" class="rounded-2xl shadow-2xl shadow-purple-900/20 glass-effect">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ================================== -->
+        <!-- मुख्य लाभ सेक्शन -->
+        <!-- ================================== -->
+        <section class="py-12 md:py-20 bg-black/20">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Key Benefits of Location Tracking</h2>
+                    <!-- निर्देश: इस सेक्शन का विवरण यहाँ बदलें। -->
+                    <p class="mt-4 text-gray-400 text-lg">
+                        Our GPS tracking is more than just a dot on a map. It's a comprehensive tool designed to give you actionable insights and enhanced security.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                    <!-- निर्देश: नीचे दिए गए तीन कार्ड्स के आइकॉन, शीर्षक और विवरण को आप बदल सकते हैं। -->
+                    <div class="glass-effect p-8 rounded-xl text-center">
+                        <div class="flex justify-center items-center mb-4 w-16 h-16 rounded-full feature-icon mx-auto">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Real-Time GPS Tracking</h3>
+                        <p class="mt-2 text-gray-400">See your child's exact location updated in near real-time. The high-accuracy GPS data ensures you have the most current information available.</p>
+                    </div>
+                    <div class="glass-effect p-8 rounded-xl text-center">
+                        <div class="flex justify-center items-center mb-4 w-16 h-16 rounded-full feature-icon mx-auto">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Location History</h3>
+                        <p class="mt-2 text-gray-400">Review the paths your child has taken. See a detailed history of their movements throughout the day, complete with timestamps.</p>
+                    </div>
+                    <div class="glass-effect p-8 rounded-xl text-center">
+                        <div class="flex justify-center items-center mb-4 w-16 h-16 rounded-full feature-icon mx-auto">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m-6 3l6-3"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Safe & Unsafe Zones (Geofencing)</h3>
+                        <p class="mt-2 text-gray-400">Create virtual boundaries around important places like home and school. Receive instant alerts when your child enters or leaves these designated zones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================================== -->
+    <!-- फुटर (Footer) -->
+    <!-- ================================== -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- About -->
+                <div id="about-footer" class="fade-in-up">
+                    <h4 class="footer-title">NexusControl</h4>
+                    <p>Providing parents with the tools they need to ensure their children's digital safety.</p>
+                </div>
+                <!-- Quick Links -->
+                <div class="fade-in-up" style="transition-delay: 150ms;">
+                    <h4 class="footer-title">Quick Links</h4>
+                    
+                    <!-- निर्देश: फुटर के लिंक बदलने के लिए, नीचे हर <li><a> टैग में href="#" की जगह अपना असली URL डालें -->
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#install-guide">Install Guide</a></li>
+                        <li><a href="#faq-footer">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- Resources -->
+                <div class="fade-in-up" style="transition-delay: 300ms;">
+                    <h4 class="footer-title">Resources</h4>
+                    
+                    <!-- निर्देश: फुटर के रिसोर्स लिंक बदलने के लिए, नीचे हर <li><a> टैग में href="#" की जगह अपना असली URL डालें -->
+                     <ul class="footer-links">
+                        <li id="privacy-footer"><a href="#">Privacy Policy</a></li>
+                        <li><a href="#about-footer">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                         
+                         <!-- निर्देश: साइटमैप लिंक बदलने के लिए, #YOUR_SITEMAP_URL की जगह अपना असली URL डालें -->
+                        <li><a href="#YOUR_SITEMAP_URL">Sitemap</a></li>
+                    </ul>
+                </div>
+                <!-- Social Media -->
+                <div class="fade-in-up" style="transition-delay: 450ms;">
+                    <h4 class="footer-title">Follow Us</h4>
+                    <div class="footer-socials">
+                        
+                        <!-- निर्देश: सोशल मीडिया लिंक बदलने के लिए, नीचे हर <a> टैग में href="#" की जगह अपने प्रोफाइल का URL डालें -->
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44c0-.795-.645-1.44-1.441-1.44z"/></svg></a>
+                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.582 6.186a2.694 2.694 0 0 0-1.886-1.886C17.93 4 12 4 12 4s-5.93 0-7.696.299a2.694 2.694 0 0 0-1.886 1.886C2 7.95 2 12 2 12s0 4.05.318 5.814a2.694 2.694 0 0 0 1.886 1.886C6.07 20 12 20 12 20s5.93 0 7.696-.299a2.694 2.694 0 0 0 1.886-1.886C22 16.05 22 12 22 12s0-4.05-.418-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2024 NexusControl. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animations और mobile menu के लिए Javascript (इसमें बदलाव की आवश्यकता नहीं है)
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('show'); });
+            document.querySelectorAll('#mobile-menu a').forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.remove('show'); }); });
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => { if (window.scrollY > 50) { header.classList.add('scrolled'); } else { header.classList.remove('scrolled'); } });
+            
+            const animateCounter = (counter) => {
+                const finalNumber = parseInt(counter.getAttribute('data-final-number'));
+                let start = 0;
+                const duration = 2000;
+                const step = (timestamp) => {
+                    if (!start) start = timestamp;
+                    const progress = Math.min((timestamp - start) / duration, 1);
+                    counter.innerText = Math.floor(progress * finalNumber).toLocaleString();
+                    if (progress < 1) { window.requestAnimationFrame(step); }
+                };
+                window.requestAnimationFrame(step);
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        const counters = entry.target.querySelectorAll('.animated-counter');
+                        counters.forEach(counter => { 
+                            if (!counter.classList.contains('is-animated')) { 
+                                animateCounter(counter); 
+                                counter.classList.add('is-animated'); 
+                            } 
+                        });
+                    }
+                });
+            }, { threshold: 0.1 });
+            const fadeUpElements = document.querySelectorAll('.fade-in-up');
+            fadeUpElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

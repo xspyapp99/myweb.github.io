@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- निर्देश: SEO (सर्च इंजन ऑप्टिमाइजेशन) के लिए नीचे दिए गए टैग्स को बदलें -->
+    <title>About Us - NexusControl</title>
+    <meta name="description" content="Learn about the mission, story, and team behind NexusControl. We are dedicated to providing parents with the best tools for digital safety.">
+    <meta name="keywords" content="about us, nexuscontrol, our mission, our team, parental control">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* कस्टम सीएसएस आपकी वेबसाइट के डिज़ाइन से मेल खाने के लिए */
+        :root {
+            --color-purple-400: #a78bfa;
+            --color-purple-500: #8b5cf6;
+            --color-purple-600: #7c3aed;
+            --color-gray-300: #d1d5db;
+            --color-gray-400: #9ca3af;
+            --color-gray-500: #6b7280;
+            --color-gray-800: #1f2937;
+            --color-gray-900: #111827;
+            --color-white: #ffffff;
+            --color-black: #000000;
+            --bg-dark: #0a0a1a;
+            --bg-dark-secondary: #111827;
+            --border-color: rgba(167, 223, 255, 0.1);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--color-gray-300);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .glass-effect {
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+        }
+        .footer { background-color: var(--color-black); }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 10px;
+            top: 4px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--color-purple-500);
+            border: 4px solid var(--bg-dark);
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- ================================================== -->
+    <!-- हेडर और नेविगेशन बार -->
+    <!-- ================================================== -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out bg-black/80 backdrop-blur-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- निर्देश: लोगो का टेक्स्ट या इमेज बदलने के लिए इस लाइन को एडिट करें -->
+                <a href="website.html" class="text-2xl lg:text-3xl font-black text-white tracking-wider">
+                    <span class="text-purple-400">Nexus</span>Control
+                </a>
+                
+                <!-- निर्देश: डेस्कटॉप मेनू के लिंक यहाँ हैं। href="..." में अपना URL डालें। -->
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="website.html#home" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Home</a>
+                    <a href="website.html#features" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Features</a>
+                    <a href="about-us.html" class="text-purple-400 font-semibold">About Us</a>
+                    <a href="privacy-policy.html" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Privacy Policy</a>
+                    <a href="website.html#contact" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Contact</a>
+                </nav>
+
+                <button id="mobile-menu-button" class="lg:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            
+            <!-- निर्देश: मोबाइल मेनू के लिंक यहाँ हैं। href="..." में अपना URL डालें। -->
+            <div id="mobile-menu" class="hidden lg:hidden bg-gray-900/95">
+                <a href="website.html#home" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Home</a>
+                <a href="website.html#features" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Features</a>
+                <a href="about-us.html" class="block text-center py-3 text-white border-t border-gray-800 bg-purple-600">About Us</a>
+                <a href="privacy-policy.html" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Privacy Policy</a>
+                <a href="website.html#contact" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- ================================== -->
+        <!-- हीरो सेक्शन -->
+        <!-- ================================== -->
+        <section class="relative py-20 md:py-32 bg-gradient-to-b from-black to-bg-dark">
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+            <div class="container mx-auto px-4 text-center relative z-10">
+                <!-- निर्देश: पेज का मुख्य शीर्षक यहाँ बदलें। -->
+                <h1 class="text-4xl md:text-6xl font-black text-white leading-tight">
+                    About <span class="text-purple-400">NexusControl</span>
+                </h1>
+                <!-- निर्देश: शीर्षक के नीचे का उप-शीर्षक यहाँ बदलें। -->
+                <p class="mt-4 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+                    We are a team of passionate developers and concerned parents dedicated to creating a safer digital world for children.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================================== -->
+        <!-- हमारा मिशन सेक्शन -->
+        <!-- ================================== -->
+        <section class="py-12 md:py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white fade-in-up">Our Mission</h2>
+                    <!-- निर्देश: मिशन का विवरण यहाँ बदलें। -->
+                    <p class="mt-4 text-gray-400 text-lg fade-in-up" data-delay="100">
+                        Our goal is to empower parents with powerful, easy-to-use tools that provide peace of mind. We believe in fostering open communication between parents and children, and our technology is designed to support that relationship by ensuring online safety without compromising trust.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 text-center">
+                    <!-- निर्देश: नीचे दिए गए तीन कार्ड्स के आइकॉन, शीर्षक और विवरण को आप बदल सकते हैं। -->
+                    <div class="glass-effect p-8 rounded-xl fade-in-up" data-delay="200">
+                        <div class="flex justify-center items-center mb-4">
+                            <svg class="w-12 h-12 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Security First</h3>
+                        <p class="mt-2 text-gray-400">Protecting your family's data with military-grade encryption is our core principle.</p>
+                    </div>
+                    <div class="glass-effect p-8 rounded-xl fade-in-up" data-delay="300">
+                        <div class="flex justify-center items-center mb-4">
+                            <svg class="w-12 h-12 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Empowerment</h3>
+                        <p class="mt-2 text-gray-400">We provide you with the insights you need to guide your children through the digital landscape.</p>
+                    </div>
+                    <div class="glass-effect p-8 rounded-xl fade-in-up" data-delay="400">
+                        <div class="flex justify-center items-center mb-4">
+                            <svg class="w-12 h-12 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V7a2 2 0 012-2h2m8-4H5a2 2 0 00-2 2v10a2 2 0 002 2h11l4 4V7a2 2 0 00-2-2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Building Trust</h3>
+                        <p class="mt-2 text-gray-400">Our tools are designed to be a bridge for communication, not a wall of secrecy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================== -->
+        <!-- हमारी कहानी सेक्शन (Timeline) -->
+        <!-- ================================== -->
+        <section class="py-12 md:py-20 bg-black/20">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white fade-in-up">Our Story</h2>
+                    <!-- निर्देश: कहानी का विवरण यहाँ बदलें। -->
+                    <p class="mt-4 text-gray-400 text-lg fade-in-up" data-delay="100">
+                        From a simple idea to a trusted global service, our journey has always been driven by the need for a better, safer digital environment for our kids.
+                    </p>
+                </div>
+                <div class="max-w-2xl mx-auto mt-12">
+                    <div class="relative">
+                        <!-- निर्देश: यह टाइमलाइन है। आप हर 'timeline-item' के शीर्षक (h3) और विवरण (p) को एडिट कर सकते हैं। आप चाहें तो और भी आइटम जोड़ सकते हैं या हटा सकते हैं। -->
+                        <div class="timeline-item relative pl-12 pb-12 fade-in-up">
+                            <div class="timeline-dot"></div>
+                            <h3 class="text-xl font-bold text-purple-400">2023 - The Idea</h3>
+                            <p class="mt-2 text-gray-400">A group of parents and tech enthusiasts realized the existing parental control solutions were either too complex, too expensive, or not secure enough. The concept of NexusControl was born.</p>
+                        </div>
+                        <div class="timeline-item relative pl-12 pb-12 fade-in-up">
+                            <div class="timeline-dot"></div>
+                            <h3 class="text-xl font-bold text-purple-400">2024 - Development & Alpha</h3>
+                            <p class="mt-2 text-gray-400">An intense year of development focused on creating a robust, secure, and user-friendly platform. We launched our first alpha version with a small group of trusted families for feedback.</p>
+                        </div>
+                        <div class="timeline-item relative pl-12 pb-12 fade-in-up">
+                            <div class="timeline-dot"></div>
+                            <h3 class="text-xl font-bold text-purple-400">2025 - Public Launch</h3>
+                            <p class="mt-2 text-gray-400">NexusControl was officially launched to the public. Our commitment to providing a powerful free service resonated with parents worldwide, and our user base grew rapidly.</p>
+                        </div>
+                        <div class="timeline-item relative pl-12 fade-in-up">
+                            <div class="timeline-dot"></div>
+                            <h3 class="text-xl font-bold text-purple-400">Today & Beyond</h3>
+                            <p class="mt-2 text-gray-400">We continue to innovate, adding new features and strengthening our security based on user feedback. Our mission remains the same: to provide the best digital safety tool for families everywhere.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ================================== -->
+        <!-- हमारी टीम सेक्शन -->
+        <!-- ================================== -->
+        <section class="py-12 md:py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white fade-in-up">Meet the Team</h2>
+                    <!-- निर्देश: टीम का विवरण यहाँ बदलें। -->
+                    <p class="mt-4 text-gray-400 text-lg fade-in-up" data-delay="100">
+                        We are a diverse team of experts united by a common goal.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+                    <!--  इमेज का सही साइज़ क्या होना चाहिए?
+आदर्श साइज़: सबसे अच्छा साइज़ 256x256 पिक्सल (चौड़ाई x ऊंचाई) या 300x300 पिक्सल का वर्गाकार (square) इमेज रहेगा।
+
+क्यों? कोड में इमेज को 128x128 पिक्सल पर दिखाया जा रहा है (w-32 h-32 क्लास से), लेकिन थोड़ी बड़ी और अच्छी क्वालिटी की इमेज अपलोड करने से यह हर स्क्रीन पर (जैसे रेटिना डिस्प्ले) बहुत साफ़ और प्रोफेशनल दिखेगी। ब्राउज़र उसे अपने आप सही साइज़ में एडजस्ट कर लेगा।निर्देश: यह टीम मेंबर का कार्ड है। आप इमेज (src), नाम (h3), पद (p), और सोशल मीडिया लिंक (a href) बदल सकते हैं। आप ऐसे और कार्ड कॉपी-पेस्ट कर सकते हैं। -->
+                    <div class="text-center fade-in-up" data-delay="200">
+                        <img class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-purple-500/50" src="https://placehold.co/200x200/1f2937/a78bfa?text=CEO" alt="Team Member 1">
+                        <h3 class="text-xl font-bold text-white">Alex Johnson</h3>
+                        <p class="text-purple-400">Founder & CEO</p>
+                    </div>
+                    <div class="text-center fade-in-up" data-delay="300">
+                        <img class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-purple-500/50" src="https://placehold.co/200x200/1f2937/a78bfa?text=Dev" alt="Team Member 2">
+                        <h3 class="text-xl font-bold text-white">Maria Garcia</h3>
+                        <p class="text-purple-400">Lead Developer</p>
+                    </div>
+                    <div class="text-center fade-in-up" data-delay="400">
+                        <img class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-purple-500/50" src="https://placehold.co/200x200/1f2937/a78bfa?text=Sec" alt="Team Member 3">
+                        <h3 class="text-xl font-bold text-white">David Chen</h3>
+                        <p class="text-purple-400">Head of Security</p>
+                    </div>
+                    <div class="text-center fade-in-up" data-delay="500">
+                        <img class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-purple-500/50" src="https://placehold.co/200x200/1f2937/a78bfa?text=UX" alt="Team Member 4">
+                        <h3 class="text-xl font-bold text-white">Sarah Lee</h3>
+                        <p class="text-purple-400">UX/UI Designer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================================== -->
+    <!-- फुटर -->
+    <!-- ================================== -->
+   <footer class="footer py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
+                <!-- निर्देश: फुटर का कंटेंट यहाँ बदलें -->
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-4">NexusControl</h4>
+                    <p class="text-gray-400">Providing parents with the tools they need to ensure their children's digital safety.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="website.html#home" class="text-gray-400 hover:text-purple-400">Home</a></li>
+                        <li><a href="website.html#features" class="text-gray-400 hover:text-purple-400">Features</a></li>
+                        <li><a href="about-us.html" class="text-gray-400 hover:text-purple-400">About Us</a></li>
+                        <!-- यह रहा आपका जोड़ा गया FAQ लिंक -->
+                        <li><a href="website.html#faq-footer" class="text-gray-400 hover:text-purple-400">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-4">Resources</h4>
+                     <ul class="space-y-2">
+                        <li><a href="privacy-policy.html" class="text-gray-400 hover:text-purple-400">Privacy Policy</a></li>
+                        <li><a href="website.html#install-guide" class="text-gray-400 hover:text-purple-400">Install Guide</a></li>
+                        <li><a href="website.html#contact" class="text-gray-400 hover:text-purple-400">Contact</a></li>
+                        <!-- निर्देश: अपने साइटमैप का URL यहाँ डालें -->
+                        <li><a href="#YOUR_SITEMAP_URL" class="text-gray-400 hover:text-purple-400">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-4">Follow Us</h4>
+                    <!-- निर्देश: अपने सोशल मीडिया प्रोफाइल के लिंक यहाँ डालें -->
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44c0-.795-.645-1.44-1.441-1.44z"/></svg></a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21.582 6.186a2.694 2.694 0 0 0-1.886-1.886C17.93 4 12 4 12 4s-5.93 0-7.696.299a2.694 2.694 0 0 0-1.886 1.886C2 7.95 2 12 2 12s0 4.05.318 5.814a2.694 2.694 0 0 0 1.886 1.886C6.07 20 12 20 12 20s5.93 0 7.696-.299a2.694 2.694 0 0 0 1.886-1.886C22 16.05 22 12 22 12s0-4.05-.418-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2024 NexusControl. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // मोबाइल मेनू
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // स्क्रॉल पर एनिमेशन
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        const delay = entry.target.getAttribute('data-delay');
+                        if(delay) {
+                            entry.target.style.transitionDelay = delay + 'ms';
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const elements = document.querySelectorAll('.fade-in-up');
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+</html>

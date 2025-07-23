@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- निर्देश: SEO (सर्च इंजन ऑप्टिमाइजेशन) के लिए नीचे दिए गए टैग्स को बदलें -->
+    <title>FAQ - NexusControl</title>
+    <meta name="description" content="Find answers to frequently asked questions about NexusControl, including installation, features, security, and account management.">
+    <meta name="keywords" content="faq, frequently asked questions, nexuscontrol, support, help">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* कस्टम सीएसएस आपकी वेबसाइट के डिज़ाइन से मेल खाने के लिए */
+        :root {
+            --color-purple-400: #a78bfa;
+            --color-purple-500: #8b5cf6;
+            --color-purple-600: #7c3aed;
+            --color-gray-300: #d1d5db;
+            --color-gray-400: #9ca3af;
+            --color-gray-500: #6b7280;
+            --color-gray-800: #1f2937;
+            --color-gray-900: #111827;
+            --color-white: #ffffff;
+            --color-black: #000000;
+            --bg-dark: #0a0a1a;
+            --bg-dark-secondary: #111827;
+            --border-color: rgba(167, 223, 255, 0.1);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--color-gray-300);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .glass-effect {
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+        }
+        .footer { background-color: var(--color-black); }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 500px; /* उत्तर के लिए पर्याप्त ऊंचाई */
+            padding-top: 1rem;
+        }
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+        .faq-arrow {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- ================================================== -->
+    <!-- हेडर और नेविगेशन बार -->
+    <!-- ================================================== -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out bg-black/80 backdrop-blur-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- निर्देश: लोगो का टेक्स्ट या इमेज बदलने के लिए इस लाइन को एडिट करें -->
+                <a href="website.html" class="text-2xl lg:text-3xl font-black text-white tracking-wider">
+                    <span class="text-purple-400">Nexus</span>Control
+                </a>
+                
+                <!-- निर्देश: डेस्कटॉप मेनू के लिंक यहाँ हैं। href="..." में अपना URL डालें। -->
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="website.html#home" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Home</a>
+                    <a href="website.html#features" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Features</a>
+                    <a href="about-us.html" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">About Us</a>
+                    <a href="faq.html" class="text-purple-400 font-semibold">FAQ</a>
+                    <a href="privacy-policy.html" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Privacy Policy</a>
+                    <a href="website.html#contact" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Contact</a>
+                </nav>
+
+                <button id="mobile-menu-button" class="lg:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            
+            <!-- निर्देश: मोबाइल मेनू के लिंक यहाँ हैं। href="..." में अपना URL डालें। -->
+            <div id="mobile-menu" class="hidden lg:hidden bg-gray-900/95">
+                <a href="website.html#home" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Home</a>
+                <a href="website.html#features" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Features</a>
+                <a href="about-us.html" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">About Us</a>
+                <a href="faq.html" class="block text-center py-3 text-white border-t border-gray-800 bg-purple-600">FAQ</a>
+                <a href="privacy-policy.html" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Privacy Policy</a>
+                <a href="website.html#contact" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- ================================== -->
+        <!-- हीरो सेक्शन -->
+        <!-- ================================== -->
+        <section class="relative py-20 md:py-32 bg-gradient-to-b from-black to-bg-dark">
+            <div class="absolute inset-0 bg-[url('https://www.transparent-textures.com/patterns/cubes.png')] opacity-5"></div>
+            <div class="container mx-auto px-4 text-center relative z-10">
+                <!-- निर्देश: पेज का मुख्य शीर्षक यहाँ बदलें। -->
+                <h1 class="text-4xl md:text-6xl font-black text-white leading-tight">
+                    Frequently Asked Questions
+                </h1>
+                <!-- निर्देश: शीर्षक के नीचे का उप-शीर्षक यहाँ बदलें। -->
+                <p class="mt-4 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+                    Have questions? We've got answers. Find the information you need about NexusControl below.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================================== -->
+        <!-- FAQ सेक्शन -->
+        <!-- ================================== -->
+        <section class="py-12 md:py-20">
+            <div class="container mx-auto px-4 max-w-4xl">
+
+                <!-- Search Bar -->
+                <div class="mb-12">
+                    <div class="relative">
+                        <input type="text" id="faq-search" placeholder="Search for a question..." class="w-full py-4 pl-12 pr-14 bg-gray-900/50 border border-border-color rounded-full text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                            <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                        <!-- निर्देश: यह नया सर्च बटन है। -->
+                        <button id="faq-search-btn" class="absolute inset-y-0 right-0 flex items-center pr-5 text-gray-400 hover:text-purple-400 transition-colors focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- FAQ Accordion -->
+                <div class="space-y-4" id="faq-container">
+                    
+                    <!-- निर्देश: यह एक FAQ आइटम है। आप ऐसे और आइटम कॉपी-पेस्ट करके जोड़ सकते हैं। -->
+                    <!-- प्रश्न बदलने के लिए <button> के अंदर का टेक्स्ट बदलें। -->
+                    <!-- उत्तर बदलने के लिए <div class="faq-answer"> के अंदर का टेक्स्ट बदलें। -->
+                    
+                    <div class="faq-item glass-effect rounded-xl overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-semibold text-white">Is NexusControl completely free to use?</span>
+                            <svg class="faq-arrow w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 text-gray-400">
+                            <p>Yes, all core features of NexusControl are completely free. We believe every parent should have access to essential tools for their child's digital safety without any financial burden. We may offer optional premium features in the future, but our core monitoring services will always remain free.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item glass-effect rounded-xl overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-semibold text-white">Why should I disable Google Play Protect before installation?</span>
+                            <svg class="faq-arrow w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 text-gray-400">
+                            <p>NexusControl uses advanced monitoring features that require deep access to the phone's operating system. Google Play Protect may flag our app as potentially harmful because it is a powerful monitoring tool not available on the Play Store. Disabling it temporarily during installation ensures that the app can be installed and set up correctly without interference.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item glass-effect rounded-xl overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-semibold text-white">Is my login and dashboard secure?</span>
+                            <svg class="faq-arrow w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 text-gray-400">
+                            <p>Absolutely. Your security is paramount. All data is protected by end-to-end encryption. The only way to access the monitored data is by logging into your parent dashboard with your unique email and password. No one else, including our staff, can view your data.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item glass-effect rounded-xl overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-semibold text-white">Can I monitor multiple devices from one account?</span>
+                            <svg class="faq-arrow w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 text-gray-400">
+                            <p>Yes, you can add and monitor multiple children's devices under a single parent account. Simply repeat the installation process on each new device using your existing login credentials. You can then switch between devices from your dashboard.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item glass-effect rounded-xl overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-semibold text-white">What happens if the target phone reboots or loses internet?</span>
+                            <svg class="faq-arrow w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 text-gray-400">
+                            <p>The app is designed to automatically restart after the phone reboots. If the internet connection is lost, the app will continue to collect data locally. Once the internet connection is restored, it will upload all the collected data to your dashboard.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item glass-effect rounded-xl overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-semibold text-white">Do I need to allow all permissions for the app to work?</span>
+                            <svg class="faq-arrow w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 text-gray-400">
+                            <p>Yes. For the app to function correctly and provide all monitoring features, it is crucial to grant all requested permissions during the setup process. Failing to do so will result in certain features not working or the app failing to report data. Our system may even close the account if the setup is incomplete.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item glass-effect rounded-xl overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-semibold text-white">What should I do if the app stops working after a few days?</span>
+                            <svg class="faq-arrow w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 text-gray-400">
+                            <p>This can sometimes happen if the phone's operating system or a battery-saving app closes NexusControl. Please ensure that you have followed all installation steps, especially disabling battery optimization for our app on the target device. If the problem persists, please contact our support team.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item glass-effect rounded-xl overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-semibold text-white">Can I uninstall the app and delete all data?</span>
+                            <svg class="faq-arrow w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 text-gray-400">
+                            <p>Yes. You can delete the child's profile from your parent dashboard. When you do this, our system automatically and instantly deletes all associated data from our servers in real-time. You can then uninstall the application from the child's device.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item glass-effect rounded-xl overflow-hidden">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-semibold text-white">How can I contact support?</span>
+                            <svg class="faq-arrow w-6 h-6 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="faq-answer px-6 pb-6 text-gray-400">
+                            <p>If you have any issues or questions that are not answered here, you can reach our support team by visiting the "Contact" page on our website or by sending an email directly to our support address mentioned there.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- निर्देश: यह संदेश तब दिखाई देगा जब खोज में कोई परिणाम नहीं मिलेगा। आप इस संदेश के टेक्स्ट और बटन के लिंक को बदल सकते हैं। -->
+                <div id="no-results-message" class="hidden text-center glass-effect rounded-xl p-8 mt-8">
+                    <h3 class="text-2xl font-bold text-white mb-4">No results found</h3>
+                    <p class="text-gray-400 mb-6">We couldn't find an answer to your question. Please try a different search term or contact our support team for assistance.</p>
+                    <a href="website.html#contact" class="inline-block bg-purple-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors">Contact Support</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ================================== -->
+    <!-- फुटर -->
+    <!-- ================================== -->
+    <footer class="footer py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
+                <!-- निर्देश: फुटर का कंटेंट यहाँ बदलें -->
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-4">NexusControl</h4>
+                    <p class="text-gray-400">Providing parents with the tools they need to ensure their children's digital safety.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="website.html#home" class="text-gray-400 hover:text-purple-400">Home</a></li>
+                        <li><a href="website.html#features" class="text-gray-400 hover:text-purple-400">Features</a></li>
+                        <li><a href="website.html#install-guide" class="text-gray-400 hover:text-purple-400">Install Guide</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-purple-400">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-4">Resources</h4>
+                     <ul class="space-y-2">
+                        <li><a href="privacy-policy.html" class="text-gray-400 hover:text-purple-400">Privacy Policy</a></li>
+                        <li><a href="about-us.html" class="text-gray-400 hover:text-purple-400">About Us</a></li>
+                        <li><a href="website.html#contact" class="text-gray-400 hover:text-purple-400">Contact</a></li>
+                        <!-- निर्देश: अपने साइटमैप का URL यहाँ डालें -->
+                        <li><a href="#YOUR_SITEMAP_URL" class="text-gray-400 hover:text-purple-400">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-4">Follow Us</h4>
+                    <!-- निर्देश: अपने सोशल मीडिया प्रोफाइल के लिंक यहाँ डालें -->
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44c0-.795-.645-1.44-1.441-1.44z"/></svg></a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21.582 6.186a2.694 2.694 0 0 0-1.886-1.886C17.93 4 12 4 12 4s-5.93 0-7.696.299a2.694 2.694 0 0 0-1.886 1.886C2 7.95 2 12 2 12s0 4.05.318 5.814a2.694 2.694 0 0 0 1.886 1.886C6.07 20 12 20 12 20s5.93 0 7.696-.299a2.694 2.694 0 0 0 1.886-1.886C22 16.05 22 12 22 12s0-4.05-.418-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2024 NexusControl. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // मोबाइल मेनू
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // FAQ Accordion लॉजिक
+            const faqContainer = document.getElementById('faq-container');
+            faqContainer.addEventListener('click', function(e) {
+                const questionButton = e.target.closest('.faq-question');
+                if (!questionButton) return;
+
+                const faqItem = questionButton.parentElement;
+                
+                if (faqItem.classList.contains('open')) {
+                    faqItem.classList.remove('open');
+                } else {
+                    faqContainer.querySelectorAll('.faq-item.open').forEach(openItem => {
+                        openItem.classList.remove('open');
+                    });
+                    faqItem.classList.add('open');
+                }
+            });
+
+            // FAQ Search लॉजिक
+            const searchInput = document.getElementById('faq-search');
+            const searchButton = document.getElementById('faq-search-btn');
+            const faqItems = faqContainer.querySelectorAll('.faq-item');
+            const noResultsMessage = document.getElementById('no-results-message');
+
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase();
+                let visibleItems = 0;
+
+                faqItems.forEach(item => {
+                    const questionText = item.querySelector('.faq-question span').textContent.toLowerCase();
+                    const answerText = item.querySelector('.faq-answer p').textContent.toLowerCase();
+
+                    if (questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        visibleItems++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                if (visibleItems === 0 && searchTerm.length > 0) {
+                    noResultsMessage.classList.remove('hidden');
+                } else {
+                    noResultsMessage.classList.add('hidden');
+                }
+            }
+
+            // Enter दबाने पर सर्च करें
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault(); // फॉर्म सबमिशन रोकें
+                    performSearch();
+                }
+            });
+
+            // बटन क्लिक करने पर सर्च करें
+            searchButton.addEventListener('click', performSearch);
+        });
+    </script>
+
+</body>
+</html>

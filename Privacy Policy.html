@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- निर्देश: SEO (सर्च इंजन ऑप्टिमाइजेशन) के लिए नीचे दिए गए टैग्स को बदलें -->
+    <title>Privacy Policy - NexusControl</title>
+    <meta name="description" content="NexusControl is committed to protecting your privacy. Our policy details how we collect, use, and secure your data with end-to-end encryption.">
+    <meta name="keywords" content="privacy policy, data protection, nexuscontrol, user data, security, encryption">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* कस्टम सीएसएस आपकी वेबसाइट के डिज़ाइन से मेल खाने के लिए */
+        :root {
+            --color-purple-400: #a78bfa;
+            --color-purple-500: #8b5cf6;
+            --color-purple-600: #7c3aed;
+            --color-gray-300: #d1d5db;
+            --color-gray-400: #9ca3af;
+            --color-gray-500: #6b7280;
+            --color-gray-800: #1f2937;
+            --color-gray-900: #111827;
+            --color-white: #ffffff;
+            --color-black: #000000;
+            --bg-dark: #0a0a1a;
+            --bg-dark-secondary: #111827;
+            --border-color: rgba(167, 223, 255, 0.1);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--color-gray-300);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .glass-effect {
+            background: rgba(17, 24, 39, 0.5); /* bg-gray-900 with opacity */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+        }
+        .policy-nav a.active {
+            color: var(--color-white);
+            background-color: var(--color-purple-600);
+            font-weight: 600;
+        }
+        .highlight-card {
+            border-left: 4px solid var(--color-purple-500);
+            background: linear-gradient(to right, rgba(124, 58, 237, 0.1), transparent);
+        }
+        .footer { background-color: var(--color-black); }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- ================================================== -->
+    <!-- हेडर और नेविगेशन बार -->
+    <!-- ================================================== -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out bg-black/80 backdrop-blur-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- निर्देश: लोगो का टेक्स्ट या इमेज बदलने के लिए इस लाइन को एडिट करें -->
+                <a href="website.html" class="text-2xl lg:text-3xl font-black text-white tracking-wider">
+                    <span class="text-purple-400">Nexus</span>Control
+                </a>
+                
+                <!-- निर्देश: डेस्कटॉप मेनू के लिंक यहाँ हैं। href="..." में अपना URL डालें। -->
+                <nav class="hidden lg:flex items-center space-x-6">
+                    <a href="website.html#home" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Home</a>
+                    <a href="website.html#features" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Features</a>
+                    <a href="website.html#install-guide" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Install Guide</a>
+                    <a href="privacy-policy.html" class="text-purple-400 font-semibold">Privacy Policy</a>
+                    <a href="website.html#contact" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Contact</a>
+                </nav>
+
+                <button id="mobile-menu-button" class="lg:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            
+            <!-- निर्देश: मोबाइल मेनू के लिंक यहाँ हैं। href="..." में अपना URL डालें। -->
+            <div id="mobile-menu" class="hidden lg:hidden bg-gray-900/95">
+                <a href="website.html#home" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Home</a>
+                <a href="website.html#features" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Features</a>
+                <a href="website.html#install-guide" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Install Guide</a>
+                <a href="privacy-policy.html" class="block text-center py-3 text-white border-t border-gray-800 bg-purple-600">Privacy Policy</a>
+                <a href="website.html#contact" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- ================================== -->
+        <!-- हीरो सेक्शन -->
+        <!-- ================================== -->
+        <section class="relative py-20 md:py-32 bg-gradient-to-b from-black to-bg-dark">
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+            <div class="container mx-auto px-4 text-center relative z-10">
+                <!-- निर्देश: पेज का मुख्य शीर्षक यहाँ बदलें। -->
+                <h1 class="text-4xl md:text-6xl font-black text-white leading-tight">
+                    Privacy Policy
+                </h1>
+                <!-- निर्देश: शीर्षक के नीचे का उप-शीर्षक यहाँ बदलें। -->
+                <p class="mt-4 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+                    Your security and trust are our highest priorities. Learn how we protect your data.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================================== -->
+        <!-- प्राइवेसी पॉलिसी लेआउट -->
+        <!-- ================================== -->
+        <section class="py-12 md:py-20">
+            <div class="container mx-auto px-4">
+                <div class="lg:grid lg:grid-cols-12 lg:gap-12">
+                    
+                    <!-- साइड नेविगेशन (डेस्कटॉप) -->
+                    <aside class="hidden lg:block lg:col-span-3">
+                        <nav class="sticky top-24 policy-nav">
+                            <!-- निर्देश: यह साइड नेविगेशन है। यह अपने आप कंटेंट के हिसाब से काम करता है। -->
+                            <a href="#commitment" class="block px-4 py-2 mb-2 rounded-lg hover:bg-gray-800 transition-colors">Our Commitment</a>
+                            <a href="#collection" class="block px-4 py-2 mb-2 rounded-lg hover:bg-gray-800 transition-colors">Information We Collect</a>
+                            <a href="#security" class="block px-4 py-2 mb-2 rounded-lg hover:bg-gray-800 transition-colors">Data Security & Encryption</a>
+                            <a href="#usage" class="block px-4 py-2 mb-2 rounded-lg hover:bg-gray-800 transition-colors">How We Use Information</a>
+                            <a href="#retention" class="block px-4 py-2 mb-2 rounded-lg hover:bg-gray-800 transition-colors">Data Retention & Deletion</a>
+                            <a href="#account_management" class="block px-4 py-2 mb-2 rounded-lg hover:bg-gray-800 transition-colors">Account Management</a>
+                            <a href="#legal" class="block px-4 py-2 mb-2 rounded-lg hover:bg-gray-800 transition-colors">Legal Requirements</a>
+                            <a href="#changes" class="block px-4 py-2 mb-2 rounded-lg hover:bg-gray-800 transition-colors">Policy Changes</a>
+                            <a href="#contact-us" class="block px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">Contact Us</a>
+                        </nav>
+                    </aside>
+
+                    <!-- पॉलिसी कंटेंट -->
+                    <div class="lg:col-span-9">
+                        <div class="glass-effect rounded-2xl p-6 md:p-10">
+                            <!-- निर्देश: "Last Updated" की तारीख यहाँ बदलें। -->
+                            <p class="text-gray-400 italic mb-6">Last Updated: July 23, 2024</p>
+                            
+                            <!-- निर्देश: नीचे दिए गए हर <article> टैग में प्राइवेसी पॉलिसी का कंटेंट है। आप हर सेक्शन के शीर्षक (h2) और पैराग्राफ (p) को एडिट कर सकते हैं। -->
+                            
+                            <article id="commitment" class="policy-section-content space-y-4 scroll-mt-24">
+                                <h2 class="text-2xl md:text-3xl font-bold text-white border-b-2 border-purple-500 pb-2">Our Privacy Commitment</h2>
+                                <p>At NexusControl ("we", "our"), the privacy of you and your family is our highest priority. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our services. By using our services, you consent to the data practices described in this policy.</p>
+                            </article>
+
+                            <article id="collection" class="policy-section-content space-y-4 mt-12 scroll-mt-24">
+                                <h2 class="text-2xl md:text-3xl font-bold text-white border-b-2 border-purple-500 pb-2">1. Information We Collect</h2>
+                                <p>NexusControl is designed to provide parents with a monitoring tool for their children's safety. By the nature of the service, the application collects the following types of information from the child's device and transmits it to the parent's secure panel:</p>
+                                <ul class="list-disc list-inside space-y-2 pl-4">
+                                    <li><strong>Personal Identifiers:</strong> Device name, user name.</li>
+                                    <li><strong>Location Data:</strong> Real-time GPS coordinates and location history.</li>
+                                    <li><strong>Communication Logs:</strong> SMS messages (incoming and outgoing), call logs.</li>
+                                    <li><strong>Multimedia Files:</strong> Photos and videos stored on the device.</li>
+                                    <li><strong>App Activity:</strong> Keylogger data (typed keystrokes) and notifications from various apps, including social media.</li>
+                                    <li><strong>Device Information:</strong> Device model, OS version, and other technical details.</li>
+                                </ul>
+                            </article>
+                            
+                            <article id="security" class="policy-section-content space-y-4 mt-12 scroll-mt-24">
+                                <h2 class="text-2xl md:text-3xl font-bold text-white border-b-2 border-purple-500 pb-2">2. Data Security and Encryption</h2>
+                                <p class="mb-6"><strong>We take the security of your data extremely seriously. Our security measures are ironclad:</strong></p>
+                                <div class="space-y-6">
+                                    <div class="highlight-card p-6 rounded-lg">
+                                        <h3 class="text-xl font-semibold text-purple-400 mb-2">Impenetrable End-to-End Encryption</h3>
+                                        <p>All data traveling from the child's device to our servers and then to your parent panel is secured using state-of-the-art <strong>end-to-end encryption</strong>. This data exists in an encrypted state that cannot be intercepted, read, or recorded by anyone in between.</p>
+                                    </div>
+                                    <div class="highlight-card p-6 rounded-lg">
+                                        <h3 class="text-xl font-semibold text-purple-400 mb-2">Unique Decryption Key</h3>
+                                        <p>This encrypted data is only decrypted when you, the parent, log into your account with your correct email and password. Your login credential is the sole key that transforms this data into a viewable format. No one else, including NexusControl employees, can view this data.</p>
+                                    </div>
+                                    <div class="highlight-card p-6 rounded-lg">
+                                        <h3 class="text-xl font-semibold text-purple-400 mb-2">No Third-Party Sharing</h3>
+                                        <p><strong>We never sell, rent, or share any of your personal or collected information with any third parties.</strong> Your data is for your use only. Our business model is not based on selling your privacy.</p>
+                                    </div>
+                                </div>
+                            </article>
+                            
+                            <article id="usage" class="policy-section-content space-y-4 mt-12 scroll-mt-24">
+                                <h2 class="text-2xl md:text-3xl font-bold text-white border-b-2 border-purple-500 pb-2">3. How We Use Your Information</h2>
+                                <p>The information collected is used solely for the following purposes:</p>
+                                 <ul class="list-disc list-inside space-y-2 pl-4">
+                                    <li>To provide you with our monitoring services, allowing you to view your child's activities.</li>
+                                    <li>To improve, maintain, and secure our services.</li>
+                                    <li>To send you important updates, security alerts, and support messages.</li>
+                                </ul>
+                            </article>
+
+                            <article id="retention" class="policy-section-content space-y-4 mt-12 scroll-mt-24">
+                                <h2 class="text-2xl md:text-3xl font-bold text-white border-b-2 border-purple-500 pb-2">4. Data Retention and Deletion</h2>
+                                <p>We enforce strict data retention policies to uphold your privacy:</p>
+                                <ul class="list-disc list-inside space-y-2 pl-4">
+                                    <li><strong>Automatic Deletion:</strong> To maximize security and privacy, all monitored data stored on our servers is <strong>automatically and permanently deleted every seven (7) days.</strong></li>
+                                    <li><strong>Real-Time Account Deletion:</strong> If you choose to delete or close your child's account from your dashboard, our algorithm immediately removes all encrypted data associated with that account from our servers in <strong>real-time</strong>. No residual copies are kept.</li>
+                                </ul>
+                            </article>
+                            
+                            <article id="account_management" class="policy-section-content space-y-4 mt-12 scroll-mt-24">
+                                <h2 class="text-2xl md:text-3xl font-bold text-white border-b-2 border-purple-500 pb-2">5. Account Management and Inactivity</h2>
+                                <p>To ensure the integrity and security of our service, the following conditions apply:</p>
+                                <ul class="list-disc list-inside space-y-2 pl-4">
+                                    <li><strong>Permission Failure:</strong> If not all required permissions are granted or settings are incorrectly configured on the child's device for the application to function properly, our system may be unable to provide the service. In such cases, our algorithm may temporarily suspend or permanently close the account for security reasons.</li>
+                                    <li><strong>Inactivity Policy:</strong> If a parent does not log into their account for an extended period (typically over 30 days), the account may be deemed inactive by our algorithm. As a security measure, the inactive account and all its associated data may be permanently deleted.</li>
+                                </ul>
+                            </article>
+
+                            <article id="legal" class="policy-section-content space-y-4 mt-12 scroll-mt-24">
+                                <h2 class="text-2xl md:text-3xl font-bold text-white border-b-2 border-purple-500 pb-2">6. Legal Requirements and Responsible Use</h2>
+                                <p>NexusControl is intended for legal purposes only, such as parental control of your own children for whom you are the legal guardian. It is the user's responsibility to comply with all applicable laws in their country regarding the use of monitoring software. You must inform the owner of the device that they are being monitored.</p>
+                            </article>
+
+                            <article id="changes" class="policy-section-content space-y-4 mt-12 scroll-mt-24">
+                                <h2 class="text-2xl md:text-3xl font-bold text-white border-b-2 border-purple-500 pb-2">7. Changes to This Privacy Policy</h2>
+                                <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.</p>
+                            </article>
+
+                            <article id="contact-us" class="policy-section-content space-y-4 mt-12 scroll-mt-24">
+                                <h2 class="text-2xl md:text-3xl font-bold text-white border-b-2 border-purple-500 pb-2">8. Contact Us</h2>
+                                <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                                <ul class="list-disc list-inside space-y-2 pl-4">
+                                    <!-- निर्देश: अपनी सपोर्ट ईमेल ID यहाँ डालें -->
+                                    <li><strong>Email:</strong> <a href="mailto:support@nexuscontrol.com" class="text-purple-400 hover:text-white">support@nexuscontrol.com</a></li>
+                                    <!-- निर्देश: अपने कॉन्टैक्ट पेज का सही लिंक यहाँ डालें -->
+                                    <li><strong>Website:</strong> <a href="website.html#contact" class="text-purple-400 hover:text-white">Via our Contact Page</a></li>
+                                </ul>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================================== -->
+    <!-- फुटर -->
+    <!-- ================================== -->
+    <footer class="footer py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left">
+                <!-- निर्देश: फुटर का कंटेंट यहाँ बदलें -->
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-4">NexusControl</h4>
+                    <p class="text-gray-400">Providing parents with the tools they need to ensure their children's digital safety.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="website.html#home" class="text-gray-400 hover:text-purple-400">Home</a></li>
+                        <li><a href="website.html#features" class="text-gray-400 hover:text-purple-400">Features</a></li>
+                        <li><a href="website.html#install-guide" class="text-gray-400 hover:text-purple-400">Install Guide</a></li>
+                        <li><a href="website.html#faq-footer" class="text-gray-400 hover:text-purple-400">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-4">Resources</h4>
+                     <ul class="space-y-2">
+                        <li><a href="privacy-policy.html" class="text-gray-400 hover:text-purple-400">Privacy Policy</a></li>
+                        <li><a href="website.html#about-footer" class="text-gray-400 hover:text-purple-400">About Us</a></li>
+                        <li><a href="website.html#contact" class="text-gray-400 hover:text-purple-400">Contact</a></li>
+                        <!-- निर्देश: अपने साइटमैप का URL यहाँ डालें -->
+                        <li><a href="#YOUR_SITEMAP_URL" class="text-gray-400 hover:text-purple-400">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-4">Follow Us</h4>
+                    <!-- निर्देश: अपने सोशल मीडिया प्रोफाइल के लिंक यहाँ डालें -->
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44c0-.795-.645-1.44-1.441-1.44z"/></svg></a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21.582 6.186a2.694 2.694 0 0 0-1.886-1.886C17.93 4 12 4 12 4s-5.93 0-7.696.299a2.694 2.694 0 0 0-1.886 1.886C2 7.95 2 12 2 12s0 4.05.318 5.814a2.694 2.694 0 0 0 1.886 1.886C6.07 20 12 20 12 20s5.93 0 7.696-.299a2.694 2.694 0 0 0 1.886-1.886C22 16.05 22 12 22 12s0-4.05-.418-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2024 NexusControl. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // मोबाइल मेनू
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // स्क्रॉल पर साइडबार नेविगेशन को अपडेट करें
+            const sections = document.querySelectorAll('.policy-section-content');
+            const navLinks = document.querySelectorAll('.policy-nav a');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: "-30% 0px -70% 0px" });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -43,13 +43,9 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             margin: 0;
+            overflow-x: hidden; /* दाएं-बाएं स्क्रॉल को रोकने के लिए */
         }
         
-        /* दाएं-बाएं स्क्रॉल को रोकने के लिए रैपर */
-        .page-wrapper {
-            overflow-x: hidden;
-        }
-
         .container {
             width: 100%;
             margin-left: auto;
@@ -97,7 +93,7 @@
         }
 
         .nav-desktop {
-            display: none; /* मोबाइल पर छिपा हुआ */
+            display: none; 
         }
 
         .nav-desktop a {
@@ -122,16 +118,16 @@
             background: none;
             border: none;
             cursor: pointer;
-            display: block; /* मोबाइल पर दिखेगा */
+            display: block; 
         }
 
         #mobile-menu {
-            display: none; /* डिफ़ॉल्ट रूप से छिपा हुआ */
+            display: none; 
             background-color: rgba(17, 24, 39, 0.95);
         }
 
         #mobile-menu.is-open {
-            display: block; /* जावास्क्रिप्ट द्वारा दिखाया गया */
+            display: block; 
         }
         
         #mobile-menu a {
@@ -151,7 +147,6 @@
         #mobile-menu a.active-link {
             background-color: var(--color-purple-600);
         }
-
 
         /* ================================================== */
         /* मुख्य कंटेंट */
@@ -206,7 +201,7 @@
         }
         
         .sidebar-nav {
-            display: none; /* मोबाइल पर छिपा हुआ */
+            display: none; 
             position: sticky;
             top: 6rem;
             align-self: start; 
@@ -418,10 +413,10 @@
                 gap: 1.5rem;
             }
             #mobile-menu {
-                display: none !important; /* जावास्क्रिप्ट को ओवरराइड करें */
+                display: none !important;
             }
             .policy-grid {
-                grid-template-columns: 3fr 9fr; /* 12-कॉलम ग्रिड का अनुपात */
+                grid-template-columns: 3fr 9fr; 
             }
             .sidebar-nav {
                 display: block;
@@ -441,7 +436,7 @@
     </style>
 </head>
 <body>
-<div class="page-wrapper">
+
     <!-- ================================================== -->
     <!-- हेडर और नेविगेशन बार -->
     <!-- ================================================== -->
@@ -654,7 +649,7 @@
             </div>
         </div>
     </footer>
-</div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // मोबाइल मेनू को खोलने-बंद करने का लॉजिक

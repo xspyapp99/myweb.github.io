@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- निर्देश: SEO (सर्च इंजन ऑप्टिमाइजेशन) के लिए नीचे दिए गए टैग्स को बदलें -->
     <title>SMS Monitoring Feature - NexusControl</title>
     <meta name="description" content="Monitor all incoming and outgoing SMS messages on your child's phone with NexusControl. Read full conversations and stay informed about their contacts.">
     <meta name="keywords" content="sms monitoring, read text messages, parental control, nexuscontrol, child safety">
@@ -12,251 +11,500 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        /* कस्टम सीएसएस आपकी वेबसाइट के डिज़ाइन से मेल खाने के लिए */
+        /* ================================================== */
+        /* बेसिक और रूट वेरिएबल्स */
+        /* ================================================== */
         :root {
             --color-purple-400: #a78bfa;
             --color-purple-500: #8b5cf6;
             --color-purple-600: #7c3aed;
             --color-gray-300: #d1d5db;
             --color-gray-400: #9ca3af;
-            --color-gray-500: #6b7280;
             --color-gray-800: #1f2937;
-            --color-gray-900: #111827;
             --color-white: #ffffff;
             --color-black: #000000;
             --bg-dark: #0a0a1a;
-            --bg-dark-secondary: #111827;
             --border-color: rgba(167, 223, 255, 0.1);
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
             color: var(--color-gray-300);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            overflow-x: hidden;
         }
-        .glass-effect {
+        
+        .container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* ================================================== */
+        /* हेडर और नेविगेशन */
+        /* ================================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--color-white);
+            letter-spacing: 0.05em;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--color-purple-400);
+        }
+
+        .nav-desktop {
+            display: none; 
+        }
+
+        .nav-desktop a {
+            color: var(--color-gray-300);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-desktop a:hover {
+            color: var(--color-purple-400);
+        }
+        .nav-desktop a.active-link {
+            color: var(--color-purple-400);
+            font-weight: 600;
+        }
+        
+        #mobile-menu-button {
+            padding: 0.5rem;
+            color: var(--color-white);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        #mobile-menu {
+            display: none; 
+            background-color: rgba(17, 24, 39, 0.95);
+        }
+        #mobile-menu.is-open {
+            display: block; 
+        }
+        
+        #mobile-menu a {
+            display: block;
+            text-align: center;
+            padding: 0.75rem 0;
+            color: var(--color-white);
+            border-top: 1px solid var(--color-gray-800);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        #mobile-menu a.active-link {
+            background-color: var(--color-purple-600);
+        }
+
+        /* ================================================== */
+        /* मुख्य कंटेंट */
+        /* ================================================== */
+        main {
+            padding-top: 5rem;
+        }
+        
+        .hero-section {
+            position: relative;
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, var(--color-black), var(--bg-dark));
+            text-align: center;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            opacity: 0.05;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+        .hero-content h1 {
+            font-size: 2.25rem;
+            font-weight: 900;
+            color: var(--color-white);
+            line-height: 1.2;
+        }
+        .hero-content h1 span {
+            color: var(--color-purple-400);
+        }
+        .hero-content p {
+            margin-top: 1rem;
+            font-size: 1.125rem;
+            color: var(--color-gray-400);
+        }
+        
+        .section {
+            padding: 3rem 0;
+        }
+        .section-dark {
+             background-color: rgba(0,0,0,0.2);
+        }
+        
+        .grid {
+            display: grid;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .feature-description {
+            text-align: center;
+        }
+
+        .feature-description h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--color-white);
+        }
+        .feature-description p {
+            margin-top: 1rem;
+            font-size: 1.125rem;
+            color: var(--color-gray-400);
+            line-height: 1.6;
+        }
+        .feature-description .cta-button {
+            margin-top: 2rem;
+            display: inline-block;
+            background-color: var(--color-purple-600);
+            color: var(--color-white);
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .feature-description .cta-button:hover {
+            background-color: #7c3aed;
+        }
+
+        .feature-image img {
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(124, 58, 237, 0.2);
             background: rgba(17, 24, 39, 0.5);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
         }
-        .footer { background-color: var(--color-black); }
-        .feature-icon {
+
+        .benefits-section .section-title {
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto 3rem auto;
+        }
+
+        .card {
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+        .card-icon-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 1rem auto;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 9999px;
             background: linear-gradient(145deg, var(--color-purple-500), var(--color-purple-600));
+        }
+        .card-icon-wrapper svg {
+            width: 2rem;
+            height: 2rem;
+            color: var(--color-white);
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-white);
+        }
+        .card p {
+            margin-top: 0.5rem;
+            color: var(--color-gray-400);
+        }
+
+        /* ================================================== */
+        /* फुटर */
+        /* ================================================== */
+        .footer {
+            background-color: var(--color-black);
+            padding: 3rem 0;
+            color: var(--color-gray-400);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+        }
+        .footer-grid h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 1rem;
+        }
+        .footer-grid ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-grid ul li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-grid a {
+            color: var(--color-gray-400);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-grid a:hover {
+            color: var(--color-purple-400);
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .social-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--color-gray-800);
+            color: var(--color-gray-400);
+            transition: all 0.3s;
+        }
+        .social-icon:hover {
+            background-color: var(--color-purple-500);
+            color: var(--color-white);
+        }
+        .social-icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-gray-800);
+            text-align: center;
+        }
+
+        /* ================================================== */
+        /* रिस्पांसिव ब्रेकपॉइंट्स */
+        /* ================================================== */
+        @media (min-width: 768px) {
+            .container { max-width: 768px; }
+            .hero-content h1 { font-size: 3rem; }
+            .hero-content p { font-size: 1.25rem; }
+            .benefits-section .grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                text-align: left;
+            }
+            .social-icons { justify-content: flex-start; }
+            .footer-bottom { text-align: center; }
+        }
+        
+        @media (min-width: 1024px) {
+            .container { max-width: 1024px; }
+            .logo { font-size: 1.875rem; }
+            #mobile-menu-button { display: none; }
+            .nav-desktop {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            #mobile-menu { display: none !important; }
+            .grid-lg-2 { grid-template-columns: repeat(2, 1fr); }
+            .benefits-section .grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-grid { grid-template-columns: repeat(4, 1fr); }
+            .feature-description { text-align: left; }
+        }
+        
+        @media (min-width: 1280px) {
+            .container { max-width: 1280px; }
         }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body>
 
-    <!-- ================================================== -->
-    <!-- हेडर और नेविगेशन बार -->
-    <!-- ================================================== -->
-    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out bg-black/80 backdrop-blur-sm">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <!-- निर्देश: लोगो का टेक्स्ट या इमेज बदलने के लिए इस लाइन को एडिट करें -->
-                <a href="website.html" class="text-2xl lg:text-3xl font-black text-white tracking-wider">
-                    <span class="text-purple-400">Nexus</span>Control
-                </a>
-                
-                <!-- निर्देश: डेस्कटॉप मेनू के लिंक यहाँ हैं। href="..." में अपना URL डालें। -->
-                <nav class="hidden lg:flex items-center space-x-6">
-                    <a href="website.html#home" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Home</a>
-                    <a href="website.html#features" class="text-purple-400 font-semibold">Features</a>
-                    <a href="about-us.html" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">About Us</a>
-                    <a href="faq.html" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">FAQ</a>
-                    <a href="privacy-policy.html" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Privacy Policy</a>
-                    <a href="website.html#contact" class="text-gray-300 font-medium hover:text-purple-400 transition-colors">Contact</a>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="website.html" class="logo"><span>Nexus</span>Control</a>
+                <nav class="nav-desktop">
+                    <a href="website.html#home">Home</a>
+                    <a href="website.html#features" class="active-link">Features</a>
+                    <a href="about-us.html">About Us</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="website.html#contact">Contact</a>
                 </nav>
-
-                <button id="mobile-menu-button" class="lg:hidden text-white p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <button id="mobile-menu-button">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
-            
-            <!-- निर्देश: मोबाइल मेनू के लिंक यहाँ हैं। href="..." में अपना URL डालें। -->
-            <div id="mobile-menu" class="hidden lg:hidden bg-gray-900/95">
-                <a href="website.html#home" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Home</a>
-                <a href="website.html#features" class="block text-center py-3 text-white border-t border-gray-800 bg-purple-600">Features</a>
-                <a href="about-us.html" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">About Us</a>
-                <a href="faq.html" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">FAQ</a>
-                <a href="privacy-policy.html" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Privacy Policy</a>
-                <a href="website.html#contact" class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors">Contact</a>
+            <div id="mobile-menu">
+                <a href="website.html#home">Home</a>
+                <a href="website.html#features" class="active-link">Features</a>
+                <a href="about-us.html">About Us</a>
+                <a href="faq.html">FAQ</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="website.html#contact">Contact</a>
             </div>
         </div>
     </header>
 
-    <main class="pt-20">
-        <!-- ================================== -->
-        <!-- हीरो सेक्शन -->
-        <!-- ================================== -->
-        <section class="relative py-20 md:py-32 bg-gradient-to-b from-black to-bg-dark">
-            <div class="absolute inset-0 bg-[url('https://www.transparent-textures.com/patterns/cubes.png')] opacity-5"></div>
-            <div class="container mx-auto px-4 text-center relative z-10">
-                <!-- निर्देश: पेज का मुख्य शीर्षक यहाँ बदलें। -->
-                <h1 class="text-4xl md:text-6xl font-black text-white leading-tight">
-                    SMS Message <span class="text-purple-400">Monitoring</span>
-                </h1>
-                <!-- निर्देश: शीर्षक के नीचे का उप-शीर्षक यहाँ बदलें। -->
-                <p class="mt-4 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
-                    Read every text message sent and received on your child's phone. Stay aware of their conversations and protect them from potential dangers.
-                </p>
+    <main>
+        <section class="hero-section">
+            <div class="container hero-content">
+                <h1>SMS Message <span>Monitoring</span></h1>
+                <p>Read every text message sent and received on your child's phone. Stay aware of their conversations and protect them from potential dangers.</p>
             </div>
         </section>
 
-        <!-- ================================== -->
-        <!-- फीचर विवरण सेक्शन -->
-        <!-- ================================== -->
-        <section class="py-12 md:py-20">
-            <div class="container mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="text-center lg:text-left">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white">Know Who They're Talking To</h2>
-                        <!-- निर्देश: फीचर का विस्तृत विवरण यहाँ बदलें। -->
-                        <p class="mt-4 text-gray-400 text-lg">
-                           In the age of digital communication, text messages are a primary way children interact. NexusControl's SMS Monitoring feature gives you a complete log of all incoming and outgoing text messages, so you're never in the dark. See the full content of each message, who it's from or to, and the exact time it was sent or received. This insight is crucial for protecting your child from cyberbullying, scams, or communication with strangers.
-                        </p>
-                        <a href="website.html#home" class="mt-8 inline-block bg-purple-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors">
-                            Monitor SMS for Free
-                        </a>
+        <section class="section">
+            <div class="container">
+                <div class="grid grid-lg-2">
+                    <div class="feature-description">
+                        <h2>Know Who They're Talking To</h2>
+                        <p>In the age of digital communication, text messages are a primary way children interact. NexusControl's SMS Monitoring feature gives you a complete log of all incoming and outgoing text messages, so you're never in the dark. See the full content of each message, who it's from or to, and the exact time it was sent or received. This insight is crucial for protecting your child from cyberbullying, scams, or communication with strangers.</p>
+                        <a href="website.html#home" class="cta-button">Monitor SMS for Free</a>
                     </div>
-                    <div>
-                        <!-- निर्देश: इस इमेज को बदलने के लिए, src="..." में दिए गए URL को अपनी इमेज के URL से बदलें। आदर्श साइज़ 600x500 पिक्सल है। -->
-                        <img src="https://placehold.co/600x500/0a0a1a/a78bfa?text=SMS+Dashboard" alt="Dashboard showing SMS conversations" class="rounded-2xl shadow-2xl shadow-purple-900/20 glass-effect">
+                    <div class="feature-image">
+                        <img src="https://placehold.co/600x500/0a0a1a/a78bfa?text=SMS+Dashboard" alt="Dashboard showing SMS conversations">
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- ================================== -->
-        <!-- मुख्य लाभ सेक्शन -->
-        <!-- ================================== -->
-        <section class="py-12 md:py-20 bg-black/20">
-            <div class="container mx-auto px-4">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Complete Conversation Insight</h2>
-                    <!-- निर्देश: इस सेक्शन का विवरण यहाँ बदलें। -->
-                    <p class="mt-4 text-gray-400 text-lg">
-                        Our SMS tracker provides all the details you need to understand the context and ensure your child's safety.
-                    </p>
+        <section class="section section-dark benefits-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Complete Conversation Insight</h2>
+                    <p>Our SMS tracker provides all the details you need to understand the context and ensure your child's safety.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-                    <!-- निर्देश: नीचे दिए गए तीन कार्ड्स के आइकॉन, शीर्षक और विवरण को आप बदल सकते हैं। -->
-                    <div class="glass-effect p-8 rounded-xl text-center">
-                        <div class="flex justify-center items-center mb-4 w-16 h-16 rounded-full feature-icon mx-auto">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-icon-wrapper">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                         </div>
-                        <h3 class="text-xl font-bold text-white">Incoming & Outgoing</h3>
-                        <p class="mt-2 text-gray-400">View every single text message, whether it was sent by your child or received from someone else. No message goes unnoticed.</p>
+                        <h3>Incoming & Outgoing</h3>
+                        <p>View every single text message, whether it was sent by your child or received from someone else. No message goes unnoticed.</p>
                     </div>
-                    <div class="glass-effect p-8 rounded-xl text-center">
-                        <div class="flex justify-center items-center mb-4 w-16 h-16 rounded-full feature-icon mx-auto">
-                           <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21v-1a6 6 0 00-1.781-4.121M12 11c1.657 0 3-1.343 3-3s-1.343-3-3-3S9 6.343 9 8s1.343 3 3 3z"></path></svg>
+                    <div class="card">
+                        <div class="card-icon-wrapper">
+                           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21v-1a6 6 0 00-1.781-4.121M12 11c1.657 0 3-1.343 3-3s-1.343-3-3-3S9 6.343 9 8s1.343 3 3 3z"></path></svg>
                         </div>
-                        <h3 class="text-xl font-bold text-white">Contact Details</h3>
-                        <p class="mt-2 text-gray-400">Each message is displayed with the sender's or receiver's phone number. If the contact is saved on the phone, you'll see their name.</p>
+                        <h3>Contact Details</h3>
+                        <p>Each message is displayed with the sender's or receiver's phone number. If the contact is saved on the phone, you'll see their name.</p>
                     </div>
-                    <div class="glass-effect p-8 rounded-xl text-center">
-                        <div class="flex justify-center items-center mb-4 w-16 h-16 rounded-full feature-icon mx-auto">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <div class="card">
+                        <div class="card-icon-wrapper">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                         </div>
-                        <h3 class="text-xl font-bold text-white">Date & Time Stamps</h3>
-                        <p class="mt-2 text-gray-400">Know exactly when each message was sent or received. Timestamps provide crucial context for all conversations.</p>
+                        <h3>Date & Time Stamps</h3>
+                        <p>Know exactly when each message was sent or received. Timestamps provide crucial context for all conversations.</p>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <!-- ================================== -->
-    <!-- फुटर -->
-    <!-- ================================== -->
-    <footer class="footer py-12 text-gray-400">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left mb-8">
-      <!-- Column 1 -->
-      <div>
-        <h4 class="text-xl font-bold text-white mb-4">NexusControl</h4>
-        <p>Providing parents with the tools they need to ensure their children's digital safety.</p>
-      </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>NexusControl</h4>
+                    <p>Providing parents with the tools they need to ensure their children's digital safety.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="website.html#home">Home</a></li>
+                        <li><a href="website.html#features">Features</a></li>
+                        <li><a href="website.html#install-guide">Install Guide</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="website.html#contact">Contact</a></li>
+                        <li><a href="#YOUR_SITEMAP_URL">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5V9.1c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.3 0-1.7.8-1.7 1.6V12H17l-.5 3h-2.5v7A10 10 0 0022 12z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0022 4.3a8 8 0 01-2.3.6 4 4 0 001.7-2.2 8 8 0 01-2.5 1 4 4 0 00-6.8 3.6 11.4 11.4 0 01-8.3-4.2 4 4 0 001.3 5.4A4 4 0 012 8.6v.1a4 4 0 003.2 3.9 4 4 0 01-1.8.1 4 4 0 003.7 2.8A8 8 0 012 17.5a11.3 11.3 0 006 1.8"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.6 0 3 1.4 3 3v10c0 1.6-1.4 3-3 3H7c-1.6 0-3-1.4-3-3V7c0-1.6 1.4-3 3-3h10zM12 8a4 4 0 100 8 4 4 0 000-8zm0 6.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm4.5-6.9a1 1 0 110-2 1 1 0 010 2z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="YouTube"><svg fill="currentColor" viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.824-42.194-48.475-48.475C465.605 64 288 64 288 64s-177.605 0-213.18 11.608c-23.65 6.281-42.194 24.825-48.475 48.475C16.74 159.658 16.74 256 16.74 256s0 96.342 9.605 131.917c6.281 23.65 24.825 42.194 48.475 48.475C110.395 448 288 448 288 448s177.605 0 213.18-11.608c23.65-6.281 42.194-24.825 48.475-48.475C559.26 352.342 559.26 256 559.26 256s0-96.342-9.605-131.917zM232 334.059V177.941L345 256l-113 78.059z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 NexusControl. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-      <!-- Column 2 -->
-      <div>
-        <h4 class="text-xl font-bold text-white mb-4">Quick Links</h4>
-        <ul class="space-y-2">
-          <li><a class="hover:text-purple-400" href="website.html#home">Home</a></li>
-          <li><a class="hover:text-purple-400" href="website.html#features">Features</a></li>
-          <li><a class="hover:text-purple-400" href="website.html#install-guide">Install Guide</a></li>
-          <li><a class="hover:text-purple-400" href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 3 -->
-      <div>
-        <h4 class="text-xl font-bold text-white mb-4">Resources</h4>
-        <ul class="space-y-2">
-          <li><a class="hover:text-purple-400" href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a class="hover:text-purple-400" href="about-us.html">About Us</a></li>
-          <li><a class="hover:text-purple-400" href="website.html#contact">Contact</a></li>
-          <li><a class="hover:text-purple-400" href="#YOUR_SITEMAP_URL">Sitemap</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 4 -->
-<div>
-  <h4 class="text-xl font-bold text-white mb-4">Follow Us</h4>
-  <div class="flex justify-center md:justify-start space-x-4">
-    
-    <!-- Facebook -->
-    <a href="#" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition">
-      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5V9.1c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.3 0-1.7.8-1.7 1.6V12H17l-.5 3h-2.5v7A10 10 0 0022 12z"/>
-      </svg>
-    </a>
-
-    <!-- Twitter -->
-    <a href="#" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition">
-      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0022 4.3a8 8 0 01-2.3.6 4 4 0 001.7-2.2 8 8 0 01-2.5 1 4 4 0 00-6.8 3.6 11.4 11.4 0 01-8.3-4.2 4 4 0 001.3 5.4A4 4 0 012 8.6v.1a4 4 0 003.2 3.9 4 4 0 01-1.8.1 4 4 0 003.7 2.8A8 8 0 012 17.5a11.3 11.3 0 006 1.8"/>
-      </svg>
-    </a>
-
-    <!-- Instagram -->
-    <a href="#" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition">
-      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.6 0 3 1.4 3 3v10c0 1.6-1.4 3-3 3H7c-1.6 0-3-1.4-3-3V7c0-1.6 1.4-3 3-3h10zM12 8a4 4 0 100 8 4 4 0 000-8zm0 6.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm4.5-6.9a1 1 0 110-2 1 1 0 010 2z"/>
-      </svg>
-    </a>
-
-    <!-- YouTube -->
-    <a href="#" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition">
-      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 576 512">
-        <path d="M549.655 124.083c-6.281-23.65-24.824-42.194-48.475-48.475C465.605 64 288 64 288 64s-177.605 0-213.18 11.608c-23.65 6.281-42.194 24.825-48.475 48.475C16.74 159.658 16.74 256 16.74 256s0 96.342 9.605 131.917c6.281 23.65 24.825 42.194 48.475 48.475C110.395 448 288 448 288 448s177.605 0 213.18-11.608c23.65-6.281 42.194-24.825 48.475-48.475C559.26 352.342 559.26 256 559.26 256s0-96.342-9.605-131.917zM232 334.059V177.941L345 256l-113 78.059z"/>
-      </svg>
-    </a>
-
-  </div>
-</div>
-
-    </div>
-    <div class="w-full mt-8 pt-6 border-t border-gray-800 flex justify-center">
-      <p class="text-sm text-gray-400 text-center">© 2024 NexusControl. All Rights Reserved.</p>
-    </div>
-  </div>
-</footer>
-
-<script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             // मोबाइल मेनू
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('is-open');
             });
         });
     </script>

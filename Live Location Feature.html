@@ -1,251 +1,512 @@
 <!DOCTYPE html>
-
-<html class="scroll-smooth" lang="en">
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<!-- निर्देश: SEO (सर्च इंजन ऑप्टिमाइजेशन) के लिए नीचे दिए गए टैग्स को बदलें -->
-<title>Live Location Tracking Feature - NexusControl</title>
-<meta content="Discover the real-time Live Location tracking feature of NexusControl. Keep your child safe by knowing their whereabouts with our advanced GPS tracking." name="description"/>
-<meta content="live location, gps tracking, child safety, parental control, nexuscontrol" name="keywords"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-        /* कस्टम सीएसएस आपकी वेबसाइट के डिज़ाइन से मेल खाने के लिए */
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO (सर्च इंजन ऑप्टिमाइजेशन) के लिए टैग्स -->
+    <title>Live Location Tracking Feature - NexusControl</title>
+    <meta name="description" content="Discover the real-time Live Location tracking feature of NexusControl. Keep your child safe by knowing their whereabouts with our advanced GPS tracking.">
+    <meta name="keywords" content="live location, gps tracking, child safety, parental control, nexuscontrol">
+
+    <!-- Google Fonts से 'Inter' फ़ॉन्ट लोड हो रहा है -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================================================== */
+        /* बेसिक और रूट वेरिएबल्स */
+        /* ================================================== */
         :root {
             --color-purple-400: #a78bfa;
             --color-purple-500: #8b5cf6;
             --color-purple-600: #7c3aed;
             --color-gray-300: #d1d5db;
             --color-gray-400: #9ca3af;
-            --color-gray-500: #6b7280;
             --color-gray-800: #1f2937;
-            --color-gray-900: #111827;
             --color-white: #ffffff;
             --color-black: #000000;
             --bg-dark: #0a0a1a;
-            --bg-dark-secondary: #111827;
             --border-color: rgba(167, 223, 255, 0.1);
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
             color: var(--color-gray-300);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            overflow-x: hidden;
         }
-        .glass-effect {
+        
+        .container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* ================================================== */
+        /* हेडर और नेविगेशन */
+        /* ================================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--color-white);
+            letter-spacing: 0.05em;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--color-purple-400);
+        }
+
+        .nav-desktop {
+            display: none; 
+        }
+
+        .nav-desktop a {
+            color: var(--color-gray-300);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-desktop a:hover {
+            color: var(--color-purple-400);
+        }
+        .nav-desktop a.active-link {
+            color: var(--color-purple-400);
+            font-weight: 600;
+        }
+        
+        #mobile-menu-button {
+            padding: 0.5rem;
+            color: var(--color-white);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        #mobile-menu {
+            display: none; 
+            background-color: rgba(17, 24, 39, 0.95);
+        }
+        #mobile-menu.is-open {
+            display: block; 
+        }
+        
+        #mobile-menu a {
+            display: block;
+            text-align: center;
+            padding: 0.75rem 0;
+            color: var(--color-white);
+            border-top: 1px solid var(--color-gray-800);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        #mobile-menu a.active-link {
+            background-color: var(--color-purple-600);
+        }
+
+        /* ================================================== */
+        /* मुख्य कंटेंट */
+        /* ================================================== */
+        main {
+            padding-top: 5rem;
+        }
+        
+        .hero-section {
+            position: relative;
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, var(--color-black), var(--bg-dark));
+            text-align: center;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            opacity: 0.05;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+        .hero-content h1 {
+            font-size: 2.25rem;
+            font-weight: 900;
+            color: var(--color-white);
+            line-height: 1.2;
+        }
+        .hero-content h1 span {
+            color: var(--color-purple-400);
+        }
+        .hero-content p {
+            margin-top: 1rem;
+            font-size: 1.125rem;
+            color: var(--color-gray-400);
+        }
+        
+        .section {
+            padding: 3rem 0;
+        }
+        .section-dark {
+             background-color: rgba(0,0,0,0.2);
+        }
+        
+        .grid {
+            display: grid;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .feature-description {
+            text-align: center;
+        }
+
+        .feature-description h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--color-white);
+        }
+        .feature-description p {
+            margin-top: 1rem;
+            font-size: 1.125rem;
+            color: var(--color-gray-400);
+            line-height: 1.6;
+        }
+        .feature-description .cta-button {
+            margin-top: 2rem;
+            display: inline-block;
+            background-color: var(--color-purple-600);
+            color: var(--color-white);
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .feature-description .cta-button:hover {
+            background-color: #7c3aed;
+        }
+
+        .feature-image img {
+            width: 100%;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(124, 58, 237, 0.2);
             background: rgba(17, 24, 39, 0.5);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
         }
-        .footer { background-color: var(--color-black); }
-        .feature-icon {
+
+        .benefits-section .section-title {
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto 3rem auto;
+        }
+
+        .card {
+            background: rgba(17, 24, 39, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+        .card-icon-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 1rem auto;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 9999px;
             background: linear-gradient(145deg, var(--color-purple-500), var(--color-purple-600));
+        }
+        .card-icon-wrapper svg {
+            width: 2rem;
+            height: 2rem;
+            color: var(--color-white);
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-white);
+        }
+        .card p {
+            margin-top: 0.5rem;
+            color: var(--color-gray-400);
+        }
+
+        /* ================================================== */
+        /* फुटर */
+        /* ================================================== */
+        .footer {
+            background-color: var(--color-black);
+            padding: 3rem 0;
+            color: var(--color-gray-400);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+        }
+        .footer-grid h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 1rem;
+        }
+        .footer-grid ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-grid ul li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-grid a {
+            color: var(--color-gray-400);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-grid a:hover {
+            color: var(--color-purple-400);
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .social-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--color-gray-800);
+            color: var(--color-gray-400);
+            transition: all 0.3s;
+        }
+        .social-icon:hover {
+            background-color: var(--color-purple-500);
+            color: var(--color-white);
+        }
+        .social-icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-gray-800);
+            text-align: center;
+        }
+
+        /* ================================================== */
+        /* रिस्पांसिव ब्रेकपॉइंट्स */
+        /* ================================================== */
+        @media (min-width: 768px) {
+            .container { max-width: 768px; }
+            .hero-content h1 { font-size: 3rem; }
+            .hero-content p { font-size: 1.25rem; }
+            .benefits-section .grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                text-align: left;
+            }
+            .social-icons { justify-content: flex-start; }
+            .footer-bottom { text-align: center; }
+        }
+        
+        @media (min-width: 1024px) {
+            .container { max-width: 1024px; }
+            .logo { font-size: 1.875rem; }
+            #mobile-menu-button { display: none; }
+            .nav-desktop {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            #mobile-menu { display: none !important; }
+            .grid-lg-2 { grid-template-columns: repeat(2, 1fr); }
+            .benefits-section .grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-grid { grid-template-columns: repeat(4, 1fr); }
+            .feature-description { text-align: left; }
+        }
+        
+        @media (min-width: 1280px) {
+            .container { max-width: 1280px; }
         }
     </style>
 </head>
-<body class="overflow-x-hidden">
-<!-- ================================================== -->
-<!-- हेडर और नेविगेशन बार -->
-<!-- ================================================== -->
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out bg-black/80 backdrop-blur-sm">
-<div class="container mx-auto px-4">
-<div class="flex justify-between items-center py-4">
-<!-- निर्देश: लोगो का टेक्स्ट या इमेज बदलने के लिए इस लाइन को एडिट करें -->
-<a class="text-2xl lg:text-3xl font-black text-white tracking-wider" href="website.html">
-<span class="text-purple-400">Nexus</span>Control
-                </a>
-<!-- निर्देश: डेस्कटॉप मेनू के लिंक यहाँ हैं। href="..." में अपना URL डालें। -->
-<nav class="hidden lg:flex items-center space-x-6">
-<a class="text-gray-300 font-medium hover:text-purple-400 transition-colors" href="website.html#home">Home</a>
-<a class="text-purple-400 font-semibold" href="website.html#features">Features</a>
-<a class="text-gray-300 font-medium hover:text-purple-400 transition-colors" href="about-us.html">About Us</a>
-<a class="text-gray-300 font-medium hover:text-purple-400 transition-colors" href="faq.html">FAQ</a>
-<a class="text-gray-300 font-medium hover:text-purple-400 transition-colors" href="privacy-policy.html">Privacy Policy</a>
-<a class="text-gray-300 font-medium hover:text-purple-400 transition-colors" href="website.html#contact">Contact</a>
-</nav>
-<button class="lg:hidden text-white p-2" id="mobile-menu-button">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</button>
-</div>
-<!-- निर्देश: मोबाइल मेनू के लिंक यहाँ हैं। href="..." में अपना URL डालें। -->
-<div class="hidden lg:hidden bg-gray-900/95" id="mobile-menu">
-<a class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors" href="website.html#home">Home</a>
-<a class="block text-center py-3 text-white border-t border-gray-800 bg-purple-600" href="website.html#features">Features</a>
-<a class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors" href="about-us.html">About Us</a>
-<a class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors" href="faq.html">FAQ</a>
-<a class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors" href="privacy-policy.html">Privacy Policy</a>
-<a class="block text-center py-3 text-white border-t border-gray-800 hover:bg-purple-600 transition-colors" href="website.html#contact">Contact</a>
-</div>
-</div>
-</header>
-<main class="pt-20">
-<!-- ================================== -->
-<!-- हीरो सेक्शन -->
-<!-- ================================== -->
-<section class="relative py-20 md:py-32 bg-gradient-to-b from-black to-bg-dark">
-<div class="absolute inset-0 bg-[url('https://www.transparent-textures.com/patterns/cubes.png')] opacity-5"></div>
-<div class="container mx-auto px-4 text-center relative z-10">
-<!-- निर्देश: पेज का मुख्य शीर्षक यहाँ बदलें। -->
-<h1 class="text-4xl md:text-6xl font-black text-white leading-tight">
-                    Live Location <span class="text-purple-400">Tracking</span>
-</h1>
-<!-- निर्देश: शीर्षक के नीचे का उप-शीर्षक यहाँ बदलें। -->
-<p class="mt-4 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
-                    Gain peace of mind by knowing your child's whereabouts in real-time. Our advanced GPS tracking ensures you are always connected to their safety.
-                </p>
-</div>
-</section>
-<!-- ================================== -->
-<!-- फीचर विवरण सेक्शन -->
-<!-- ================================== -->
-<section class="py-12 md:py-20">
-<div class="container mx-auto px-4">
-<div class="grid lg:grid-cols-2 gap-12 items-center">
-<div class="text-center lg:text-left">
-<h2 class="text-3xl md:text-4xl font-bold text-white">Always Know They Are Safe</h2>
-<!-- निर्देश: फीचर का विस्तृत विवरण यहाँ बदलें। -->
-<p class="mt-4 text-gray-400 text-lg">
-                            In today's fast-paced world, knowing your child is safe is more important than ever. NexusControl's Live Location feature provides you with a reliable and accurate way to see your child's location on a detailed map, directly from your parent dashboard. Whether they are at school, a friend's house, or on their way home, you can check in anytime, anywhere.
-                        </p>
-<a class="mt-8 inline-block bg-purple-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-purple-700 transition-colors" href="website.html#home">
-                            Start Monitoring Now
-                        </a>
-</div>
-<div>
-<!-- निर्देश: इस इमेज को बदलने के लिए, src="..." में दिए गए URL को अपनी इमेज के URL से बदलें। आदर्श साइज़ 600x500 पिक्सल है। -->
-<img alt="Live map showing child's location" class="rounded-2xl shadow-2xl shadow-purple-900/20 glass-effect" src="https://xspyapp.com/images/download.png"/>
-</div>
-</div>
-</div>
-</section>
-<!-- ================================== -->
-<!-- मुख्य लाभ सेक्शन -->
-<!-- ================================== -->
-<section class="py-12 md:py-20 bg-black/20">
-<div class="container mx-auto px-4">
-<div class="text-center max-w-3xl mx-auto">
-<h2 class="text-3xl md:text-4xl font-bold text-white">Key Benefits of Location Tracking</h2>
-<!-- निर्देश: इस सेक्शन का विवरण यहाँ बदलें। -->
-<p class="mt-4 text-gray-400 text-lg">
-                        Our GPS tracking is more than just a dot on a map. It's a comprehensive tool designed to give you actionable insights and enhanced security.
-                    </p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-<!-- निर्देश: नीचे दिए गए तीन कार्ड्स के आइकॉन, शीर्षक और विवरण को आप बदल सकते हैं। -->
-<div class="glass-effect p-8 rounded-xl text-center">
-<div class="flex justify-center items-center mb-4 w-16 h-16 rounded-full feature-icon mx-auto">
-<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-<h3 class="text-xl font-bold text-white">Real-Time GPS Tracking</h3>
-<p class="mt-2 text-gray-400">See your child's exact location updated in near real-time. The high-accuracy GPS data ensures you have the most current information available.</p>
-</div>
-<div class="glass-effect p-8 rounded-xl text-center">
-<div class="flex justify-center items-center mb-4 w-16 h-16 rounded-full feature-icon mx-auto">
-<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-<h3 class="text-xl font-bold text-white">Location History</h3>
-<p class="mt-2 text-gray-400">Review the paths your child has taken. See a detailed history of their movements throughout the day, complete with timestamps.</p>
-</div>
-<div class="glass-effect p-8 rounded-xl text-center">
-<div class="flex justify-center items-center mb-4 w-16 h-16 rounded-full feature-icon mx-auto">
-<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m-6 3l6-3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-<h3 class="text-xl font-bold text-white">Safe &amp; Unsafe Zones (Geofencing)</h3>
-<p class="mt-2 text-gray-400">Create virtual boundaries around important places like home and school. Receive instant alerts when your child enters or leaves these designated zones.</p>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- ================================== -->
-<!-- फुटर -->
-<!-- ================================== -->
-    <footer class="footer py-12 text-gray-400">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center md:text-left mb-8">
-      <!-- Column 1 -->
-      <div>
-        <h4 class="text-xl font-bold text-white mb-4">NexusControl</h4>
-        <p>Providing parents with the tools they need to ensure their children's digital safety.</p>
-      </div>
+<body>
 
-      <!-- Column 2 -->
-      <div>
-        <h4 class="text-xl font-bold text-white mb-4">Quick Links</h4>
-        <ul class="space-y-2">
-          <li><a class="hover:text-purple-400" href="website.html#home">Home</a></li>
-          <li><a class="hover:text-purple-400" href="website.html#features">Features</a></li>
-          <li><a class="hover:text-purple-400" href="website.html#install-guide">Install Guide</a></li>
-          <li><a class="hover:text-purple-400" href="faq.html">FAQ</a></li>
-        </ul>
-      </div>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="website.html" class="logo"><span>Nexus</span>Control</a>
+                <nav class="nav-desktop">
+                    <a href="website.html#home">Home</a>
+                    <a href="website.html#features" class="active-link">Features</a>
+                    <a href="about-us.html">About Us</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="website.html#contact">Contact</a>
+                </nav>
+                <button id="mobile-menu-button">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            <div id="mobile-menu">
+                <a href="website.html#home">Home</a>
+                <a href="website.html#features" class="active-link">Features</a>
+                <a href="about-us.html">About Us</a>
+                <a href="faq.html">FAQ</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="website.html#contact">Contact</a>
+            </div>
+        </div>
+    </header>
 
-      <!-- Column 3 -->
-      <div>
-        <h4 class="text-xl font-bold text-white mb-4">Resources</h4>
-        <ul class="space-y-2">
-          <li><a class="hover:text-purple-400" href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a class="hover:text-purple-400" href="about-us.html">About Us</a></li>
-          <li><a class="hover:text-purple-400" href="website.html#contact">Contact</a></li>
-          <li><a class="hover:text-purple-400" href="#YOUR_SITEMAP_URL">Sitemap</a></li>
-        </ul>
-      </div>
+    <main>
+        <section class="hero-section">
+            <div class="container hero-content">
+                <h1>Live Location <span>Tracking</span></h1>
+                <p>Gain peace of mind by knowing your child's whereabouts in real-time. Our advanced GPS tracking ensures you are always connected to their safety.</p>
+            </div>
+        </section>
 
-      <!-- Column 4 -->
-<div>
-  <h4 class="text-xl font-bold text-white mb-4">Follow Us</h4>
-  <div class="flex justify-center md:justify-start space-x-4">
-    
-    <!-- Facebook -->
-    <a href="#" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition">
-      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5V9.1c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.3 0-1.7.8-1.7 1.6V12H17l-.5 3h-2.5v7A10 10 0 0022 12z"/>
-      </svg>
-    </a>
+        <section class="section">
+            <div class="container">
+                <div class="grid grid-lg-2">
+                    <div class="feature-description">
+                        <h2>Always Know They Are Safe</h2>
+                        <p>In today's fast-paced world, knowing your child is safe is more important than ever. NexusControl's Live Location feature provides you with a reliable and accurate way to see your child's location on a detailed map, directly from your parent dashboard. Whether they are at school, a friend's house, or on their way home, you can check in anytime, anywhere.</p>
+                        <a href="website.html#home" class="cta-button">Start Monitoring Now</a>
+                    </div>
+                    <div class="feature-image">
+                        <img src="https://xspyapp.com/images/download.png" alt="Live map showing child's location">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section section-dark benefits-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Key Benefits of Location Tracking</h2>
+                    <p>Our GPS tracking is more than just a dot on a map. It's a comprehensive tool designed to give you actionable insights and enhanced security.</p>
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-icon-wrapper">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <h3>Real-Time GPS Tracking</h3>
+                        <p>See your child's exact location updated in near real-time. The high-accuracy GPS data ensures you have the most current information available.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon-wrapper">
+                           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3>Location History</h3>
+                        <p>Review the paths your child has taken. See a detailed history of their movements throughout the day, complete with timestamps.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon-wrapper">
+                           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m-6 3l6-3"></path></svg>
+                        </div>
+                        <h3>Safe & Unsafe Zones (Geofencing)</h3>
+                        <p>Create virtual boundaries around important places like home and school. Receive instant alerts when your child enters or leaves these designated zones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <!-- Twitter -->
-    <a href="#" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition">
-      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0022 4.3a8 8 0 01-2.3.6 4 4 0 001.7-2.2 8 8 0 01-2.5 1 4 4 0 00-6.8 3.6 11.4 11.4 0 01-8.3-4.2 4 4 0 001.3 5.4A4 4 0 012 8.6v.1a4 4 0 003.2 3.9 4 4 0 01-1.8.1 4 4 0 003.7 2.8A8 8 0 012 17.5a11.3 11.3 0 006 1.8"/>
-      </svg>
-    </a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>NexusControl</h4>
+                    <p>Providing parents with the tools they need to ensure their children's digital safety.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="website.html#home">Home</a></li>
+                        <li><a href="website.html#features">Features</a></li>
+                        <li><a href="website.html#install-guide">Install Guide</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="website.html#contact">Contact</a></li>
+                        <li><a href="#YOUR_SITEMAP_URL">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5V9.1c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.3 0-1.7.8-1.7 1.6V12H17l-.5 3h-2.5v7A10 10 0 0022 12z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="X/Twitter"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44c0-.795-.645-1.44-1.441-1.44z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="YouTube"><svg fill="currentColor" viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.824-42.194-48.475-48.475C465.605 64 288 64 288 64s-177.605 0-213.18 11.608c-23.65 6.281-42.194 24.825-48.475 48.475C16.74 159.658 16.74 256 16.74 256s0 96.342 9.605 131.917c6.281 23.65 24.825 42.194 48.475 48.475C110.395 448 288 448 288 448s177.605 0 213.18-11.608c23.65-6.281 42.194-24.825 48.475-48.475C559.26 352.342 559.26 256 559.26 256s0-96.342-9.605-131.917zM232 334.059V177.941L345 256l-113 78.059z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 NexusControl. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    <!-- Instagram -->
-    <a href="#" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition">
-      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.6 0 3 1.4 3 3v10c0 1.6-1.4 3-3 3H7c-1.6 0-3-1.4-3-3V7c0-1.6 1.4-3 3-3h10zM12 8a4 4 0 100 8 4 4 0 000-8zm0 6.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm4.5-6.9a1 1 0 110-2 1 1 0 010 2z"/>
-      </svg>
-    </a>
-
-    <!-- YouTube -->
-    <a href="#" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-gray-400 hover:bg-purple-500 hover:text-white transition">
-      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 576 512">
-        <path d="M549.655 124.083c-6.281-23.65-24.824-42.194-48.475-48.475C465.605 64 288 64 288 64s-177.605 0-213.18 11.608c-23.65 6.281-42.194 24.825-48.475 48.475C16.74 159.658 16.74 256 16.74 256s0 96.342 9.605 131.917c6.281 23.65 24.825 42.194 48.475 48.475C110.395 448 288 448 288 448s177.605 0 213.18-11.608c23.65-6.281 42.194-24.825 48.475-48.475C559.26 352.342 559.26 256 559.26 256s0-96.342-9.605-131.917zM232 334.059V177.941L345 256l-113 78.059z"/>
-      </svg>
-    </a>
-
-  </div>
-</div>
-
-    </div>
-    <div class="w-full mt-8 pt-6 border-t border-gray-800 flex justify-center">
-      <p class="text-sm text-gray-400 text-center">© 2024 NexusControl. All Rights Reserved.</p>
-    </div>
-  </div>
-</footer>
-
-<script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             // मोबाइल मेनू
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('is-open');
             });
         });
     </script>

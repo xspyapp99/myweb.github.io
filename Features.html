@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO टैग्स -->
+    <title>Features - NexusControl</title>
+    <meta name="description" content="Discover all the powerful monitoring features of NexusControl, including live location, keylogger, SMS tracking, and more.">
+    <meta name="keywords" content="nexuscontrol features, parental control features, mobile monitoring, spy app features, live location, keylogger, sms tracking, call recording, social media monitoring">
+
+    <!-- Google Fonts से 'Inter' फ़ॉन्ट लोड हो रहा है -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================================================== */
+        /* बेसिक और रूट वेरिएबल्स (आपके मौजूदा कोड से) */
+        /* ================================================== */
+        :root {
+            --color-purple-400: #a78bfa;
+            --color-purple-500: #8b5cf6;
+            --color-purple-600: #7c3aed;
+            --color-gray-300: #d1d5db;
+            --color-gray-400: #9ca3af;
+            --color-gray-500: #6b7280;
+            --color-gray-800: #1f2937;
+            --color-gray-900: #111827;
+            --color-white: #ffffff;
+            --color-black: #000000;
+            --bg-dark: #0a0a1a;
+            --border-color: rgba(167, 223, 255, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--color-gray-300);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            box-sizing: border-box;
+        }
+        @media (min-width: 640px) { .container { max-width: 640px; } }
+        @media (min-width: 768px) { .container { max-width: 768px; } }
+        @media (min-width: 1024px) { .container { max-width: 1024px; } }
+        @media (min-width: 1280px) { .container { max-width: 1280px; } }
+
+        a {
+            text-decoration: none;
+            color: var(--color-purple-400); /* लिंक का रंग */
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: var(--color-white); /* होवर पर लिंक का रंग */
+        }
+
+        /* ================================================== */
+        /* हेडर और नेविगेशन (आपके मौजूदा कोड से) */
+        /* ================================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--color-white);
+            letter-spacing: 0.05em;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--color-purple-400);
+        }
+
+        .nav-desktop {
+            display: none; 
+        }
+
+        .nav-desktop a {
+            color: var(--color-gray-300);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-desktop a:hover {
+            color: var(--color-purple-400);
+        }
+        .nav-desktop a.active-link {
+            color: var(--color-purple-400);
+            font-weight: 600;
+        }
+        
+        #mobile-menu-button {
+            padding: 0.5rem;
+            color: var(--color-white);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        #mobile-menu {
+            display: none; 
+            background-color: rgba(17, 24, 39, 0.95);
+        }
+        #mobile-menu.is-open {
+            display: block; 
+        }
+        
+        #mobile-menu a {
+            display: block;
+            text-align: center;
+            padding: 0.75rem 0;
+            color: var(--color-white);
+            border-top: 1px solid var(--color-gray-800);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        #mobile-menu a:hover {
+            background-color: var(--color-purple-600);
+        }
+        #mobile-menu a.active-link {
+            background-color: var(--color-purple-600);
+        }
+
+        /* ================================================== */
+        /* मुख्य कंटेंट */
+        /* ================================================== */
+        main {
+            padding-top: 5rem;
+        }
+        
+        .hero-section {
+            position: relative;
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, var(--color-black), var(--bg-dark));
+            text-align: center;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            opacity: 0.05;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+        .hero-content h1 {
+            font-size: 2.25rem;
+            font-weight: 900;
+            color: var(--color-white);
+            line-height: 1.2;
+        }
+        .hero-content h1 span {
+            color: var(--color-purple-400);
+        }
+        .hero-content p {
+            margin-top: 1rem;
+            font-size: 1.125rem;
+            color: var(--color-gray-400);
+        }
+        
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 900;
+            color: var(--color-white);
+        }
+        @media (min-width: 768px) { .section-title { font-size: 3rem; line-height: 1; } }
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--color-gray-400);
+            margin-top: 1rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ================================================== */
+        /* फीचर्स सेक्शन के लिए कस्टम स्टाइल (रेफरेंस कोड से प्रेरित) */
+        /* ================================================== */
+        .features-list-section {
+            padding: 3rem 0;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 3rem; /* प्रत्येक फीचर आइटम के बीच की दूरी */
+        }
+
+        @media (min-width: 992px) {
+            .feature-item {
+                flex-direction: row; /* डेस्कटॉप पर पंक्ति में */
+                text-align: left;
+                margin-bottom: 5rem; /* डेस्कटॉप पर अधिक दूरी */
+            }
+            .feature-item.reverse {
+                flex-direction: row-reverse; /* इमेज/आइकन को दाईं ओर ले जाने के लिए */
+            }
+        }
+
+        .feature-icon-wrapper {
+            flex-shrink: 0; /* आइकन को सिकुड़ने से रोकने के लिए */
+            width: 150px; /* बड़े आइकन के लिए */
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            color: var(--color-purple-400); /* आइकन का रंग */
+            transition: transform 0.3s ease;
+        }
+        .feature-icon-wrapper svg {
+            width: 100px; /* SVG आइकन का आकार */
+            height: 100px;
+        }
+
+        .feature-item:hover .feature-icon-wrapper {
+            transform: scale(1.1); /* होवर पर आइकन का थोड़ा बड़ा होना */
+        }
+
+        @media (min-width: 992px) {
+            .feature-icon-wrapper {
+                margin-left: 2rem; /* टेक्स्ट से आइकन को दूर रखने के लिए */
+                margin-right: 2rem;
+                margin-bottom: 0;
+            }
+            .feature-item.reverse .feature-icon-wrapper {
+                margin-left: 0;
+                margin-right: 2rem;
+            }
+        }
+
+        .feature-content {
+            flex-grow: 1; /* उपलब्ध स्थान को भरने के लिए */
+            max-width: 600px; /* सामग्री की अधिकतम चौड़ाई */
+        }
+
+        .feature-title-main {
+            font-size: 1.875rem; /* h4 के लिए बड़ा फ़ॉन्ट */
+            font-weight: 700;
+            color: var(--color-white);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            font-size: 1.125rem;
+            color: var(--color-gray-400);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-links a {
+            display: inline-block;
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-purple-400);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .feature-links a:hover {
+            color: var(--color-white);
+        }
+
+        .separator {
+            width: 100%;
+            margin: 2rem auto;
+            position: relative;
+            height: 1px;
+        }
+        .separator::after {
+            content: "";
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: rgba(167, 223, 255, 0.1); /* आपकी मौजूदा बॉर्डर-कलर का उपयोग करें */
+            background: -moz-linear-gradient(left, transparent 0, rgba(167, 223, 255, 0.1) 35%, rgba(167, 223, 255, 0.1) 70%, transparent 100%);
+            background: -webkit-linear-gradient(left, transparent 0, rgba(167, 223, 255, 0.1) 35%, rgba(167, 223, 255, 0.1) 70%, transparent 100%);
+            background: linear-gradient(to right, transparent 0, rgba(167, 223, 255, 0.1) 35%, rgba(167, 223, 255, 0.1) 70%, transparent 100%);
+            position: absolute;
+            bottom: -1px;
+        }
+
+        /* ================================================== */
+        /* फुटर (आपके मौजूदा कोड से) */
+        /* ================================================== */
+        .footer {
+            background-color: var(--color-black);
+            padding: 3rem 0;
+            color: var(--color-gray-400);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+        }
+        .footer-grid h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 1rem;
+        }
+        .footer-grid ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-grid ul li {
+            margin-bottom: 0.5rem;
+        }
+        .footer-grid a {
+            color: var(--color-gray-400);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-grid a:hover {
+            color: var(--color-purple-400);
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .social-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--color-gray-800);
+            color: var(--color-gray-400);
+            transition: all 0.3s;
+        }
+        .social-icon:hover {
+            background-color: var(--color-purple-500);
+            color: var(--color-white);
+        }
+        .social-icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-gray-800);
+            text-align: center;
+        }
+
+        /* फुटर के लिए रिस्पांसिव ब्रेकपॉइंट्स */
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                text-align: left;
+            }
+            .social-icons { justify-content: flex-start; }
+        }
+        @media (min-width: 1024px) {
+            .footer-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        /* एनिमेशन */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================================================== -->
+    <!-- हेडर और नेविगेशन बार -->
+    <!-- ================================================== -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <span>Nexus</span>Control
+                </a>
+                
+                <nav class="nav-desktop">
+                    <a href="index.html#home">Home</a>
+                    <a href="features.html" class="active-link">Features</a>
+                    <a href="Installation Guide.html">Install Guide</a>
+                    <a href="FAQ.html">FAQ</a>
+                    <a href="Privacy Policy.html">Privacy Policy</a>
+                    <a href="Contact Us.html">Contact</a>
+                    <a href="About Us.html">About Us</a>
+                </nav>
+
+                <button id="mobile-menu-button">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            
+            <div id="mobile-menu">
+                <a href="index.html#home">Home</a>
+                <a href="features.html" class="active-link">Features</a>
+                <a href="Installation Guide.html">Install Guide</a>
+                <a href="FAQ.html">FAQ</a>
+                <a href="Privacy Policy.html">Privacy Policy</a>
+                <a href="Contact Us.html">Contact</a>
+                <a href="About Us.html">About Us</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ================================== -->
+        <!-- हीरो सेक्शन -->
+        <!-- ================================== -->
+        <section class="hero-section">
+            <div class="container hero-content">
+                <h1>Powerful <span>Monitoring Features</span></h1>
+                <p>Discover the extensive range of tools NexusControl offers to ensure your child's digital safety.</p>
+            </div>
+        </section>
+
+        <!-- ================================== -->
+        <!-- फीचर्स लिस्ट सेक्शन -->
+        <!-- ================================== -->
+        <section class="features-list-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title fade-in-up">All-in-One Digital Safety Solution</h2>
+                    <p class="section-subtitle fade-in-up" style="transition-delay: 150ms;">NexusControl provides comprehensive monitoring capabilities to give you peace of mind.</p>
+                </div>
+
+                <!-- Feature 1: Live Location Tracking -->
+                <div class="feature-item fade-in-up">
+                    <div class="feature-icon-wrapper">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title-main">Live Location Tracking</h3>
+                        <p class="feature-description">Gain peace of mind by knowing your child's whereabouts in real-time. Our advanced GPS tracking ensures you are always connected to their safety.</p>
+                        <div class="feature-links">
+                            <a href="Live Location Feature.html">More Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+
+                <!-- Feature 2: Live Remote Camera -->
+                <div class="feature-item reverse fade-in-up">
+                    <div class="feature-icon-wrapper">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title-main">Live Remote Camera</h3>
+                        <p class="feature-description">See what's happening around your child in real-time. Remotely capture unlimited photos from their phone's front and back cameras, anytime you need.</p>
+                        <div class="feature-links">
+                            <a href="Live Camera Feature.html">More Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+
+                <!-- Feature 3: Advanced Keylogger -->
+                <div class="feature-item fade-in-up">
+                    <div class="feature-icon-wrapper">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title-main">Advanced Keylogger</h3>
+                        <p class="feature-description">See every keystroke your child types on their phone. Understand their conversations, searches, and interactions across all apps.</p>
+                        <div class="feature-links">
+                            <a href="Keylogger Feature.html">More Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+
+                <!-- Feature 4: SMS Message Monitoring -->
+                <div class="feature-item reverse fade-in-up">
+                    <div class="feature-icon-wrapper">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title-main">SMS Message Monitoring</h3>
+                        <p class="feature-description">Read every text message sent and received on your child's phone. Stay aware of their conversations and protect them from potential dangers.</p>
+                        <div class="feature-links">
+                            <a href="SMS Monitoring Feature.html">More Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+
+                <!-- Feature 5: Notification Monitoring -->
+                <div class="feature-item fade-in-up">
+                    <div class="feature-icon-wrapper">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title-main">Notification Monitoring</h3>
+                        <p class="feature-description">Stay updated on your child's digital interactions. See every notification from social media, chats, and other apps, right on your dashboard.</p>
+                        <div class="feature-links">
+                            <a href="Notification Monitoring Feature.html">More Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+
+                <!-- Feature 6: Social Apps Monitoring (Coming Soon) -->
+                <div class="feature-item reverse fade-in-up">
+                    <div class="feature-icon-wrapper">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title-main">Social Apps Monitoring <span style="color: var(--color-purple-400); font-size: 0.8em;">(Coming Soon)</span></h3>
+                        <p class="feature-description">Keep an eye on conversations and activities across popular social media platforms like WhatsApp, Instagram, and Facebook. This feature is currently in beta testing.</p>
+                        <div class="feature-links">
+                            <a href="Social Apps Feature.html">More Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+
+                <!-- Feature 7: Remote File Manager (Coming Soon) -->
+                <div class="feature-item fade-in-up">
+                    <div class="feature-icon-wrapper">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 20h16a2 2 0 002-2V8a2 2 0 00-2-2h-7.93a2 2 0 01-1.66-.9l-.82-1.2A2 2 0 007.93 3H4a2 2 0 00-2 2v13c0 1.1.9 2 2 2z"></path></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title-main">Remote File Manager <span style="color: var(--color-purple-400); font-size: 0.8em;">(Coming Soon)</span></h3>
+                        <p class="feature-description">Access and view the files and folders stored on your child's device, right from your dashboard. This feature is currently in beta testing.</p>
+                        <div class="feature-links">
+                            <a href="File Manager Feature.html">More Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+
+                <!-- Feature 8: Call Recording (Coming Soon) -->
+                <div class="feature-item reverse fade-in-up">
+                    <div class="feature-icon-wrapper">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title-main">Call Recording <span style="color: var(--color-purple-400); font-size: 0.8em;">(Coming Soon)</span></h3>
+                        <p class="feature-description">Listen to your child's phone calls to understand their conversations and protect them from harm. This feature is currently in beta testing.</p>
+                        <div class="feature-links">
+                            <a href="Call Recording Feature.html">More Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+
+                <!-- Feature 9: Voice & Ambient Recording (Coming Soon) -->
+                <div class="feature-item fade-in-up">
+                    <div class="feature-icon-wrapper">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a3 3 0 00-3 3v7a3 3 0 006 0V5a3 3 0 00-3-3z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 10v2a7 7 0 01-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title-main">Voice & Ambient Recording <span style="color: var(--color-purple-400); font-size: 0.8em;">(Coming Soon)</span></h3>
+                        <p class="feature-description">Listen to the surroundings of your child's phone to ensure they are in a safe environment. This feature is currently in beta testing.</p>
+                        <div class="feature-links">
+                            <a href="Voice Recording Feature.html">More Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+
+                <!-- Feature 10: Hidden Password Capture (Coming Soon) -->
+                <div class="feature-item reverse fade-in-up">
+                    <div class="feature-icon-wrapper">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2v5a2 2 0 01-2 2H9a2 2 0 01-2-2V9a2 2 0 012-2h6z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7h-6a2 2 0 00-2 2v5a2 2 0 002 2h6a2 2 0 002-2V9a2 2 0 00-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title-main">Hidden Password Capture <span style="color: var(--color-purple-400); font-size: 0.8em;">(Coming Soon)</span></h3>
+                        <p class="feature-description">Discover the passwords your child uses for social media, games, and other online accounts. This feature is currently in beta testing.</p>
+                        <div class="feature-links">
+                            <a href="Hide Password Feature.html">More Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+
+                <!-- Feature 11: Remote Screenshot (Coming Soon) -->
+                <div class="feature-item fade-in-up">
+                    <div class="feature-icon-wrapper">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title-main">Remote Screenshot <span style="color: var(--color-purple-400); font-size: 0.8em;">(Coming Soon)</span></h3>
+                        <p class="feature-description">Instantly capture what's on your child's screen, no matter what app they are using. This feature is currently in beta testing.</p>
+                        <div class="feature-links">
+                            <a href="Screenshot Feature.html">More Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+
+                <!-- Feature 12: Live Screen Streaming (Coming Soon) -->
+                <div class="feature-item reverse fade-in-up">
+                    <div class="feature-icon-wrapper">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h4l2-2h3.5l1.5-1.5M19.5 10.5l1.5 1.5M10.5 6h9.75M10.5 6a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zM12.75 18.75H7.5V6.75h5.25"></path></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title-main">Live Screen Streaming <span style="color: var(--color-purple-400); font-size: 0.8em;">(Coming Soon)</span></h3>
+                        <p class="feature-description">Watch your child's phone screen activity live, just as if you were holding the device yourself. This feature is currently in beta testing.</p>
+                        <div class="feature-links">
+                            <a href="Live Screen Feature.html">More Details &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ================================== -->
+    <!-- फुटर -->
+    <!-- ================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>NexusControl</h4>
+                    <p>Providing parents with the tools they need to ensure their children's digital safety.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="Installation Guide.html">Install Guide</a></li>
+                        <li><a href="FAQ.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="Privacy Policy.html">Privacy Policy</a></li>
+                        <li><a href="About Us.html">About Us</a></li>
+                        <li><a href="Contact Us.html">Contact</a></li>
+                        <li><a href="#YOUR_SITEMAP_URL">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="X/Twitter"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44c0-.795-.645-1.44-1.441-1.44z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="YouTube"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M21.582 6.186a2.694 2.694 0 0 0-1.886-1.886C17.93 4 12 4 12 4s-5.93 0-7.696.299a2.694 2.694 0 0 0-1.886 1.886C2 7.95 2 12 2 12s0 4.05.318 5.814a2.694 2.694 0 0 0 1.886 1.886C6.07 20 12 20 12 20s5.93 0 7.696-.299a2.694 2.694 0 0 0 1.886-1.886C22 16.05 22 12 22 12s0-4.05-.418-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NexusControl. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // मोबाइल मेनू को खोलने-बंद करने का लॉजिक
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('is-open');
+            });
+
+            // स्क्रॉल पर एनिमेशन
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        const delay = entry.target.getAttribute('data-delay');
+                        if(delay) {
+                            entry.target.style.transitionDelay = delay + 'ms';
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const elements = document.querySelectorAll('.fade-in-up');
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

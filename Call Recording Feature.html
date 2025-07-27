@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Call Recording (Coming Soon) - NexusControl</title>
-    <meta name="description" content="Our upcoming Call Recording feature will let you listen to your child's phone conversations. Currently in beta testing.">
-    <meta name="keywords" content="call recording, phone call monitoring, parental control, nexuscontrol">
     
-    <!-- Google Fonts से 'Inter' फ़ॉन्ट लोड हो रहा है -->
+    <!-- मॉडिफिकेशन 1: SEO टैग्स को नए, सुरक्षित ब्रांड नाम और विवरण के साथ अपडेट किया गया है। -->
+    <title>Call Log Review Feature (Coming Soon) - FamToolApp</title>
+    <meta name="description" content="Our upcoming Call Log Review feature will let you see your child's call history for their safety. Currently in beta testing.">
+    <meta name="keywords" content="call log review, call history, parental guidance, famtoolapp, child safety">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* ================================================== */
-        /* बेसिक और रूट वेरिएबल्स */
-        /* ================================================== */
+        /* --- सीएसएस स्टाइल में कोई बदलाव नहीं किया गया है --- */
         :root {
             --color-purple-400: #a78bfa;
             --color-purple-500: #8b5cf6;
@@ -28,11 +27,7 @@
             --bg-dark: #0a0a1a;
             --border-color: rgba(167, 223, 255, 0.1);
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
@@ -42,7 +37,6 @@
             margin: 0;
             overflow-x: hidden;
         }
-        
         .container {
             width: 100%;
             margin-left: auto;
@@ -51,10 +45,6 @@
             padding-right: 1rem;
             box-sizing: border-box;
         }
-
-        /* ================================================== */
-        /* हेडर और नेविगेशन */
-        /* ================================================== */
         .header {
             position: fixed;
             top: 0;
@@ -66,7 +56,6 @@
             -webkit-backdrop-filter: blur(4px);
             transition: all 0.3s ease-in-out;
         }
-
         .header-content {
             display: flex;
             justify-content: space-between;
@@ -74,7 +63,6 @@
             padding-top: 1rem;
             padding-bottom: 1rem;
         }
-
         .logo {
             font-size: 1.5rem;
             font-weight: 900;
@@ -82,29 +70,19 @@
             letter-spacing: 0.05em;
             text-decoration: none;
         }
-
-        .logo span {
-            color: var(--color-purple-400);
-        }
-
-        .nav-desktop {
-            display: none; 
-        }
-
+        .logo span { color: var(--color-purple-400); }
+        .nav-desktop { display: none; }
         .nav-desktop a {
             color: var(--color-gray-300);
             font-weight: 500;
             text-decoration: none;
             transition: color 0.3s;
         }
-        .nav-desktop a:hover {
-            color: var(--color-purple-400);
-        }
+        .nav-desktop a:hover { color: var(--color-purple-400); }
         .nav-desktop a.active-link {
             color: var(--color-purple-400);
             font-weight: 600;
         }
-        
         #mobile-menu-button {
             padding: 0.5rem;
             color: var(--color-white);
@@ -112,15 +90,8 @@
             border: none;
             cursor: pointer;
         }
-
-        #mobile-menu {
-            display: none; 
-            background-color: rgba(17, 24, 39, 0.95);
-        }
-        #mobile-menu.is-open {
-            display: block; 
-        }
-        
+        #mobile-menu { display: none; background-color: rgba(17, 24, 39, 0.95); }
+        #mobile-menu.is-open { display: block; }
         #mobile-menu a {
             display: block;
             text-align: center;
@@ -130,20 +101,9 @@
             text-decoration: none;
             transition: background-color 0.3s;
         }
-        #mobile-menu a:hover {
-            background-color: var(--color-purple-600);
-        }
-        #mobile-menu a.active-link {
-            background-color: var(--color-purple-600);
-        }
-
-        /* ================================================== */
-        /* मुख्य कंटेंट */
-        /* ================================================== */
-        main {
-            padding-top: 5rem;
-        }
-        
+        #mobile-menu a:hover { background-color: var(--color-purple-600); }
+        #mobile-menu a.active-link { background-color: var(--color-purple-600); }
+        main { padding-top: 5rem; }
         .hero-section {
             position: relative;
             padding: 5rem 0;
@@ -169,25 +129,18 @@
             color: var(--color-white);
             line-height: 1.2;
         }
-        .hero-content h1 span {
-            color: var(--color-purple-400);
-        }
+        .hero-content h1 span { color: var(--color-purple-400); }
         .hero-content p {
             margin-top: 1rem;
             font-size: 1.125rem;
             color: var(--color-gray-400);
         }
-        
-        .section {
-            padding: 3rem 0;
-        }
-
+        .section { padding: 3rem 0; }
         .content-wrapper {
             max-width: 56rem;
             margin: 0 auto;
             text-align: center;
         }
-
         .status-badge {
             display: inline-block;
             background-color: rgba(124, 58, 237, 0.1);
@@ -197,13 +150,11 @@
             border-radius: 9999px;
             margin-bottom: 1.5rem;
         }
-
         .content-wrapper h2 {
             font-size: 1.875rem;
             font-weight: 700;
             color: var(--color-white);
         }
-
         .content-wrapper .description {
             margin-top: 1rem;
             font-size: 1.125rem;
@@ -212,7 +163,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         .glass-effect {
             background: rgba(17, 24, 39, 0.5);
             backdrop-filter: blur(12px);
@@ -232,16 +182,11 @@
             color: var(--color-gray-400);
             line-height: 1.6;
         }
-
-        /* ================================================== */
-        /* फुटर */
-        /* ================================================== */
         .footer {
             background-color: var(--color-black);
             padding: 3rem 0;
             color: var(--color-gray-400);
         }
-        
         .footer-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -259,17 +204,13 @@
             padding: 0;
             margin: 0;
         }
-        .footer-grid ul li {
-            margin-bottom: 0.5rem;
-        }
+        .footer-grid ul li { margin-bottom: 0.5rem; }
         .footer-grid a {
             color: var(--color-gray-400);
             text-decoration: none;
             transition: color 0.3s;
         }
-        .footer-grid a:hover {
-            color: var(--color-purple-400);
-        }
+        .footer-grid a:hover { color: var(--color-purple-400); }
         .social-icons {
             display: flex;
             justify-content: center;
@@ -300,10 +241,6 @@
             border-top: 1px solid var(--color-gray-800);
             text-align: center;
         }
-
-        /* ================================================== */
-        /* रिस्पांसिव ब्रेकपॉइंट्स */
-        /* ================================================== */
         @media (min-width: 768px) {
             .container { max-width: 768px; }
             .hero-content h1 { font-size: 3rem; }
@@ -316,7 +253,6 @@
             .social-icons { justify-content: flex-start; }
             .footer-bottom { text-align: center; }
         }
-        
         @media (min-width: 1024px) {
             .container { max-width: 1024px; }
             .logo { font-size: 1.875rem; }
@@ -329,21 +265,16 @@
             #mobile-menu { display: none !important; }
             .footer-grid { grid-template-columns: repeat(4, 1fr); }
         }
-        
-        @media (min-width: 1280px) {
-            .container { max-width: 1280px; }
-        }
+        @media (min-width: 1280px) { .container { max-width: 1280px; } }
     </style>
 </head>
 <body>
 
-    <!-- ================================================== -->
-    <!-- हेडर और नेविगेशन बार -->
-    <!-- ================================================== -->
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <a href="website.html" class="logo"><span>Nexus</span>Control</a>
+                <!-- मॉडिफिकेशन 2: लोगो का टेक्स्ट नए ब्रांड नाम "FamToolApp" से बदल दिया गया है। -->
+                <a href="index.html" class="logo"><span>Fam</span>ToolApp</a>
                 <nav class="nav-desktop">
                     <a href="index.html">Home</a>
                     <a href="Features.html" class="active-link">Features</a>
@@ -368,40 +299,34 @@
     </header>
 
     <main>
-        <!-- ================================== -->
-        <!-- हीरो सेक्शन -->
-        <!-- ================================== -->
         <section class="hero-section">
             <div class="container hero-content">
-                <h1>Call <span>Recording</span></h1>
-                <p>Listen to your child's phone calls to understand their conversations and protect them from harm.</p>
+                <!-- मॉडिफिकेशन 3: शीर्षक को "Call Recording" से बदलकर "Call Log Review" किया गया है। -->
+                <h1>Call Log <span>Review</span></h1>
+                <p>Review your child's call history to understand their communications and protect them from potential harm.</p>
             </div>
         </section>
 
-        <!-- ================================== -->
-        <!-- मुख्य कंटेंट सेक्शन -->
-        <!-- ================================== -->
         <section class="section">
             <div class="container content-wrapper">
                 <div class="status-badge">Feature Status: Beta Testing</div>
                 <h2>Coming Soon to All Users!</h2>
-                <p class="description">Knowing who your child talks to on the phone is a critical part of ensuring their safety. Our Call Recording feature will automatically record incoming and outgoing calls, allowing you to listen to them later from your secure dashboard. This tool is invaluable for identifying peer pressure, bullying, or discussions with suspicious individuals.</p>
+                <!-- मॉडिफिकेशन 4: विवरण को "Call Recording" से बदलकर "Call Log Review" पर केंद्रित किया गया है। -->
+                <p class="description">Knowing who your child talks to on the phone is a critical part of ensuring their safety. Our Call Log Review feature will show you a complete history of incoming and outgoing calls, including numbers, names, and call durations. This tool is invaluable for identifying communication with unknown or suspicious individuals.</p>
                 <div class="glass-effect">
                     <h3>An Exclusive First Look</h3>
-                    <p>This feature is currently in the final stages of testing and is in <strong>beta version</strong>. We have given access to a select group of users to help us refine and perfect its functionality. <br><br>Once the testing is complete, the Call Recording feature will be automatically available in your parent panel. We are working hard to make it available to everyone very soon. Thank you for your patience!</p>
+                    <p>This feature is currently in the final stages of testing and is in <strong>beta version</strong>. We have given access to a select group of users to help us refine and perfect its functionality. <br><br>Once the testing is complete, the Call Log Review feature will be automatically available in your parent panel. We are working hard to make it available to everyone very soon. Thank you for your patience!</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- ================================== -->
-    <!-- फुटर -->
-    <!-- ================================== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
+                <!-- मॉडिफिकेशन 5: फुटर में ब्रांड का नाम बदला गया है। -->
                 <div>
-                    <h4>NexusControl</h4>
+                    <h4>FamToolApp</h4>
                     <p>Providing parents with the tools they need to ensure their children's digital safety.</p>
                 </div>
                 <div>
@@ -428,19 +353,18 @@
                         <a href="#" class="social-icon" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5V9.1c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.3 0-1.7.8-1.7 1.6V12H17l-.5 3h-2.5v7A10 10 0 0022 12z"/></svg></a>
                         <a href="#" class="social-icon" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0022 4.3a8 8 0 01-2.3.6 4 4 0 001.7-2.2 8 8 0 01-2.5 1 4 4 0 00-6.8 3.6 11.4 11.4 0 01-8.3-4.2 4 4 0 001.3 5.4A4 4 0 012 8.6v.1a4 4 0 003.2 3.9 4 4 0 01-1.8.1 4 4 0 003.7 2.8A8 8 0 012 17.5a11.3 11.3 0 006 1.8"/></svg></a>
                         <a href="#" class="social-icon" aria-label="Instagram"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.6 0 3 1.4 3 3v10c0 1.6-1.4 3-3 3H7c-1.6 0-3-1.4-3-3V7c0-1.6 1.4-3 3-3h10zM12 8a4 4 0 100 8 4 4 0 000-8zm0 6.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm4.5-6.9a1 1 0 110-2 1 1 0 010 2z"/></svg></a>
-                        <a href="#" class="social-icon" aria-label="YouTube"><svg fill="currentColor" viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.824-42.194-48.475-48.475C465.605 64 288 64 288 64s-177.605 0-213.18 11.608c-23.65 6.281-42.194 24.825-48.475 48.475C16.74 159.658 16.74 256 16.74 256s0 96.342 9.605 131.917c6.281 23.65 24.825 42.194 48.475 48.475C110.395 448 288 448 288 448s177.605 0 213.18-11.608c23.65-6.281 42.194-24.825 48.475-48.475C559.26 352.342 559.26 256 559.26 256s0-96.342-9.605-131.917zM232 334.059V177.941L345 256l-113 78.059z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="YouTube"><svg fill="currentColor" viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.824-42.194-48.475-48.475C465.605 64 288 64 288 64s-177.605 0-213.18 11.608c-23.65 6.281-42.194 24.825-48.475 48.475C16.74 159.658 16.74 256 16.74 256s0 96.342 9.605 131.917c6.281 23.65 24.825 42.194 48.475 48.475C110.395 448 288 448 288 448s177.605 0 213.18-11.608c23.65-6.281 42.194-24.825-48.475-48.475C559.26 352.342 559.26 256 559.26 256s0-96.342-9.605-131.917zM232 334.059V177.941L345 256l-113 78.059z"/></svg></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 NexusControl. All Rights Reserved.</p>
+                <p>&copy; 2024 FamToolApp. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // मोबाइल मेनू
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => {

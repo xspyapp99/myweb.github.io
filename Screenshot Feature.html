@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Screenshot (Coming Soon) - NexusControl</title>
-    <meta name="description" content="Our upcoming Screenshot feature will let you capture your child's screen remotely. Currently in beta testing.">
-    <meta name="keywords" content="screenshot, screen capture, parental control, nexuscontrol">
+    <!-- मॉडिफिकेशन 1: SEO टैग्स को नए, सुरक्षित ब्रांड नाम और विवरण के साथ अपडेट किया गया है। -->
+    <title>On-Demand Screenshot (Coming Soon) - FamToolApp</title>
+    <meta name="description" content="Our upcoming On-Demand Screenshot feature will let you capture your child's screen for safety checks. Currently in beta testing.">
+    <meta name="keywords" content="screenshot, screen capture, parental guidance, famtoolapp">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* ================================================== */
-        /* बेसिक और रूट वेरिएबल्स */
-        /* ================================================== */
+        /* --- सीएसएस स्टाइल में कोई बदलाव नहीं किया गया है --- */
         :root {
             --color-purple-400: #a78bfa;
             --color-purple-500: #8b5cf6;
@@ -27,11 +26,7 @@
             --bg-dark: #0a0a1a;
             --border-color: rgba(167, 223, 255, 0.1);
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
@@ -41,7 +36,6 @@
             margin: 0;
             overflow-x: hidden;
         }
-        
         .container {
             width: 100%;
             margin-left: auto;
@@ -50,10 +44,6 @@
             padding-right: 1rem;
             box-sizing: border-box;
         }
-
-        /* ================================================== */
-        /* हेडर और नेविगेशन */
-        /* ================================================== */
         .header {
             position: fixed;
             top: 0;
@@ -64,7 +54,6 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
         }
-
         .header-content {
             display: flex;
             justify-content: space-between;
@@ -72,7 +61,6 @@
             padding-top: 1rem;
             padding-bottom: 1rem;
         }
-
         .logo {
             font-size: 1.5rem;
             font-weight: 900;
@@ -80,29 +68,19 @@
             letter-spacing: 0.05em;
             text-decoration: none;
         }
-
-        .logo span {
-            color: var(--color-purple-400);
-        }
-
-        .nav-desktop {
-            display: none; 
-        }
-
+        .logo span { color: var(--color-purple-400); }
+        .nav-desktop { display: none; }
         .nav-desktop a {
             color: var(--color-gray-300);
             font-weight: 500;
             text-decoration: none;
             transition: color 0.3s;
         }
-        .nav-desktop a:hover {
-            color: var(--color-purple-400);
-        }
+        .nav-desktop a:hover { color: var(--color-purple-400); }
         .nav-desktop a.active-link {
             color: var(--color-purple-400);
             font-weight: 600;
         }
-        
         #mobile-menu-button {
             padding: 0.5rem;
             color: var(--color-white);
@@ -110,15 +88,8 @@
             border: none;
             cursor: pointer;
         }
-
-        #mobile-menu {
-            display: none; 
-            background-color: rgba(17, 24, 39, 0.95);
-        }
-        #mobile-menu.is-open {
-            display: block; 
-        }
-        
+        #mobile-menu { display: none; background-color: rgba(17, 24, 39, 0.95); }
+        #mobile-menu.is-open { display: block; }
         #mobile-menu a {
             display: block;
             text-align: center;
@@ -128,17 +99,8 @@
             text-decoration: none;
             transition: background-color 0.3s;
         }
-        #mobile-menu a.active-link {
-            background-color: var(--color-purple-600);
-        }
-
-        /* ================================================== */
-        /* मुख्य कंटेंट */
-        /* ================================================== */
-        main {
-            padding-top: 5rem;
-        }
-        
+        #mobile-menu a.active-link { background-color: var(--color-purple-600); }
+        main { padding-top: 5rem; }
         .hero-section {
             position: relative;
             padding: 5rem 0;
@@ -164,25 +126,18 @@
             color: var(--color-white);
             line-height: 1.2;
         }
-        .hero-content h1 span {
-            color: var(--color-purple-400);
-        }
+        .hero-content h1 span { color: var(--color-purple-400); }
         .hero-content p {
             margin-top: 1rem;
             font-size: 1.125rem;
             color: var(--color-gray-400);
         }
-        
-        .section {
-            padding: 3rem 0;
-        }
-
+        .section { padding: 3rem 0; }
         .content-wrapper {
             max-width: 56rem;
             margin: 0 auto;
             text-align: center;
         }
-
         .status-badge {
             display: inline-block;
             background-color: rgba(124, 58, 237, 0.1);
@@ -192,13 +147,11 @@
             border-radius: 9999px;
             margin-bottom: 1.5rem;
         }
-
         .content-wrapper h2 {
             font-size: 1.875rem;
             font-weight: 700;
             color: var(--color-white);
         }
-
         .content-wrapper .description {
             margin-top: 1rem;
             font-size: 1.125rem;
@@ -207,7 +160,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         .glass-effect {
             background: rgba(17, 24, 39, 0.5);
             backdrop-filter: blur(12px);
@@ -227,16 +179,11 @@
             color: var(--color-gray-400);
             line-height: 1.6;
         }
-
-        /* ================================================== */
-        /* फुटर */
-        /* ================================================== */
         .footer {
             background-color: var(--color-black);
             padding: 3rem 0;
             color: var(--color-gray-400);
         }
-        
         .footer-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -254,17 +201,13 @@
             padding: 0;
             margin: 0;
         }
-        .footer-grid ul li {
-            margin-bottom: 0.5rem;
-        }
+        .footer-grid ul li { margin-bottom: 0.5rem; }
         .footer-grid a {
             color: var(--color-gray-400);
             text-decoration: none;
             transition: color 0.3s;
         }
-        .footer-grid a:hover {
-            color: var(--color-purple-400);
-        }
+        .footer-grid a:hover { color: var(--color-purple-400); }
         .social-icons {
             display: flex;
             justify-content: center;
@@ -295,10 +238,6 @@
             border-top: 1px solid var(--color-gray-800);
             text-align: center;
         }
-
-        /* ================================================== */
-        /* रिस्पांसिव ब्रेकपॉइंट्स */
-        /* ================================================== */
         @media (min-width: 768px) {
             .container { max-width: 768px; }
             .hero-content h1 { font-size: 3rem; }
@@ -311,7 +250,6 @@
             .social-icons { justify-content: flex-start; }
             .footer-bottom { text-align: center; }
         }
-        
         @media (min-width: 1024px) {
             .container { max-width: 1024px; }
             .logo { font-size: 1.875rem; }
@@ -324,10 +262,7 @@
             #mobile-menu { display: none !important; }
             .footer-grid { grid-template-columns: repeat(4, 1fr); }
         }
-        
-        @media (min-width: 1280px) {
-            .container { max-width: 1280px; }
-        }
+        @media (min-width: 1280px) { .container { max-width: 1280px; } }
     </style>
 </head>
 <body>
@@ -335,7 +270,8 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <a href="website.html" class="logo"><span>Nexus</span>Control</a>
+                <!-- मॉडिफिकेशन 2: लोगो का टेक्स्ट नए ब्रांड नाम "FamToolApp" से बदल दिया गया है। -->
+                <a href="index.html" class="logo"><span>Fam</span>ToolApp</a>
                 <nav class="nav-desktop">
                     <a href="index.html">Home</a>
                     <a href="Features.html" class="active-link">Features</a>
@@ -362,8 +298,9 @@
     <main>
         <section class="hero-section">
             <div class="container hero-content">
-                <h1>Remote <span>Screenshot</span></h1>
-                <p>Instantly capture what's on your child's screen, no matter what app they are using.</p>
+                <!-- मॉडिफिकेशन 3: शीर्षक को "Remote" से बदलकर "On-Demand" किया गया है। -->
+                <h1>On-Demand <span>Screenshot</span></h1>
+                <p>Instantly capture what's on your child's screen, no matter what app they are using, for a quick safety check.</p>
             </div>
         </section>
 
@@ -371,7 +308,8 @@
             <div class="container content-wrapper">
                 <div class="status-badge">Feature Status: Beta Testing</div>
                 <h2>Coming Soon to All Users!</h2>
-                <p class="description">See exactly what your child sees. Our upcoming Screenshot feature will allow you to remotely capture a high-quality image of the phone's current screen with a single click from your dashboard. This is perfect for understanding the context of a conversation, viewing a post on social media, or checking their activity in any app.</p>
+                <!-- मॉडिफिकेशन 4: विवरण को सुरक्षा और मार्गदर्शन पर केंद्रित किया गया है। -->
+                <p class="description">See exactly what your child sees. Our upcoming On-Demand Screenshot feature will allow you to capture a high-quality image of the phone's current screen with a single click from your dashboard. This is perfect for understanding the context of a conversation, viewing a post on social media, or checking their activity in any app to ensure their safety.</p>
                 <div class="glass-effect">
                     <h3>An Exclusive First Look</h3>
                     <p>This feature is currently in the final stages of testing and is in <strong>beta version</strong>. We have given access to a select group of users to help us refine and perfect its functionality. <br><br>Once the testing is complete, the Screenshot feature will be automatically available in your parent panel. We are working hard to make it available to everyone very soon. Thank you for your patience!</p>
@@ -383,8 +321,9 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
+                <!-- मॉडिफिकेशन 5: फुटर में ब्रांड का नाम बदला गया है। -->
                 <div>
-                    <h4>NexusControl</h4>
+                    <h4>FamToolApp</h4>
                     <p>Providing parents with the tools they need to ensure their children's digital safety.</p>
                 </div>
                 <div>
@@ -416,14 +355,13 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 NexusControl. All Rights Reserved.</p>
+                <p>&copy; 2024 FamToolApp. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // मोबाइल मेनू
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => {

@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Notification Monitoring Feature - NexusControl</title>
-    <meta name="description" content="Stay informed about your child's app activity with NexusControl's Notification Monitoring. See alerts from social media, games, and all other apps.">
-    <meta name="keywords" content="notification monitoring, app alerts, parental control, nexuscontrol, social media monitoring">
+    <!-- मॉडिफिकेशन 1: SEO टैग्स को नए, सुरक्षित ब्रांड नाम और विवरण के साथ अपडेट किया गया है। -->
+    <title>Notification Review Feature - FamToolApp</title>
+    <meta name="description" content="Stay informed about your child's app activity with FamToolApp's Notification Review. See alerts from social media, games, and all other apps for their safety.">
+    <meta name="keywords" content="notification review, app alerts, parental guidance, famtoolapp, social media safety">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* ================================================== */
-        /* बेसिक और रूट वेरिएबल्स */
-        /* ================================================== */
+        /* --- सीएसएस स्टाइल में कोई बदलाव नहीं किया गया है --- */
         :root {
             --color-purple-400: #a78bfa;
             --color-purple-500: #8b5cf6;
@@ -28,11 +27,7 @@
             --bg-dark: #0a0a1a;
             --border-color: rgba(167, 223, 255, 0.1);
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
@@ -42,7 +37,6 @@
             margin: 0;
             overflow-x: hidden;
         }
-        
         .container {
             width: 100%;
             margin-left: auto;
@@ -51,10 +45,6 @@
             padding-right: 1rem;
             box-sizing: border-box;
         }
-
-        /* ================================================== */
-        /* हेडर और नेविगेशन */
-        /* ================================================== */
         .header {
             position: fixed;
             top: 0;
@@ -65,7 +55,6 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
         }
-
         .header-content {
             display: flex;
             justify-content: space-between;
@@ -73,7 +62,6 @@
             padding-top: 1rem;
             padding-bottom: 1rem;
         }
-
         .logo {
             font-size: 1.5rem;
             font-weight: 900;
@@ -81,29 +69,19 @@
             letter-spacing: 0.05em;
             text-decoration: none;
         }
-
-        .logo span {
-            color: var(--color-purple-400);
-        }
-
-        .nav-desktop {
-            display: none; 
-        }
-
+        .logo span { color: var(--color-purple-400); }
+        .nav-desktop { display: none; }
         .nav-desktop a {
             color: var(--color-gray-300);
             font-weight: 500;
             text-decoration: none;
             transition: color 0.3s;
         }
-        .nav-desktop a:hover {
-            color: var(--color-purple-400);
-        }
+        .nav-desktop a:hover { color: var(--color-purple-400); }
         .nav-desktop a.active-link {
             color: var(--color-purple-400);
             font-weight: 600;
         }
-        
         #mobile-menu-button {
             padding: 0.5rem;
             color: var(--color-white);
@@ -111,15 +89,8 @@
             border: none;
             cursor: pointer;
         }
-
-        #mobile-menu {
-            display: none; 
-            background-color: rgba(17, 24, 39, 0.95);
-        }
-        #mobile-menu.is-open {
-            display: block; 
-        }
-        
+        #mobile-menu { display: none; background-color: rgba(17, 24, 39, 0.95); }
+        #mobile-menu.is-open { display: block; }
         #mobile-menu a {
             display: block;
             text-align: center;
@@ -129,17 +100,8 @@
             text-decoration: none;
             transition: background-color 0.3s;
         }
-        #mobile-menu a.active-link {
-            background-color: var(--color-purple-600);
-        }
-
-        /* ================================================== */
-        /* मुख्य कंटेंट */
-        /* ================================================== */
-        main {
-            padding-top: 5rem;
-        }
-        
+        #mobile-menu a.active-link { background-color: var(--color-purple-600); }
+        main { padding-top: 5rem; }
         .hero-section {
             position: relative;
             padding: 5rem 0;
@@ -165,32 +127,20 @@
             color: var(--color-white);
             line-height: 1.2;
         }
-        .hero-content h1 span {
-            color: var(--color-purple-400);
-        }
+        .hero-content h1 span { color: var(--color-purple-400); }
         .hero-content p {
             margin-top: 1rem;
             font-size: 1.125rem;
             color: var(--color-gray-400);
         }
-        
-        .section {
-            padding: 3rem 0;
-        }
-        .section-dark {
-             background-color: rgba(0,0,0,0.2);
-        }
-        
+        .section { padding: 3rem 0; }
+        .section-dark { background-color: rgba(0,0,0,0.2); }
         .grid {
             display: grid;
             gap: 3rem;
             align-items: center;
         }
-
-        .feature-description {
-            text-align: center;
-        }
-
+        .feature-description { text-align: center; }
         .feature-description h2 {
             font-size: 1.875rem;
             font-weight: 700;
@@ -213,10 +163,7 @@
             text-decoration: none;
             transition: background-color 0.3s;
         }
-        .feature-description .cta-button:hover {
-            background-color: #7c3aed;
-        }
-
+        .feature-description .cta-button:hover { background-color: #7c3aed; }
         .feature-image img {
             width: 100%;
             border-radius: 1rem;
@@ -226,13 +173,11 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
         }
-
         .benefits-section .section-title {
             text-align: center;
             max-width: 48rem;
             margin: 0 auto 3rem auto;
         }
-
         .card {
             background: rgba(17, 24, 39, 0.5);
             backdrop-filter: blur(12px);
@@ -266,16 +211,11 @@
             margin-top: 0.5rem;
             color: var(--color-gray-400);
         }
-
-        /* ================================================== */
-        /* फुटर */
-        /* ================================================== */
         .footer {
             background-color: var(--color-black);
             padding: 3rem 0;
             color: var(--color-gray-400);
         }
-        
         .footer-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -293,17 +233,13 @@
             padding: 0;
             margin: 0;
         }
-        .footer-grid ul li {
-            margin-bottom: 0.5rem;
-        }
+        .footer-grid ul li { margin-bottom: 0.5rem; }
         .footer-grid a {
             color: var(--color-gray-400);
             text-decoration: none;
             transition: color 0.3s;
         }
-        .footer-grid a:hover {
-            color: var(--color-purple-400);
-        }
+        .footer-grid a:hover { color: var(--color-purple-400); }
         .social-icons {
             display: flex;
             justify-content: center;
@@ -334,10 +270,6 @@
             border-top: 1px solid var(--color-gray-800);
             text-align: center;
         }
-
-        /* ================================================== */
-        /* रिस्पांसिव ब्रेकपॉइंट्स */
-        /* ================================================== */
         @media (min-width: 768px) {
             .container { max-width: 768px; }
             .hero-content h1 { font-size: 3rem; }
@@ -350,7 +282,6 @@
             .social-icons { justify-content: flex-start; }
             .footer-bottom { text-align: center; }
         }
-        
         @media (min-width: 1024px) {
             .container { max-width: 1024px; }
             .logo { font-size: 1.875rem; }
@@ -366,10 +297,7 @@
             .footer-grid { grid-template-columns: repeat(4, 1fr); }
             .feature-description { text-align: left; }
         }
-        
-        @media (min-width: 1280px) {
-            .container { max-width: 1280px; }
-        }
+        @media (min-width: 1280px) { .container { max-width: 1280px; } }
     </style>
 </head>
 <body>
@@ -377,7 +305,8 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <a href="website.html" class="logo"><span>Nexus</span>Control</a>
+                <!-- मॉडिफिकेशन 2: लोगो का टेक्स्ट नए ब्रांड नाम "FamToolApp" से बदल दिया गया है। -->
+                <a href="index.html" class="logo"><span>Fam</span>ToolApp</a>
                 <nav class="nav-desktop">
                     <a href="index.html">Home</a>
                     <a href="Features.html" class="active-link">Features</a>
@@ -404,7 +333,8 @@
     <main>
         <section class="hero-section">
             <div class="container hero-content">
-                <h1>Notification <span>Monitoring</span></h1>
+                <!-- मॉडिफिकेशन 3: शीर्षक को "Monitoring" से बदलकर "Review" किया गया है। -->
+                <h1>Notification <span>Review</span></h1>
                 <p>Stay updated on your child's digital interactions. See every notification from social media, chats, and other apps, right on your dashboard.</p>
             </div>
         </section>
@@ -413,9 +343,10 @@
             <div class="container">
                 <div class="grid grid-lg-2">
                     <div class="feature-description">
+                        <!-- मॉडिफिकेशन 4: विवरण को सुरक्षा और मार्गदर्शन पर केंद्रित किया गया है। -->
                         <h2>Never Miss an Important Alert</h2>
-                        <p>A child's phone is constantly buzzing with notifications that tell a story about their social life, interests, and potential risks. With NexusControl's Notification Monitoring, you can see the same alerts your child sees, from every app on their phone. This includes new messages on WhatsApp, friend requests on Instagram, updates from games, and much more. It's a simple, powerful way to stay connected and aware of their digital world.</p>
-                        <a href="index.html" class="cta-button">Monitor Notifications Now</a>
+                        <p>A child's phone is constantly buzzing with notifications that tell a story about their social life, interests, and potential risks. With FamToolApp's Notification Review, you can see the same alerts your child sees, from every app on their phone. This includes new messages on WhatsApp, friend requests on Instagram, updates from games, and much more. It's a simple, powerful way to stay connected and aware of their digital world.</p>
+                        <a href="index.html" class="cta-button">Start Guiding Now</a>
                     </div>
                     <div class="feature-image">
                         <img src="images/Notification.png" alt="Dashboard showing a feed of notifications">
@@ -460,8 +391,9 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
+                <!-- मॉडिफिकेशन 5: फुटर में ब्रांड का नाम बदला गया है। -->
                 <div>
-                    <h4>NexusControl</h4>
+                    <h4>FamToolApp</h4>
                     <p>Providing parents with the tools they need to ensure their children's digital safety.</p>
                 </div>
                 <div>
@@ -493,14 +425,13 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 NexusControl. All Rights Reserved.</p>
+                <p>&copy; 2024 FamToolApp. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // मोबाइल मेनू
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => {

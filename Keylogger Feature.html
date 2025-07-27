@@ -4,20 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO (सर्च इंजन ऑप्टिमाइजेशन) के लिए टैग्स -->
-    <title>Keylogger Feature - NexusControl</title>
-    <meta name="description" content="Understand your child's online conversations and searches with the NexusControl Keylogger feature. See every keystroke they type for complete digital awareness.">
-    <meta name="keywords" content="keylogger, keystroke logger, parental control, nexuscontrol, online safety">
+    <!-- मॉडिफिकेशन 1: SEO टैग्स को नए, सुरक्षित ब्रांड नाम और विवरण के साथ अपडेट किया गया है। -->
+    <title>Keystroke Review Feature - FamToolApp</title>
+    <meta name="description" content="Understand your child's online conversations and searches with the FamToolApp Keystroke Review feature. See what they type for complete digital awareness and safety.">
+    <meta name="keywords" content="keystroke review, keystroke logger, parental guidance, famtoolapp, online safety">
 
-    <!-- Google Fonts से 'Inter' फ़ॉन्ट लोड हो रहा है -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* ================================================== */
-        /* बेसिक और रूट वेरिएबल्स */
-        /* ================================================== */
+        /* --- सीएसएस स्टाइल में कोई बदलाव नहीं किया गया है --- */
         :root {
             --color-purple-400: #a78bfa;
             --color-purple-500: #8b5cf6;
@@ -30,11 +27,7 @@
             --bg-dark: #0a0a1a;
             --border-color: rgba(167, 223, 255, 0.1);
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
@@ -44,7 +37,6 @@
             margin: 0;
             overflow-x: hidden;
         }
-        
         .container {
             width: 100%;
             margin-left: auto;
@@ -53,10 +45,6 @@
             padding-right: 1rem;
             box-sizing: border-box;
         }
-
-        /* ================================================== */
-        /* हेडर और नेविगेशन */
-        /* ================================================== */
         .header {
             position: fixed;
             top: 0;
@@ -67,7 +55,6 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
         }
-
         .header-content {
             display: flex;
             justify-content: space-between;
@@ -75,7 +62,6 @@
             padding-top: 1rem;
             padding-bottom: 1rem;
         }
-
         .logo {
             font-size: 1.5rem;
             font-weight: 900;
@@ -83,29 +69,19 @@
             letter-spacing: 0.05em;
             text-decoration: none;
         }
-
-        .logo span {
-            color: var(--color-purple-400);
-        }
-
-        .nav-desktop {
-            display: none; 
-        }
-
+        .logo span { color: var(--color-purple-400); }
+        .nav-desktop { display: none; }
         .nav-desktop a {
             color: var(--color-gray-300);
             font-weight: 500;
             text-decoration: none;
             transition: color 0.3s;
         }
-        .nav-desktop a:hover {
-            color: var(--color-purple-400);
-        }
+        .nav-desktop a:hover { color: var(--color-purple-400); }
         .nav-desktop a.active-link {
             color: var(--color-purple-400);
             font-weight: 600;
         }
-        
         #mobile-menu-button {
             padding: 0.5rem;
             color: var(--color-white);
@@ -113,15 +89,8 @@
             border: none;
             cursor: pointer;
         }
-
-        #mobile-menu {
-            display: none; 
-            background-color: rgba(17, 24, 39, 0.95);
-        }
-        #mobile-menu.is-open {
-            display: block; 
-        }
-        
+        #mobile-menu { display: none; background-color: rgba(17, 24, 39, 0.95); }
+        #mobile-menu.is-open { display: block; }
         #mobile-menu a {
             display: block;
             text-align: center;
@@ -131,17 +100,8 @@
             text-decoration: none;
             transition: background-color 0.3s;
         }
-        #mobile-menu a.active-link {
-            background-color: var(--color-purple-600);
-        }
-
-        /* ================================================== */
-        /* मुख्य कंटेंट */
-        /* ================================================== */
-        main {
-            padding-top: 5rem;
-        }
-        
+        #mobile-menu a.active-link { background-color: var(--color-purple-600); }
+        main { padding-top: 5rem; }
         .hero-section {
             position: relative;
             padding: 5rem 0;
@@ -167,28 +127,19 @@
             color: var(--color-white);
             line-height: 1.2;
         }
-        .hero-content h1 span {
-            color: var(--color-purple-400);
-        }
+        .hero-content h1 span { color: var(--color-purple-400); }
         .hero-content p {
             margin-top: 1rem;
             font-size: 1.125rem;
             color: var(--color-gray-400);
         }
-        
-        .section {
-            padding: 3rem 0;
-        }
-        .section-dark {
-             background-color: rgba(0,0,0,0.2);
-        }
-        
+        .section { padding: 3rem 0; }
+        .section-dark { background-color: rgba(0,0,0,0.2); }
         .grid {
             display: grid;
             gap: 3rem;
             align-items: center;
         }
-
         .feature-description h2 {
             font-size: 1.875rem;
             font-weight: 700;
@@ -211,10 +162,7 @@
             text-decoration: none;
             transition: background-color 0.3s;
         }
-        .feature-description .cta-button:hover {
-            background-color: #7c3aed;
-        }
-
+        .feature-description .cta-button:hover { background-color: #7c3aed; }
         .feature-image img {
             width: 100%;
             border-radius: 1rem;
@@ -224,13 +172,11 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
         }
-
         .benefits-section .section-title {
             text-align: center;
             max-width: 48rem;
             margin: 0 auto 3rem auto;
         }
-
         .card {
             background: rgba(17, 24, 39, 0.5);
             backdrop-filter: blur(12px);
@@ -264,16 +210,11 @@
             margin-top: 0.5rem;
             color: var(--color-gray-400);
         }
-
-        /* ================================================== */
-        /* फुटर */
-        /* ================================================== */
         .footer {
             background-color: var(--color-black);
             padding: 3rem 0;
             color: var(--color-gray-400);
         }
-        
         .footer-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -291,17 +232,13 @@
             padding: 0;
             margin: 0;
         }
-        .footer-grid ul li {
-            margin-bottom: 0.5rem;
-        }
+        .footer-grid ul li { margin-bottom: 0.5rem; }
         .footer-grid a {
             color: var(--color-gray-400);
             text-decoration: none;
             transition: color 0.3s;
         }
-        .footer-grid a:hover {
-            color: var(--color-purple-400);
-        }
+        .footer-grid a:hover { color: var(--color-purple-400); }
         .social-icons {
             display: flex;
             justify-content: center;
@@ -332,10 +269,6 @@
             border-top: 1px solid var(--color-gray-800);
             text-align: center;
         }
-
-        /* ================================================== */
-        /* रिस्पांसिव ब्रेकपॉइंट्स */
-        /* ================================================== */
         @media (min-width: 768px) {
             .container { max-width: 768px; }
             .hero-content h1 { font-size: 3rem; }
@@ -348,7 +281,6 @@
             .social-icons { justify-content: flex-start; }
             .footer-bottom { text-align: center; }
         }
-        
         @media (min-width: 1024px) {
             .container { max-width: 1024px; }
             .logo { font-size: 1.875rem; }
@@ -364,21 +296,16 @@
             .footer-grid { grid-template-columns: repeat(4, 1fr); }
             .feature-description { text-align: left; }
         }
-        
-        @media (min-width: 1280px) {
-            .container { max-width: 1280px; }
-        }
+        @media (min-width: 1280px) { .container { max-width: 1280px; } }
     </style>
 </head>
 <body>
 
-    <!-- ================================================== -->
-    <!-- हेडर और नेविगेशन बार -->
-    <!-- ================================================== -->
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <a href="website.html" class="logo"><span>Nexus</span>Control</a>
+                <!-- मॉडिफिकेशन 2: लोगो का टेक्स्ट नए ब्रांड नाम "FamToolApp" से बदल दिया गया है। -->
+                <a href="index.html" class="logo"><span>Fam</span>ToolApp</a>
                 <nav class="nav-desktop">
                     <a href="index.html">Home</a>
                     <a href="Features.html" class="active-link">Features</a>
@@ -403,57 +330,51 @@
     </header>
 
     <main>
-        <!-- ================================== -->
-        <!-- हीरो सेक्शन -->
-        <!-- ================================== -->
         <section class="hero-section">
             <div class="container hero-content">
-                <h1>Advanced <span>Keylogger</span></h1>
-                <p>See every keystroke your child types on their phone. Understand their conversations, searches, and interactions across all apps.</p>
+                <!-- मॉडिफिकेशन 3: शीर्षक को "Keylogger" से बदलकर "Keystroke Review" किया गया है। -->
+                <h1>Keystroke <span>Review</span> for Safety</h1>
+                <p>See what your child types on their phone to better understand their conversations, searches, and interactions across all apps.</p>
             </div>
         </section>
 
-        <!-- ================================== -->
-        <!-- फीचर विवरण सेक्शन -->
-        <!-- ================================== -->
         <section class="section">
             <div class="container">
                 <div class="grid grid-lg-2">
                     <div class="feature-description">
-                        <h2>Uncover the Full Conversation</h2>
-                        <p>Messages and notifications only show one side of the story. NexusControl's powerful Keylogger lets you see exactly what your child is typing, word for word. From private messages on social media to web searches, you get a complete and unfiltered view of their digital life, helping you protect them from cyberbullying, online predators, and inappropriate content.</p>
+                        <!-- मॉडिफिकेशन 4: विवरण को सुरक्षा और मार्गदर्शन पर केंद्रित किया गया है। -->
+                        <h2>Understand the Full Context</h2>
+                        <p>Messages and notifications only show one side of the story. FamToolApp's powerful Keystroke Review feature lets you see exactly what your child is typing, word for word. From private messages on social media to web searches, you get a complete view of their digital life, helping you protect them from cyberbullying, online predators, and inappropriate content.</p>
                         <a href="index.html" class="cta-button">Start Protecting Now</a>
                     </div>
                     <div class="feature-image">
-                        <img src="images/Keylogger.png" alt="Dashboard showing keylogger data">
+                        <img src="images/Keylogger.png" alt="Dashboard showing keystroke review data">
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- ================================== -->
-        <!-- मुख्य लाभ सेक्शन -->
-        <!-- ================================== -->
         <section class="section section-dark benefits-section">
             <div class="container">
                 <div class="section-title">
-                    <h2>Why Our Keylogger is Essential</h2>
-                    <p>Gain crucial insights that other monitoring tools might miss, ensuring you have the complete context for every situation.</p>
+                    <!-- मॉडिफिकेशन 5: लाभों के शीर्षक को अधिक सकारात्मक बनाया गया है। -->
+                    <h2>Why Keystroke Review is Essential</h2>
+                    <p>Gain crucial insights that other tools might miss, ensuring you have the complete context to guide your child safely.</p>
                 </div>
                 <div class="grid">
                     <div class="card">
                         <div class="card-icon-wrapper">
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
                         </div>
-                        <h3>Monitor All Apps</h3>
-                        <p>Our keylogger works across all applications, including social media (Instagram, Snapchat, WhatsApp), messaging apps, and web browsers.</p>
+                        <h3>Review Across All Apps</h3>
+                        <p>Our feature works across all applications, including social media (Instagram, Snapchat, WhatsApp), messaging apps, and web browsers.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon-wrapper">
                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </div>
-                        <h3>See Deleted Texts</h3>
-                        <p>Even if a message is typed and then deleted before being sent, our keylogger captures it, ensuring nothing is hidden from you.</p>
+                        <h3>See Deleted Drafts</h3>
+                        <p>Even if a message is typed and then deleted before being sent, our feature captures it, ensuring nothing is hidden from you.</p>
                     </div>
                     <div class="card">
                         <div class="card-icon-wrapper">
@@ -467,14 +388,12 @@
         </section>
     </main>
 
-    <!-- ================================== -->
-    <!-- फुटर -->
-    <!-- ================================== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
+                <!-- मॉडिफिकेशन 6: फुटर में ब्रांड का नाम बदला गया है। -->
                 <div>
-                    <h4>NexusControl</h4>
+                    <h4>FamToolApp</h4>
                     <p>Providing parents with the tools they need to ensure their children's digital safety.</p>
                 </div>
                 <div>
@@ -501,19 +420,18 @@
                         <a href="#" class="social-icon" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5V9.1c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.3 0-1.7.8-1.7 1.6V12H17l-.5 3h-2.5v7A10 10 0 0022 12z"/></svg></a>
                         <a href="#" class="social-icon" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 19c7.5 0 11.6-6.2 11.6-11.6v-.5A8.3 8.3 0 0022 4.3a8 8 0 01-2.3.6 4 4 0 001.7-2.2 8 8 0 01-2.5 1 4 4 0 00-6.8 3.6 11.4 11.4 0 01-8.3-4.2 4 4 0 001.3 5.4A4 4 0 012 8.6v.1a4 4 0 003.2 3.9 4 4 0 01-1.8.1 4 4 0 003.7 2.8A8 8 0 012 17.5a11.3 11.3 0 006 1.8"/></svg></a>
                         <a href="#" class="social-icon" aria-label="Instagram"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.6 0 3 1.4 3 3v10c0 1.6-1.4 3-3 3H7c-1.6 0-3-1.4-3-3V7c0-1.6 1.4-3 3-3h10zM12 8a4 4 0 100 8 4 4 0 000-8zm0 6.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm4.5-6.9a1 1 0 110-2 1 1 0 010 2z"/></svg></a>
-                        <a href="#" class="social-icon" aria-label="YouTube"><svg fill="currentColor" viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.824-42.194-48.475-48.475C465.605 64 288 64 288 64s-177.605 0-213.18 11.608c-23.65 6.281-42.194 24.825-48.475 48.475C16.74 159.658 16.74 256 16.74 256s0 96.342 9.605 131.917c6.281 23.65 24.825 42.194 48.475 48.475C110.395 448 288 448 288 448s177.605 0 213.18-11.608c23.65-6.281 42.194-24.825 48.475-48.475C559.26 352.342 559.26 256 559.26 256s0-96.342-9.605-131.917zM232 334.059V177.941L345 256l-113 78.059z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="YouTube"><svg fill="currentColor" viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.824-42.194-48.475-48.475C465.605 64 288 64 288 64s-177.605 0-213.18 11.608c-23.65 6.281-42.194 24.825-48.475 48.475C16.74 159.658 16.74 256 16.74 256s0 96.342 9.605 131.917c6.281 23.65 24.825 42.194 48.475 48.475C110.395 448 288 448 288 448s177.605 0 213.18-11.608c23.65-6.281 42.194-24.825-48.475-48.475C559.26 352.342 559.26 256 559.26 256s0-96.342-9.605-131.917zM232 334.059V177.941L345 256l-113 78.059z"/></svg></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 NexusControl. All Rights Reserved.</p>
+                <p>&copy; 2024 FamToolApp. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // मोबाइल मेनू
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => {

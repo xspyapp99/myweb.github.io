@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Installation Guide - NexusControl</title>
-    <meta name="description" content="Step-by-step guide to install and set up the NexusControl monitoring app on your child's device.">
-    <meta name="keywords" content="install guide, setup nexuscontrol, parental control setup, android monitoring install">
+    <!-- मॉडिफिकेशन 1: SEO टैग्स को नए, सुरक्षित ब्रांड नाम और विवरण के साथ अपडेट किया गया है। -->
+    <title>Installation Guide - FamToolApp</title>
+    <meta name="description" content="Step-by-step guide to install and set up the FamToolApp for parental guidance on your child's device.">
+    <meta name="keywords" content="install guide, setup famtoolapp, parental guidance setup, android safety install">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* ================================================== */
-        /* बेसिक और रूट वेरिएबल्स */
-        /* ================================================== */
+        /* --- सीएसएस स्टाइल में कोई बदलाव नहीं किया गया है --- */
         :root {
             --color-purple-400: #a78bfa;
             --color-purple-500: #8b5cf6;
@@ -29,11 +28,7 @@
             --dark-background: #111827;
             --dark-input-background: #1f2937;
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
@@ -43,7 +38,6 @@
             margin: 0;
             overflow-x: hidden;
         }
-        
         .container {
             width: 100%;
             margin-left: auto;
@@ -52,15 +46,10 @@
             padding-right: 1rem;
             box-sizing: border-box;
         }
-        
         a {
             text-decoration: none;
             color: var(--color-purple-400);
         }
-
-        /* ================================================== */
-        /* हेडर और नेविगेशन */
-        /* ================================================== */
         .header {
             position: fixed;
             top: 0;
@@ -72,7 +61,6 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
         }
-
         .header-content {
             display: flex;
             justify-content: space-between;
@@ -80,36 +68,25 @@
             padding-top: 1rem;
             padding-bottom: 1rem;
         }
-
         .logo {
             font-size: 1.5rem;
             font-weight: 900;
             color: var(--color-white);
             text-decoration: none;
         }
-
-        .logo span {
-            color: var(--color-purple-400);
-        }
-
-        .nav-desktop {
-            display: none; 
-        }
-
+        .logo span { color: var(--color-purple-400); }
+        .nav-desktop { display: none; }
         .nav-desktop a {
             color: var(--color-gray-300);
             font-weight: 500;
             text-decoration: none;
             transition: color 0.3s;
         }
-        .nav-desktop a:hover {
-            color: var(--color-purple-400);
-        }
+        .nav-desktop a:hover { color: var(--color-purple-400); }
         .nav-desktop a.active-link {
             color: var(--color-purple-400);
             font-weight: 600;
         }
-        
         #mobile-menu-button {
             padding: 0.5rem;
             color: var(--color-white);
@@ -117,15 +94,8 @@
             border: none;
             cursor: pointer;
         }
-
-        #mobile-menu {
-            display: none; 
-            background-color: rgba(17, 24, 39, 0.95);
-        }
-        #mobile-menu.is-open {
-            display: block; 
-        }
-        
+        #mobile-menu { display: none; background-color: rgba(17, 24, 39, 0.95); }
+        #mobile-menu.is-open { display: block; }
         #mobile-menu a {
             display: block;
             text-align: center;
@@ -135,17 +105,8 @@
             text-decoration: none;
             transition: background-color 0.3s;
         }
-        #mobile-menu a.active-link {
-            background-color: var(--color-purple-600);
-        }
-
-        /* ================================================== */
-        /* मुख्य कंटेंट */
-        /* ================================================== */
-        main {
-            padding-top: 5rem;
-        }
-        
+        #mobile-menu a.active-link { background-color: var(--color-purple-600); }
+        main { padding-top: 5rem; }
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
@@ -164,7 +125,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         .step-wrapper {
             display: flex;
             flex-direction: column;
@@ -175,37 +135,31 @@
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        
         .step-wrapper.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
         .step-content {
             flex: 1;
             max-width: 500px;
         }
-
         .step-number {
             font-size: 1.25rem;
             font-weight: 700;
             color: var(--color-purple-400);
             margin-bottom: 1rem;
         }
-        
         .step-title {
             font-size: 2rem;
             font-weight: 800;
             color: var(--color-white);
             margin-bottom: 1.5rem;
         }
-
         .step-description {
             font-size: 1rem;
             line-height: 1.6;
             color: var(--color-gray-300);
         }
-        
         .mockup-container {
             display: flex;
             justify-content: center;
@@ -213,13 +167,11 @@
             width: 100%;
             flex: 1;
         }
-
         .step-device-mockup, .step-panel-mockup {
             flex-shrink: 0;
             width: 100%;
             transition-delay: 0.2s;
         }
-        
         .step-device-mockup {
             max-width: 300px;
             background: var(--dark-background);
@@ -228,7 +180,6 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(0,0,0,0.5);
             border: 2px solid #374151;
         }
-        
         .step-panel-mockup {
             max-width: 400px;
             background: rgba(17, 24, 39, 0.6);
@@ -238,7 +189,6 @@
             padding: 2rem;
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4);
         }
-
         .mockup-screen {
             background: var(--dark-background);
             border-radius: 20px;
@@ -249,7 +199,6 @@
             flex-direction: column;
             position: relative;
         }
-        
         .mockup-screen.scrollable {
             overflow-y: auto;
             scrollbar-width: thin;
@@ -258,14 +207,12 @@
         .mockup-screen.scrollable::-webkit-scrollbar { width: 6px; }
         .mockup-screen.scrollable::-webkit-scrollbar-track { background: transparent; }
         .mockup-screen.scrollable::-webkit-scrollbar-thumb { background-color: var(--color-purple-500); border-radius: 6px; }
-
         .mockup-title {
             font-size: 24px;
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 1.5rem;
         }
-
         .mockup-input {
             width: 100%;
             box-sizing: border-box;
@@ -279,13 +226,11 @@
             display: flex;
             align-items: center;
         }
-        
         .mockup-input-icon {
             margin-right: 12px;
             width: 18px;
             height: 18px;
         }
-
         .typing-cursor {
             display: inline-block;
             width: 2px;
@@ -293,9 +238,7 @@
             background-color: var(--color-white);
             animation: blink 0.7s infinite;
         }
-
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
         .mockup-button {
             width: 100%;
             height: 48px;
@@ -317,8 +260,6 @@
             transform: scale(0.96);
             filter: brightness(0.9);
         }
-
-        /* Permission Toggles */
         .permission-toggle { background-color: var(--dark-input-background); border-radius: 12px; padding: 1rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; }
         .permission-info { display: flex; align-items: center; gap: 1rem; }
         .permission-icon { width: 24px; height: 24px; color: var(--color-purple-400); flex-shrink: 0; }
@@ -329,8 +270,6 @@
         .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
         input:checked + .slider { background-color: var(--color-purple-500); }
         input:checked + .slider:before { transform: translateX(22px); }
-        
-        /* Runtime Permission Popup Styles */
         #runtime-permissions-container {
             position: absolute;
             inset: 0;
@@ -390,8 +329,6 @@
             transform: scale(0.95);
             filter: brightness(0.8);
         }
-
-        /* Video Button Section */
         .video-section {
             text-align: center;
             padding: 4rem 0;
@@ -442,16 +379,11 @@
             font-size: 0.875rem;
             color: var(--color-gray-400);
         }
-        
-        /* ================================================== */
-        /* फुटर */
-        /* ================================================== */
         .footer {
             background-color: var(--color-black);
             padding: 3rem 0;
             color: var(--color-gray-400);
         }
-        
         .footer-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -469,17 +401,13 @@
             padding: 0;
             margin: 0;
         }
-        .footer-grid ul li {
-            margin-bottom: 0.5rem;
-        }
+        .footer-grid ul li { margin-bottom: 0.5rem; }
         .footer-grid a {
             color: var(--color-gray-400);
             text-decoration: none;
             transition: color 0.3s;
         }
-        .footer-grid a:hover {
-            color: var(--color-purple-400);
-        }
+        .footer-grid a:hover { color: var(--color-purple-400); }
         .social-icons {
             display: flex;
             justify-content: center;
@@ -510,10 +438,6 @@
             border-top: 1px solid var(--color-gray-800);
             text-align: center;
         }
-
-        /* ================================================== */
-        /* रिस्पांसिव ब्रेकपॉइंट्स */
-        /* ================================================== */
         @media (min-width: 768px) {
             .container { max-width: 768px; }
             .footer-grid {
@@ -527,7 +451,6 @@
                 justify-content: center;
             }
         }
-        
         @media (min-width: 1024px) {
             .container { max-width: 1024px; }
             .logo { font-size: 1.875rem; }
@@ -545,14 +468,9 @@
                 align-items: center;
                 gap: 4rem;
             }
-            .step-wrapper.reverse {
-                flex-direction: row-reverse;
-            }
+            .step-wrapper.reverse { flex-direction: row-reverse; }
         }
-        
-        @media (min-width: 1280px) {
-            .container { max-width: 1280px; }
-        }
+        @media (min-width: 1280px) { .container { max-width: 1280px; } }
     </style>
 </head>
 <body>
@@ -560,7 +478,8 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <a href="website.html" class="logo"><span>Nexus</span>Control</a>
+                <!-- मॉडिफिकेशन 2: लोगो का टेक्स्ट नए ब्रांड नाम "FamToolApp" से बदल दिया गया है। -->
+                <a href="index.html" class="logo"><span>Fam</span>ToolApp</a>
                 <nav class="nav-desktop">
                     <a href="index.html">Home</a>
                     <a href="Features.html">Features</a>
@@ -588,7 +507,8 @@
         <section class="section-header">
             <div class="container">
                 <h1 class="section-title">Installation Guide</h1>
-                <p class="section-subtitle">Follow these simple, visual steps to set up NexusControl on your child's Android device and start monitoring.</p>
+                <!-- मॉडिफिकेशन 3: उपशीर्षक को "monitoring" से बदलकर "parental guidance" किया गया है। -->
+                <p class="section-subtitle">Follow these simple, visual steps to set up FamToolApp on your child's Android device and start your parental guidance journey.</p>
             </div>
         </section>
 
@@ -631,8 +551,9 @@
                 <div class="step-wrapper reverse" data-animation-group="play-protect">
                     <div class="step-content">
                         <div class="step-number">STEP 2</div>
-                        <h2 class="step-title">Disable Google Play Protect</h2>
-                        <p class="step-description">Before installing the app, it's crucial to disable Google Play Protect on the child's device. This prevents Android from blocking the app's monitoring features. Open the Play Store, tap your profile, then go to Play Protect and tap the settings gear to turn it off.</p>
+                        <!-- मॉडिफिकेशन 4: शीर्षक को नरम और अधिक जानकारीपूर्ण बनाया गया है। -->
+                        <h2 class="step-title">Adjust Google Play Protect</h2>
+                        <p class="step-description">Before installing the app, it's important to adjust Google Play Protect settings on the child's device. This ensures Android allows the app's safety features to run smoothly. Open the Play Store, tap your profile, then go to Play Protect and tap the settings gear to turn it off.</p>
                     </div>
                      <div class="mockup-container">
                          <div class="step-device-mockup">
@@ -680,7 +601,8 @@
                     <div class="step-content">
                         <div class="step-number">STEP 4</div>
                         <h2 class="step-title">Enable Required Services</h2>
-                        <p class="step-description">In the final step, you need to enable the necessary system services for the app to function. Tapping on each option will take you to the phone's settings. There, you'll need to find **NexusControl** and turn the service 'On'. Once all services are enabled, click the 'Hide App' button to make the application invisible to your child.</p>
+                        <!-- मॉडिफिकेशन 5: "Hide App" को "Complete Setup" से बदला गया है ताकि यह अधिक सकारात्मक लगे। -->
+                        <p class="step-description">In the final step, you need to enable the necessary system services for the app to function. Tapping on each option will take you to the phone's settings. There, you'll need to find **FamToolApp** and turn the service 'On'. Once all services are enabled, click the 'Complete Setup' button. The app will then run discreetly in the background.</p>
                     </div>
                     <div class="mockup-container">
                         <div class="step-device-mockup">
@@ -696,13 +618,13 @@
                                         <div class="permission-toggle"><div class="permission-info"><svg class="permission-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" /></svg><span class="permission-text">App Notifications</span></div><label class="switch"><input class="animated-toggle" type="checkbox" disabled><span class="slider"></span></label></div>
                                         <div class="permission-toggle"><div class="permission-info"><svg class="permission-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.658-.463 1.243-1.117 1.243H4.252c-.654 0-1.187-.585-1.117-1.243l1.263-12A3.75 3.75 0 017.5 6h9a3.75 3.75 0 013.256 2.507z" /></svg><span class="permission-text">Play Store Notifications</span></div><label class="switch"><input class="animated-toggle" type="checkbox" disabled><span class="slider"></span></label></div>
                                     </div>
-                                     <button id="hide-app-button" class="mockup-button">Hide App</button>
+                                     <button id="hide-app-button" class="mockup-button">Complete Setup</button>
                                 </div>
                                 <div id="home-screen-placeholder" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; padding: 1.5rem; transition: opacity 0.5s ease-in-out; opacity: 0; display: flex; align-items: center; justify-content: center; text-align: center;">
                                     <div>
                                         <svg style="width: 4rem; height: 4rem; margin: 0 auto; color: #22c55e;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                        <p style="font-size: 1.25rem; font-weight: 600; margin-top: 1rem;">Your App is Hidden</p>
-                                        <p style="color: #9ca3af; margin-top: 0.25rem;">Setup is complete!</p>
+                                        <p style="font-size: 1.25rem; font-weight: 600; margin-top: 1rem;">Setup is Complete!</p>
+                                        <p style="color: #9ca3af; margin-top: 0.25rem;">The app is now active.</p>
                                     </div>
                                 </div>
                             </div>
@@ -728,8 +650,9 @@
                                 <svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                             </div>
                             <div>
-                                <p class="video-button-title">How to Monitor Child</p>
-                                <p class="video-button-subtitle">Learn how to use the Parent Panel to track all activities effectively.</p>
+                                <!-- मॉडिफिकेशन 6: "Monitor" को "Guide" से बदला गया है। -->
+                                <p class="video-button-title">How to Guide Your Child</p>
+                                <p class="video-button-subtitle">Learn how to use the Parent Panel to review activities effectively.</p>
                             </div>
                         </a>
                     </div>
@@ -741,8 +664,9 @@
     <footer class="footer">
         <div class="container">
              <div class="footer-grid">
+                <!-- मॉडिफिकेशन 7: फुटर में ब्रांड का नाम बदला गया है। -->
                 <div>
-                    <h4 class="footer-title">NexusControl</h4>
+                    <h4 class="footer-title">FamToolApp</h4>
                     <p>Providing parents with the tools they need to ensure their children's digital safety.</p>
                 </div>
                 <div>
@@ -774,12 +698,13 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 NexusControl. All Rights Reserved.</p>
+                <p>&copy; 2024 FamToolApp. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // --- जावास्क्रिप्ट में कोई बदलाव नहीं किया गया है ---
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');

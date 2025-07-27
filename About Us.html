@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO (सर्च इंजन ऑप्टिमाइजेशन) के लिए टैग्स -->
-    <title>About Us - NexusControl</title>
-    <meta name="description" content="Learn about the mission, story, and team behind NexusControl. We are dedicated to providing parents with the best tools for digital safety.">
-    <meta name="keywords" content="about us, nexuscontrol, our mission, our team, parental control">
+    <!-- मॉडिफिकेशन 1: SEO टैग्स को नए, सुरक्षित ब्रांड नाम और विवरण के साथ अपडेट किया गया है। -->
+    <title>About Us - FamToolApp</title>
+    <meta name="description" content="Learn about the mission, story, and team behind FamToolApp. We are dedicated to providing parents with the best tools for digital safety.">
+    <meta name="keywords" content="about us, famtoolapp, our mission, our team, parental guidance, family safety">
 
     <!-- Google Fonts से 'Inter' फ़ॉन्ट लोड हो रहा है -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,9 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* ================================================== */
-        /* बेसिक और रूट वेरिएबल्स */
-        /* ================================================== */
+        /* --- सीएसएस स्टाइल में कोई बदलाव नहीं किया गया है --- */
         :root {
             --color-purple-400: #a78bfa;
             --color-purple-500: #8b5cf6;
@@ -31,11 +29,7 @@
             --bg-dark: #0a0a1a;
             --border-color: rgba(167, 223, 255, 0.1);
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
@@ -45,7 +39,6 @@
             margin: 0;
             overflow-x: hidden;
         }
-        
         .container {
             width: 100%;
             margin-left: auto;
@@ -54,10 +47,6 @@
             padding-right: 1rem;
             box-sizing: border-box;
         }
-
-        /* ================================================== */
-        /* हेडर और नेविगेशन */
-        /* ================================================== */
         .header {
             position: fixed;
             top: 0;
@@ -69,7 +58,6 @@
             -webkit-backdrop-filter: blur(4px);
             transition: all 0.3s ease-in-out;
         }
-
         .header-content {
             display: flex;
             justify-content: space-between;
@@ -77,7 +65,6 @@
             padding-top: 1rem;
             padding-bottom: 1rem;
         }
-
         .logo {
             font-size: 1.5rem;
             font-weight: 900;
@@ -85,29 +72,19 @@
             letter-spacing: 0.05em;
             text-decoration: none;
         }
-
-        .logo span {
-            color: var(--color-purple-400);
-        }
-
-        .nav-desktop {
-            display: none; 
-        }
-
+        .logo span { color: var(--color-purple-400); }
+        .nav-desktop { display: none; }
         .nav-desktop a {
             color: var(--color-gray-300);
             font-weight: 500;
             text-decoration: none;
             transition: color 0.3s;
         }
-        .nav-desktop a:hover {
-            color: var(--color-purple-400);
-        }
+        .nav-desktop a:hover { color: var(--color-purple-400); }
         .nav-desktop a.active-link {
             color: var(--color-purple-400);
             font-weight: 600;
         }
-        
         #mobile-menu-button {
             padding: 0.5rem;
             color: var(--color-white);
@@ -115,15 +92,8 @@
             border: none;
             cursor: pointer;
         }
-
-        #mobile-menu {
-            display: none; 
-            background-color: rgba(17, 24, 39, 0.95);
-        }
-        #mobile-menu.is-open {
-            display: block; 
-        }
-        
+        #mobile-menu { display: none; background-color: rgba(17, 24, 39, 0.95); }
+        #mobile-menu.is-open { display: block; }
         #mobile-menu a {
             display: block;
             text-align: center;
@@ -133,20 +103,9 @@
             text-decoration: none;
             transition: background-color 0.3s;
         }
-        #mobile-menu a:hover {
-            background-color: var(--color-purple-600);
-        }
-        #mobile-menu a.active-link {
-            background-color: var(--color-purple-600);
-        }
-
-        /* ================================================== */
-        /* मुख्य कंटेंट */
-        /* ================================================== */
-        main {
-            padding-top: 5rem;
-        }
-        
+        #mobile-menu a:hover { background-color: var(--color-purple-600); }
+        #mobile-menu a.active-link { background-color: var(--color-purple-600); }
+        main { padding-top: 5rem; }
         .hero-section {
             position: relative;
             padding: 5rem 0;
@@ -177,13 +136,8 @@
             font-size: 1.125rem;
             color: var(--color-gray-400);
         }
-        
-        .section {
-            padding: 3rem 0;
-        }
-        .section-dark {
-             background-color: rgba(0,0,0,0.2);
-        }
+        .section { padding: 3rem 0; }
+        .section-dark { background-color: rgba(0,0,0,0.2); }
         .section-title {
             text-align: center;
             max-width: 48rem;
@@ -199,16 +153,9 @@
             font-size: 1.125rem;
             color: var(--color-gray-400);
         }
-        
-        .grid {
-            display: grid;
-            gap: 2rem;
-        }
+        .grid { display: grid; gap: 2rem; }
         .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
-        
-        .mission-cards {
-            margin-top: 3rem;
-        }
+        .mission-cards { margin-top: 3rem; }
         .card {
             background: rgba(17, 24, 39, 0.5);
             backdrop-filter: blur(12px);
@@ -238,22 +185,14 @@
             margin-top: 0.5rem;
             color: var(--color-gray-400);
         }
-        
-        .timeline {
-            max-width: 42rem;
-            margin: 3rem auto 0 auto;
-        }
-        .timeline-wrapper {
-            position: relative;
-        }
+        .timeline { max-width: 42rem; margin: 3rem auto 0 auto; }
+        .timeline-wrapper { position: relative; }
         .timeline-item {
             position: relative;
             padding-left: 3rem;
             padding-bottom: 3rem;
         }
-        .timeline-item:last-child {
-            padding-bottom: 0;
-        }
+        .timeline-item:last-child { padding-bottom: 0; }
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -263,9 +202,7 @@
             width: 2px;
             background-color: var(--border-color);
         }
-        .timeline-item:last-child::before {
-            display: none;
-        }
+        .timeline-item:last-child::before { display: none; }
         .timeline-dot {
             position: absolute;
             left: 10px;
@@ -281,16 +218,9 @@
             font-weight: 700;
             color: var(--color-purple-400);
         }
-        .timeline-item p {
-            margin-top: 0.5rem;
-        }
-
-        .team-grid {
-            margin-top: 3rem;
-        }
-        .team-member {
-            text-align: center;
-        }
+        .timeline-item p { margin-top: 0.5rem; }
+        .team-grid { margin-top: 3rem; }
+        .team-member { text-align: center; }
         .team-member img {
             width: 8rem;
             height: 8rem;
@@ -304,10 +234,7 @@
             font-weight: 700;
             color: var(--color-white);
         }
-        .team-member p {
-            color: var(--color-purple-400);
-        }
-        
+        .team-member p { color: var(--color-purple-400); }
         .fade-in-up {
             opacity: 0;
             transform: translateY(30px);
@@ -317,16 +244,11 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* ================================================== */
-        /* फुटर */
-        /* ================================================== */
         .footer {
             background-color: var(--color-black);
             padding: 3rem 0;
             color: var(--color-gray-400);
         }
-        
         .footer-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -344,17 +266,13 @@
             padding: 0;
             margin: 0;
         }
-        .footer-grid ul li {
-            margin-bottom: 0.5rem;
-        }
+        .footer-grid ul li { margin-bottom: 0.5rem; }
         .footer-grid a {
             color: var(--color-gray-400);
             text-decoration: none;
             transition: color 0.3s;
         }
-        .footer-grid a:hover {
-            color: var(--color-purple-400);
-        }
+        .footer-grid a:hover { color: var(--color-purple-400); }
         .social-icons {
             display: flex;
             justify-content: center;
@@ -385,14 +303,7 @@
             border-top: 1px solid var(--color-gray-800);
             text-align: center;
         }
-
-        /* ================================================== */
-        /* रिस्पांसिव ब्रेकपॉइंट्स */
-        /* ================================================== */
-        @media (min-width: 640px) {
-            .team-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        
+        @media (min-width: 640px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 768px) {
             .container { max-width: 768px; }
             .hero-content h1 { font-size: 3rem; }
@@ -405,7 +316,6 @@
             }
             .social-icons { justify-content: flex-start; }
         }
-        
         @media (min-width: 1024px) {
             .container { max-width: 1024px; }
             .logo { font-size: 1.875rem; }
@@ -419,22 +329,17 @@
             .team-grid { grid-template-columns: repeat(4, 1fr); }
             .footer-grid { grid-template-columns: repeat(4, 1fr); }
         }
-        
-        @media (min-width: 1280px) {
-            .container { max-width: 1280px; }
-        }
+        @media (min-width: 1280px) { .container { max-width: 1280px; } }
     </style>
 </head>
 <body>
 
-    <!-- ================================================== -->
-    <!-- हेडर और नेविगेशन बार -->
-    <!-- ================================================== -->
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <a href="website.html" class="logo">
-                    <span class="text-purple-400">Nexus</span>Control
+                <!-- मॉडिफिकेशन 2: लोगो का टेक्स्ट नए ब्रांड नाम "FamToolApp" से बदल दिया गया है। -->
+                <a href="index.html" class="logo">
+                    <span class="text-purple-400">Fam</span>ToolApp
                 </a>
                 
                 <nav class="nav-desktop">
@@ -461,19 +366,14 @@
     </header>
 
     <main>
-        <!-- ================================== -->
-        <!-- हीरो सेक्शन -->
-        <!-- ================================== -->
         <section class="hero-section">
             <div class="container hero-content">
-                <h1>About <span>NexusControl</span></h1>
+                <!-- मॉडिफिकेशन 3: शीर्षक में ब्रांड का नाम बदला गया है। -->
+                <h1>About <span>FamToolApp</span></h1>
                 <p>We are a team of passionate developers and concerned parents dedicated to creating a safer digital world for children.</p>
             </div>
         </section>
 
-        <!-- ================================== -->
-        <!-- हमारा मिशन सेक्शन -->
-        <!-- ================================== -->
         <section class="section">
             <div class="container">
                 <div class="section-title">
@@ -507,9 +407,6 @@
             </div>
         </section>
 
-        <!-- ================================== -->
-        <!-- हमारी कहानी सेक्शन (Timeline) -->
-        <!-- ================================== -->
         <section class="section section-dark">
             <div class="container">
                 <div class="section-title">
@@ -518,10 +415,11 @@
                 </div>
                 <div class="timeline">
                     <div class="timeline-wrapper">
+                        <!-- मॉडिफिकेशन 4: कहानी में ब्रांड का नाम बदला गया है। -->
                         <div class="timeline-item fade-in-up">
                             <div class="timeline-dot"></div>
                             <h3>2023 - The Idea</h3>
-                            <p>A group of parents and tech enthusiasts realized the existing parental control solutions were either too complex, too expensive, or not secure enough. The concept of NexusControl was born.</p>
+                            <p>A group of parents and tech enthusiasts realized the existing parental guidance solutions were either too complex, too expensive, or not secure enough. The concept of FamToolApp was born.</p>
                         </div>
                         <div class="timeline-item fade-in-up">
                             <div class="timeline-dot"></div>
@@ -531,7 +429,7 @@
                         <div class="timeline-item fade-in-up">
                             <div class="timeline-dot"></div>
                             <h3>2025 - Public Launch</h3>
-                            <p>NexusControl was officially launched to the public. Our commitment to providing a powerful free service resonated with parents worldwide, and our user base grew rapidly.</p>
+                            <p>FamToolApp was officially launched to the public. Our commitment to providing a powerful free service resonated with parents worldwide, and our user base grew rapidly.</p>
                         </div>
                         <div class="timeline-item fade-in-up">
                             <div class="timeline-dot"></div>
@@ -543,9 +441,6 @@
             </div>
         </section>
         
-        <!-- ================================== -->
-        <!-- हमारी टीम सेक्शन -->
-        <!-- ================================== -->
         <section class="section">
             <div class="container">
                 <div class="section-title">
@@ -578,14 +473,12 @@
         </section>
     </main>
 
-    <!-- ================================== -->
-    <!-- फुटर -->
-    <!-- ================================== -->
-   <footer class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
+                <!-- मॉडिफिकेशन 5: फुटर में ब्रांड का नाम बदला गया है। -->
                 <div>
-                    <h4>NexusControl</h4>
+                    <h4>FamToolApp</h4>
                     <p>Providing parents with the tools they need to ensure their children's digital safety.</p>
                 </div>
                 <div>
@@ -617,7 +510,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 NexusControl. All Rights Reserved.</p>
+                <p>&copy; 2025 FamToolApp. All Rights Reserved.</p>
             </div>
         </div>
     </footer>

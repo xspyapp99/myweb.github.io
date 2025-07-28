@@ -37,7 +37,6 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             margin: 0;
-            overflow-x: hidden;
         }
         .container {
             width: 100%;
@@ -84,10 +83,10 @@
         }
         .logo span { color: var(--color-purple-400); }
         .nav-desktop { display: none; }
-        @media (min-width: 768px) {
+        @media (min-width: 1200px) {
             .nav-desktop {
                 display: flex;
-                gap: 2rem;
+                gap: 0rem;
                 align-items: center;
             }
         }
@@ -96,6 +95,7 @@
             font-weight: 500;
             text-decoration: none;
             transition: color 0.3s;
+            padding: 1rem 1.5rem;
         }
         .nav-desktop a:hover { color: var(--color-purple-400); }
         .nav-desktop a.active-link {
@@ -110,7 +110,7 @@
             cursor: pointer;
             display: block;
         }
-        @media (min-width: 768px) {
+        @media (min-width: 1200px) {
             #mobile-menu-button { display: none; }
         }
         #mobile-menu { display: none; background-color: rgba(17, 24, 39, 0.95); }
@@ -340,6 +340,13 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .dropdown { position: relative; display: inline-block; padding: 1rem 0; }
+        .dropbtn { background: none; border: none; cursor: pointer; color: var(--color-gray-300); font-weight: 500; font-family: 'Inter', sans-serif; font-size: 1rem; padding: 0 1.5rem; transition: color 0.3s; }
+        .dropbtn:hover { color: var(--color-purple-400); }
+        .dropdown-content { display: none; position: absolute; background-color: rgba(0, 0, 0, 0.95); min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 100; border-radius: 0.5rem; border: 1px solid var(--color-gray-800); margin-top: -1rem; left: 50%; transform: translateX(-50%); padding-top: 1rem; }
+        .dropdown-content a { color: var(--color-gray-300); padding: 12px 16px; text-decoration: none; display: block; text-align: left; white-space: nowrap; }
+        .dropdown-content a:hover { background-color: var(--color-purple-600); color: var(--color-white); }
+        .dropdown:hover .dropdown-content { display: block; }
     </style>
 </head>
 <body>
@@ -354,13 +361,18 @@
                 
                 <nav class="nav-desktop">
                     <a href="index.html">Home</a>
-                    <a href="Features.html"class="active-link">Features</a>
-                    <a href="Installation Guide.html">Install Guide</a>
-                    <a href="Privacy Policy.html">Privacy Policy</a>
-                    <a href="Terms and Conditions.html">Terms and Conditions</a>
-                    <a href="Contact Us.html">Contact</a>
-                    <a href="About Us.html">About Us</a>
-                    <a href="FAQ.html">FAQ</a>
+                    <a href="Features.html" class="active-link">Features</a>
+                    <a href="Installation-Guide.html">Install Guide</a>
+                    <a href="Contact-Us.html">Contact</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">More &#9662;</button>
+                        <div class="dropdown-content">
+                            <a href="Privacy-Policy.html">Privacy Policy</a>
+                            <a href="Terms-and-Conditions.html">Terms and Conditions</a>
+                            <a href="About-Us.html">About Us</a>
+                            <a href="FAQ.html">FAQ</a>
+                        </div>
+                    </div>
                 </nav>
 
                 <button id="mobile-menu-button">
@@ -371,11 +383,12 @@
             <div id="mobile-menu">
                 <a href="index.html">Home</a>
                 <a href="Features.html" class="active-link">Features</a>
-                <a href="Installation Guide.html">Install Guide</a>
+                <a href="Installation-Guide.html">Install Guide</a>
+                <a href="Privacy-Policy.html">Privacy Policy</a>
+                <a href="Terms-and-Conditions.html">Terms and Conditions</a>
+                <a href="Contact-Us.html">Contact</a>
+                <a href="About-Us.html">About Us</a>
                 <a href="FAQ.html">FAQ</a>
-                <a href="Privacy Policy.html">Privacy Policy</a>
-                <a href="Contact Us.html">Contact</a>
-                <a href="About Us.html">About Us</a>
             </div>
         </div>
     </header>
@@ -405,7 +418,7 @@
                         <h3 class="feature-title-main">Location Safety</h3>
                         <p class="feature-description">Gain peace of mind by knowing your child's whereabouts in real-time. Our advanced GPS feature ensures you are always connected to their safety.</p>
                         <div class="feature-links">
-                            <a href="Live Location Feature.html">More Details &rarr;</a>
+                            <a href="Location-Safety.html">More Details &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -419,7 +432,7 @@
                         <h3 class="feature-title-main">Emergency Camera Access</h3>
                         <p class="feature-description">In an emergency, see what's happening around your child. Access their phone's front and back cameras to ensure they are safe.</p>
                         <div class="feature-links">
-                            <a href="Live Camera Feature.html">More Details &rarr;</a>
+                            <a href="Emergency-Camera-Access.html">More Details &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -433,7 +446,7 @@
                         <h3 class="feature-title-main">Keystroke Review for Safety</h3>
                         <p class="feature-description">See what your child types to understand their conversations and searches. This helps you protect them from cyberbullying and harmful content across all apps.</p>
                         <div class="feature-links">
-                            <a href="Keylogger Feature.html">More Details &rarr;</a>
+                            <a href="Keystroke-Review.html">More Details &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -447,7 +460,7 @@
                         <h3 class="feature-title-main">SMS Message Review</h3>
                         <p class="feature-description">Read text messages sent and received on your child's phone. Stay aware of their conversations and protect them from potential dangers.</p>
                         <div class="feature-links">
-                            <a href="SMS Monitoring Feature.html">More Details &rarr;</a>
+                            <a href="SMS-Message-Review.html">More Details &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -461,7 +474,7 @@
                         <h3 class="feature-title-main">Notification Review</h3>
                         <p class="feature-description">Stay updated on your child's digital interactions. See every notification from social media, chats, and other apps, right on your dashboard.</p>
                         <div class="feature-links">
-                            <a href="Notification Monitoring Feature.html">More Details &rarr;</a>
+                            <a href="Notification-Review.html">More Details &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -475,7 +488,7 @@
                         <h3 class="feature-title-main">Social Apps Safety <span style="color: var(--color-purple-400); font-size: 0.8em;">(Coming Soon)</span></h3>
                         <p class="feature-description">Help your child navigate social media safely by understanding their interactions on platforms like WhatsApp, Instagram, and Facebook. This feature is currently in beta testing.</p>
                         <div class="feature-links">
-                            <a href="Social Apps Feature.html">More Details &rarr;</a>
+                            <a href="Social-Apps-Safety.html">More Details &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -489,7 +502,7 @@
                         <h3 class="feature-title-main">File Manager for Safety <span style="color: var(--color-purple-400); font-size: 0.8em;">(Coming Soon)</span></h3>
                         <p class="feature-description">Review files and folders on your child's device to ensure they are not exposed to inappropriate material. This feature is currently in beta testing.</p>
                         <div class="feature-links">
-                            <a href="File Manager Feature.html">More Details &rarr;</a>
+                            <a href="File-Manager.html">More Details &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -503,7 +516,7 @@
                         <h3 class="feature-title-main">Call Log Review <span style="color: var(--color-purple-400); font-size: 0.8em;">(Coming Soon)</span></h3>
                         <p class="feature-description">Review your child's call history to understand who they are communicating with and protect them from harm. This feature is currently in beta testing.</p>
                         <div class="feature-links">
-                            <a href="Call Recording Feature.html">More Details &rarr;</a>
+                            <a href="Call-Log-Review.html">More Details &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -517,7 +530,7 @@
                         <h3 class="feature-title-main">Ambient Sound Review <span style="color: var(--color-purple-400); font-size: 0.8em;">(Coming Soon)</span></h3>
                         <p class="feature-description">Listen to the surroundings of your child's phone in emergencies to ensure they are in a safe environment. This feature is currently in beta testing.</p>
                         <div class="feature-links">
-                            <a href="Voice Recording Feature.html">More Details &rarr;</a>
+                            <a href="Ambient-Sound-Review.html">More Details &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -533,7 +546,7 @@
                         <h3 class="feature-title-main">On-Demand Screenshot <span style="color: var(--color-purple-400); font-size: 0.8em;">(Coming Soon)</span></h3>
                         <p class="feature-description">Instantly capture what's on your child's screen, no matter what app they are using. This feature is currently in beta testing.</p>
                         <div class="feature-links">
-                            <a href="Screenshot Feature.html">More Details &rarr;</a>
+                            <a href="Screenshot-Feature.html">More Details &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -547,7 +560,7 @@
                         <h3 class="feature-title-main">Live Screen Review <span style="color: var(--color-purple-400); font-size: 0.8em;">(Coming Soon)</span></h3>
                         <p class="feature-description">Review your child's phone screen activity to better understand their digital habits and guide them. This feature is currently in beta testing.</p>
                         <div class="feature-links">
-                            <a href="Live Screen Feature.html">More Details &rarr;</a>
+                            <a href="Live-Screen-Review.html">More Details &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -568,18 +581,19 @@
                 <div>
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="index.html#home">Home</a></li>
-                        <li><a href="features.html">Features</a></li>
-                        <li><a href="Installation Guide.html">Install Guide</a></li>
+                        
+                        <li><a href="Features.html">Features</a></li>
+                        <li><a href="Installation-Guide.html">Install Guide</a></li>
                         <li><a href="FAQ.html">FAQ</a></li>
+                        <li><a href="About-Us.html">About Us</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="Privacy Policy.html">Privacy Policy</a></li>
-                        <li><a href="About Us.html">About Us</a></li>
-                        <li><a href="Contact Us.html">Contact</a></li>
+                        <li><a href="Privacy-Policy.html">Privacy Policy</a></li>
+                        <li><a href="Terms-and-Conditions.html">Terms and Conditions</a></li>
+                        <li><a href="Contact-Us.html">Contact</a></li>
                         <li><a href="#YOUR_SITEMAP_URL">Sitemap</a></li>
                     </ul>
                 </div>

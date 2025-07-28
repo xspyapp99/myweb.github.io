@@ -37,7 +37,6 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             margin: 0;
-            overflow-x: hidden;
         }
         .container {
             width: 100%;
@@ -73,11 +72,18 @@
         }
         .logo span { color: var(--color-purple-400); }
         .nav-desktop { display: none; }
+        @media (min-width: 1200px) {
+            .nav-desktop {
+                display: flex;
+                align-items: center;
+            }
+        }
         .nav-desktop a {
             color: var(--color-gray-300);
             font-weight: 500;
             text-decoration: none;
             transition: color 0.3s;
+            padding: 1rem 1.5rem;
         }
         .nav-desktop a:hover { color: var(--color-purple-400); }
         .nav-desktop a.active-link {
@@ -90,6 +96,10 @@
             background: none;
             border: none;
             cursor: pointer;
+            display: block;
+        }
+        @media (min-width: 1200px) {
+            #mobile-menu-button { display: none; }
         }
         #mobile-menu { display: none; background-color: rgba(17, 24, 39, 0.95); }
         #mobile-menu.is-open { display: block; }
@@ -308,6 +318,13 @@
             border-top: 1px solid var(--color-gray-800);
             text-align: center;
         }
+        .dropdown { position: relative; display: inline-block; padding: 1rem 0; }
+        .dropbtn { background: none; border: none; cursor: pointer; color: var(--color-gray-300); font-weight: 500; font-family: 'Inter', sans-serif; font-size: 1rem; padding: 0 1.5rem; transition: color 0.3s; }
+        .dropbtn:hover { color: var(--color-purple-400); }
+        .dropdown-content { display: none; position: absolute; background-color: rgba(0, 0, 0, 0.95); min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 100; border-radius: 0.5rem; border: 1px solid var(--color-gray-800); margin-top: -1rem; left: 50%; transform: translateX(-50%); padding-top: 1rem; }
+        .dropdown-content a { color: var(--color-gray-300); padding: 12px 16px; text-decoration: none; display: block; text-align: left; white-space: nowrap; }
+        .dropdown-content a:hover { background-color: var(--color-purple-600); color: var(--color-white); }
+        .dropdown:hover .dropdown-content { display: block; }
         @media (min-width: 768px) {
             .container { max-width: 768px; }
             .hero-content h1 { font-size: 3rem; }
@@ -344,12 +361,17 @@
                 <nav class="nav-desktop">
                     <a href="index.html">Home</a>
                     <a href="Features.html">Features</a>
-                    <a href="Installation Guide.html">Install Guide</a>
-                    <a href="Privacy Policy.html">Privacy Policy</a>
-                    <a href="Terms and Conditions.html">Terms and Conditions</a>
-                    <a href="Contact Us.html">Contact</a>
-                    <a href="About Us.html">About Us</a>
-                    <a href="FAQ.html"class="active-link">FAQ</a>
+                    <a href="Installation-Guide.html">Install Guide</a>
+                    <a href="Contact-Us.html">Contact</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">More &#9662;</button>
+                        <div class="dropdown-content">
+                            <a href="Privacy-Policy.html">Privacy Policy</a>
+                            <a href="Terms-and-Conditions.html">Terms and Conditions</a>
+                            <a href="About-Us.html">About Us</a>
+                            <a href="FAQ.html" class="active-link">FAQ</a>
+                        </div>
+                    </div>
                 </nav>
                 <button id="mobile-menu-button">
                     <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -357,13 +379,13 @@
             </div>
             <div id="mobile-menu">
                 <a href="index.html">Home</a>
-                    <a href="Features.html">Features</a>
-                    <a href="Installation Guide.html">Install Guide</a>
-                    <a href="Privacy Policy.html">Privacy Policy</a>
-                    <a href="Terms and Conditions.html">Terms and Conditions</a>
-                    <a href="Contact Us.html">Contact</a>
-                    <a href="About Us.html">About Us</a>
-                    <a href="FAQ.html"class="active-link">FAQ</a>
+                <a href="Features.html">Features</a>
+                <a href="Installation-Guide.html">Install Guide</a>
+                <a href="Privacy-Policy.html">Privacy Policy</a>
+                <a href="Terms-and-Conditions.html">Terms and Conditions</a>
+                <a href="Contact-Us.html">Contact</a>
+                <a href="About-Us.html">About Us</a>
+                <a href="FAQ.html"class="active-link">FAQ</a>
             </div>
         </div>
     </header>
@@ -487,7 +509,7 @@
                 <div id="no-results-message" class="hidden">
                     <h3>No results found</h3>
                     <p>We couldn't find an answer to your question. Please try a different search term or contact our support team for assistance.</p>
-                    <a href="Contact Us.html">Contact Support</a>
+                    <a href="Contact-Us.html">Contact Support</a>
                 </div>
             </div>
         </section>
@@ -504,18 +526,19 @@
                 <div>
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        
                         <li><a href="Features.html">Features</a></li>
-                        <li><a href="Installation Guide.html">Install Guide</a></li>
+                        <li><a href="Installation-Guide.html">Install Guide</a></li>
                         <li><a href="FAQ.html">FAQ</a></li>
+                        <li><a href="About-Us.html">About Us</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="Privacy Policy.html">Privacy Policy</a></li>
-                        <li><a href="About Us.html">About Us</a></li>
-                        <li><a href="Contact Us.html">Contact</a></li>
+                        <li><a href="Privacy-Policy.html">Privacy Policy</a></li>
+                        <li><a href="Terms-and-Conditions.html">Terms and Conditions</a></li>
+                        <li><a href="Contact-Us.html">Contact</a></li>
                         <li><a href="#YOUR_SITEMAP_URL">Sitemap</a></li>
                     </ul>
                 </div>
@@ -525,7 +548,7 @@
                         <a href="#" class="social-icon" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
                         <a href="#" class="social-icon" aria-label="X/Twitter"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
                         <a href="#" class="social-icon" aria-label="Instagram"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44c0-.795-.645-1.44-1.441-1.44z"/></svg></a>
-                        <a href="#" class="social-icon" aria-label="YouTube"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M21.582 6.186a2.694 2.694 0 0 0-1.886-1.886C17.93 4 12 4 12 4s-5.93 0-7.696.299a2.694 2.694 0 0 0-1.886 1.886C2 7.95 2 12 2 12s0 4.05.318 5.814a2.694 2.694 0 0 0-1.886 1.886C6.07 20 12 20 12 20s5.93 0 7.696-.299a2.694 2.694 0 0 0 1.886-1.886C22 16.05 22 12 22 12s0-4.05-.418-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="YouTube"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M21.582 6.186a2.694 2.694 0 0 0-1.886-1.886C17.93 4 12 4 12 4s-5.93 0-7.696.299a2.694 2.694 0 0 0-1.886 1.886C2 7.95 2 12 2 12s0 4.05.318 5.814a2.694 2.694 0 0 0 1.886 1.886C6.07 20 12 20 12 20s5.93 0 7.696-.299a2.694 2.694 0 0 0 1.886-1.886C22 16.05 22 12 22 12s0-4.05-.418-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
                     </div>
                 </div>
             </div>

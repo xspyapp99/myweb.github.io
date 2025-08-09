@@ -1,8 +1,8 @@
 // FamToolApp AI Chatbot Script
-// Version 2.0 - No iframe
+// Version 3.0 - Self-Contained CSS (No Tailwind)
 (function() {
 
-    // 1. AI के लिए आपकी वेबसाइट की पूरी जानकारी
+    // 1. AI के लिए आपकी वेबसाइट की पूरी जानकारी (इसमें कोई बदलाव नहीं)
     const WEBSITE_CONTEXT = `
         FamToolApp Information:
         
@@ -68,73 +68,158 @@
         - Disclaimer: The service is provided "AS IS". FamToolApp is not liable for any damages resulting from your use or misuse of the service.
     `;
 
-    // 2. चैटबॉट का HTML स्ट्रक्चर
+    // 2. चैटबॉट के लिए आत्मनिर्भर CSS
+    const chatbotCSS = `
+        #chat-widget-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            font-family: 'Inter', sans-serif;
+        }
+        .cw-hidden { display: none; }
+        #chat-window {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 90vw;
+            max-width: 384px;
+            height: 70vh;
+            background-color: #111827;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, opacity 0.3s;
+            transform-origin: bottom right;
+        }
+        #chat-window.cw-hidden {
+            transform: scale(0.95);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #chat-toggle-btn {
+            width: 56px;
+            height: 56px;
+            background-color: #8b5cf6;
+            border-radius: 9999px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        #chat-toggle-btn:hover { transform: scale(1.1); }
+        .cw-header {
+            background-color: #1f2937;
+            padding: 1rem;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #374151;
+            flex-shrink: 0;
+        }
+        .cw-header-info { display: flex; align-items: center; gap: 12px; }
+        .cw-header-avatar { width: 40px; height: 40px; background-color: #8b5cf6; border-radius: 9999px; display: flex; align-items: center; justify-content: center; }
+        .cw-header-title { font-weight: 700; color: white; }
+        .cw-header-status { font-size: 0.75rem; color: #4ade80; }
+        #close-chat-btn { background: none; border: none; color: #9ca3af; cursor: pointer; }
+        #close-chat-btn:hover { color: white; }
+        #chat-messages { flex-grow: 1; padding: 1rem; overflow-y: auto; }
+        #chat-messages::-webkit-scrollbar { width: 6px; }
+        #chat-messages::-webkit-scrollbar-track { background: #1f2937; }
+        #chat-messages::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 3px; }
+        .cw-message { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; max-width: 90%; }
+        .cw-message.cw-user { margin-left: auto; justify-content: flex-end; }
+        .cw-message-avatar { width: 32px; height: 32px; background-color: #8b5cf6; border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .cw-message-content { padding: 12px; border-radius: 0.5rem; font-size: 0.875rem; }
+        .cw-message.cw-ai .cw-message-content { background-color: #1f2937; color: white; border-top-left-radius: 0; }
+        .cw-message.cw-user .cw-message-content { background-color: #8b5cf6; color: white; border-bottom-right-radius: 0; }
+        .cw-input-area { padding: 1rem; background-color: #111827; border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem; border-top: 1px solid #374151; flex-shrink: 0; }
+        #chat-form { display: flex; align-items: center; gap: 8px; }
+        #chat-input {
+            flex-grow: 1;
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 9999px;
+            padding: 8px 16px;
+            color: white;
+            outline: none;
+        }
+        #chat-input:focus { border-color: #8b5cf6; box-shadow: 0 0 0 2px #8b5cf6; }
+        #chat-form button {
+            background-color: #8b5cf6;
+            color: white;
+            border-radius: 9999px;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        #chat-form button:hover { background-color: #7c3aed; }
+        .cw-typing-indicator .cw-message-content { display: flex; align-items: center; gap: 4px; }
+        .cw-typing-indicator .cw-dot { width: 8px; height: 8px; background-color: #9ca3af; border-radius: 9999px; animation: cw-bounce 1s infinite; }
+        @keyframes cw-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+    `;
+
+    // 3. चैटबॉट का HTML स्ट्रक्चर
     const chatbotHTML = `
-        <div id="chat-widget-container" class="fixed bottom-5 right-5 z-50" style="font-family: 'Inter', sans-serif;">
-            <div id="chat-window" class="hidden absolute bottom-[70px] right-0 w-[90vw] max-w-md h-[70vh] bg-gray-900 rounded-2xl shadow-2xl flex flex-col transition-all duration-300 transform origin-bottom-right scale-95 opacity-0">
-                <div class="bg-gray-800 p-4 rounded-t-2xl flex items-center justify-between border-b border-gray-700">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+        <div id="chat-widget-container">
+            <div id="chat-window" class="cw-hidden">
+                <div class="cw-header">
+                    <div class="cw-header-info">
+                        <div class="cw-header-avatar">
+                            <svg xmlns="http://www.w3.org/2000/svg" style="height: 24px; width: 24px; color: white;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
                         </div>
                         <div>
-                            <h3 class="font-bold text-white">FamToolApp Assistant</h3>
-                            <p class="text-xs text-green-400">● Online</p>
+                            <h3 class="cw-header-title">FamToolApp Assistant</h3>
+                            <p class="cw-header-status">● Online</p>
                         </div>
                     </div>
-                    <button id="close-chat-btn" class="text-gray-400 hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                    <button id="close-chat-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="height: 24px; width: 24px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                     </button>
                 </div>
-                <div id="chat-messages" class="flex-1 p-4 overflow-y-auto">
-                    <div class="flex items-start gap-3 mb-4">
-                        <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                <div id="chat-messages">
+                    <div class="cw-message cw-ai">
+                        <div class="cw-message-avatar">
+                            <svg xmlns="http://www.w3.org/2000/svg" style="height: 20px; width: 20px; color: white;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
                         </div>
-                        <div class="bg-gray-800 p-3 rounded-lg rounded-tl-none max-w-xs">
-                            <p class="text-sm text-white">Hello! I am the FamToolApp AI assistant. How can I help you today?</p>
+                        <div class="cw-message-content">
+                            <p>Hello! I am the FamToolApp AI assistant. How can I help you today?</p>
                         </div>
                     </div>
                 </div>
-                <div class="p-4 bg-gray-900 rounded-b-2xl border-t border-gray-700">
-                    <form id="chat-form" class="flex items-center gap-2">
-                        <input type="text" id="chat-input" placeholder="Ask a question..." class="flex-1 bg-gray-800 border border-gray-700 rounded-full py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-purple-500" autocomplete="off">
-                        <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white rounded-full p-3 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" /></svg>
+                <div class="cw-input-area">
+                    <form id="chat-form">
+                        <input type="text" id="chat-input" placeholder="Ask a question..." autocomplete="off">
+                        <button type="submit" aria-label="Send Message">
+                            <svg xmlns="http://www.w3.org/2000/svg" style="height: 20px; width: 20px;" viewBox="0 0 20 20" fill="currentColor"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" /></svg>
                         </button>
                     </form>
                 </div>
             </div>
-            <button id="chat-toggle-btn" class="w-14 h-14 bg-purple-600 rounded-full shadow-lg flex items-center justify-center text-white transform hover:scale-110 transition-transform">
-                 <svg id="chat-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
-                 <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            <button id="chat-toggle-btn" aria-label="Toggle Chat">
+                 <svg id="chat-icon" xmlns="http://www.w3.org/2000/svg" style="height: 32px; width: 32px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+                 <svg id="close-icon" class="cw-hidden" xmlns="http://www.w3.org/2000/svg" style="height: 32px; width: 32px;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
         </div>
     `;
 
-    // 3. चैटबॉट के लिए CSS स्टाइल
-    const chatbotCSS = `
-        #chat-messages::-webkit-scrollbar { width: 6px; }
-        #chat-messages::-webkit-scrollbar-track { background: #1f2937; }
-        #chat-messages::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 3px; }
-        #chat-messages::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
-        #chat-widget-container { font-family: 'Inter', sans-serif; }
-    `;
-
-    // 4. पेज पर HTML और CSS जोड़ना
     document.addEventListener('DOMContentLoaded', () => {
         const styleSheet = document.createElement("style");
         styleSheet.type = "text/css";
         styleSheet.innerText = chatbotCSS;
         document.head.appendChild(styleSheet);
-
         document.body.insertAdjacentHTML('beforeend', chatbotHTML);
-
-        // 5. चैटबॉट के लॉजिक को शुरू करना
         initializeChatbot();
     });
 
-    // 6. चैटबॉट का मुख्य लॉजिक
     function initializeChatbot() {
         const chatWindow = document.getElementById('chat-window');
         const chatToggleBtn = document.getElementById('chat-toggle-btn');
@@ -146,16 +231,15 @@
         const closeIcon = document.getElementById('close-icon');
 
         const toggleChatWindow = () => {
-            if (chatWindow.classList.contains('hidden')) {
-                chatWindow.classList.remove('hidden');
-                setTimeout(() => chatWindow.classList.remove('scale-95', 'opacity-0'), 10);
-                chatIcon.classList.add('hidden');
-                closeIcon.classList.remove('hidden');
+            const isHidden = chatWindow.classList.contains('cw-hidden');
+            if (isHidden) {
+                chatWindow.classList.remove('cw-hidden');
+                chatIcon.classList.add('cw-hidden');
+                closeIcon.classList.remove('cw-hidden');
             } else {
-                chatWindow.classList.add('scale-95', 'opacity-0');
-                setTimeout(() => chatWindow.classList.add('hidden'), 300);
-                chatIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
+                chatWindow.classList.add('cw-hidden');
+                chatIcon.classList.remove('cw-hidden');
+                closeIcon.classList.add('cw-hidden');
             }
         };
 
@@ -166,11 +250,9 @@
             e.preventDefault();
             const userInput = chatInput.value.trim();
             if (!userInput) return;
-
             addMessage(userInput, 'user');
             chatInput.value = '';
             showTypingIndicator();
-
             try {
                 const aiResponse = await getAIResponse(userInput);
                 removeTypingIndicator();
@@ -184,12 +266,10 @@
 
         function addMessage(text, sender) {
             const messageDiv = document.createElement('div');
-            messageDiv.className = `flex items-start gap-3 mb-4 ${sender === 'user' ? 'justify-end' : ''}`;
+            messageDiv.className = `cw-message ${sender === 'user' ? 'cw-user' : 'cw-ai'}`;
             const content = `
-                ${sender === 'ai' ? `<div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg></div>` : ''}
-                <div class="${sender === 'user' ? 'bg-purple-600 text-white rounded-lg rounded-br-none' : 'bg-gray-800 text-white rounded-lg rounded-tl-none'} p-3 max-w-xs">
-                    <p class="text-sm">${text.replace(/\n/g, '<br>')}</p>
-                </div>
+                ${sender === 'ai' ? `<div class="cw-message-avatar"><svg xmlns="http://www.w3.org/2000/svg" style="height: 20px; width: 20px; color: white;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg></div>` : ''}
+                <div class="cw-message-content"><p>${text.replace(/\n/g, '<br>')}</p></div>
             `;
             messageDiv.innerHTML = content;
             chatMessages.appendChild(messageDiv);
@@ -199,10 +279,10 @@
         function showTypingIndicator() {
             const typingDiv = document.createElement('div');
             typingDiv.id = 'typing-indicator';
-            typingDiv.className = 'flex items-start gap-3 mb-4';
+            typingDiv.className = 'cw-message cw-ai cw-typing-indicator';
             typingDiv.innerHTML = `
-                <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg></div>
-                <div class="bg-gray-800 p-3 rounded-lg rounded-tl-none"><div class="flex items-center gap-1"><span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0s;"></span><span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s;"></span><span class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s;"></span></div></div>
+                <div class="cw-message-avatar"><svg xmlns="http://www.w3.org/2000/svg" style="height: 20px; width: 20px; color: white;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg></div>
+                <div class="cw-message-content"><div class="cw-dot" style="animation-delay: 0s;"></div><div class="cw-dot" style="animation-delay: 0.1s;"></div><div class="cw-dot" style="animation-delay: 0.2s;"></div></div>
             `;
             chatMessages.appendChild(typingDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;

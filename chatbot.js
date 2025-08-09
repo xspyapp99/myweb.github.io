@@ -1,5 +1,5 @@
 // FamToolApp AI Chatbot Script
-// Version 3.2 - Corrected API Response Handling
+// Version 3.3 - Robust Multi-Turn API Call
 (function() {
 
     // 1. AI के लिए आपकी वेबसाइट की पूरी जानकारी (इसमें कोई बदलाव नहीं)
@@ -302,7 +302,7 @@
             if (indicator) indicator.remove();
         }
 
-        // *** API कॉल का सही तरीका ***
+        // *** API कॉल का अंतिम और सही तरीका ***
         async function getAIResponse(prompt) {
             const apiKey = ""; // कुंजी की आवश्यकता नहीं है
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
@@ -320,25 +320,28 @@
                 try {
                     const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
                     
-                    if (response.ok) {
-                        const result = await response.json();
-                        if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
-                            return result.candidates[0].content.parts[0].text;
-                        } else {
-                           console.warn("API response was successful but did not contain expected content.", result);
-                           return "I'm sorry, I couldn't find a specific answer for that. Could you try asking in a different way?";
-                        }
-                    } else {
+                    if (!response.ok) {
                         if (response.status === 429) {
                             await new Promise(res => setTimeout(res, delay));
                             delay *= 2;
-                            continue;
+                            continue; // फिर से प्रयास करें
                         }
+                        // अन्य त्रुटियों के लिए, लॉग करें और बाहर निकलें
                         console.error(`API Error: ${response.status} ${response.statusText}`);
                         const errorBody = await response.text();
                         console.error("Error Body:", errorBody);
                         return "I'm sorry, there was a server error. Please try again later.";
                     }
+
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
+                        return result.candidates[0].content.parts[0].text;
+                    } else {
+                       console.warn("API response was successful but did not contain expected content.", result);
+                       return "I'm sorry, I couldn't find a specific answer for that. Could you try asking in a different way?";
+                    }
+
                 } catch (error) {
                     console.error("Network or fetch error:", error);
                     if (i === retries - 1) {

@@ -1,5 +1,5 @@
 // FamToolApp AI Chatbot Script
-// Version 3.1 - API Call Fix
+// Version 3.2 - Corrected API Response Handling
 (function() {
 
     // 1. AI के लिए आपकी वेबसाइट की पूरी जानकारी (इसमें कोई बदलाव नहीं)
@@ -268,7 +268,7 @@
             const messageDiv = document.createElement('div');
             messageDiv.className = `cw-message ${sender === 'user' ? 'cw-user' : 'cw-ai'}`;
             const p = document.createElement('p');
-            p.innerHTML = text.replace(/\n/g, '<br>'); // Sanitize text before adding
+            p.innerHTML = text.replace(/\n/g, '<br>');
             const contentDiv = document.createElement('div');
             contentDiv.className = 'cw-message-content';
             contentDiv.appendChild(p);
@@ -302,54 +302,43 @@
             if (indicator) indicator.remove();
         }
 
-        // *** API कॉल में बदलाव ***
+        // *** API कॉल का सही तरीका ***
         async function getAIResponse(prompt) {
             const apiKey = ""; // कुंजी की आवश्यकता नहीं है
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
             
-            const chatHistory = [
-              {
-                "role": "user",
-                "parts": [{ "text": WEBSITE_CONTEXT }]
-              },
-              {
-                "role": "model",
-                "parts": [{ "text": "Okay, I am ready to answer questions based on the provided information about FamToolApp. How can I help?" }]
-              },
-              {
-                 "role": "user",
-                 "parts": [{ "text": `INSTRUCTION: You are a helpful and friendly assistant for the FamToolApp website. Your name is FamToolApp Assistant. Answer the user's question based *only* on the information provided above. If the answer is not in the information, say "I'm sorry, I don't have information on that. Please visit our contact page for more specific questions." Do not make up answers. Answer in the same language as the user's question.\n\nUSER QUESTION: "${prompt}"`}]
-              }
-            ];
+            const fullPrompt = `${WEBSITE_CONTEXT}\n\n---\n\nINSTRUCTION: You are a helpful and friendly assistant for the FamToolApp website. Your name is FamToolApp Assistant. Answer the user's question based *only* on the information provided above. If the answer is not in the information, say "I'm sorry, I don't have information on that. Please visit our contact page for more specific questions." Do not make up answers. Answer in the same language as the user's question.\n\nUSER QUESTION: "${prompt}"\n\nANSWER:`;
 
-            const payload = { contents: chatHistory };
+            const payload = {
+                contents: [{
+                    parts: [{ text: fullPrompt }]
+                }]
+            };
             
             let retries = 3, delay = 1000;
             for (let i = 0; i < retries; i++) {
                 try {
                     const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                    
                     if (response.ok) {
                         const result = await response.json();
-                        if (result.candidates && result.candidates[0].content && result.candidates[0].content.parts[0].text) {
+                        if (result.candidates && result.candidates.length > 0 && result.candidates[0].content && result.candidates[0].content.parts && result.candidates[0].content.parts.length > 0) {
                             return result.candidates[0].content.parts[0].text;
                         } else {
-                           // अगर कोई जवाब नहीं मिलता है तो एक सामान्य संदेश भेजें
                            console.warn("API response was successful but did not contain expected content.", result);
                            return "I'm sorry, I couldn't find a specific answer for that. Could you try asking in a different way?";
                         }
+                    } else {
+                        if (response.status === 429) {
+                            await new Promise(res => setTimeout(res, delay));
+                            delay *= 2;
+                            continue;
+                        }
+                        console.error(`API Error: ${response.status} ${response.statusText}`);
+                        const errorBody = await response.text();
+                        console.error("Error Body:", errorBody);
+                        return "I'm sorry, there was a server error. Please try again later.";
                     }
-                    if (response.status === 429) { // थ्रॉटलिंग के लिए फिर से प्रयास करें
-                        await new Promise(res => setTimeout(res, delay));
-                        delay *= 2;
-                        continue;
-                    }
-                    // अन्य सर्वर त्रुटियों के लिए एक विशिष्ट संदेश लॉग करें
-                    console.error(`API Error: ${response.status} ${response.statusText}`);
-                    const errorBody = await response.text();
-                    console.error("Error Body:", errorBody);
-                    // उपयोगकर्ता को एक सामान्य त्रुटि संदेश दिखाएं
-                    return "I'm sorry, there was a server error. Please try again later.";
-
                 } catch (error) {
                     console.error("Network or fetch error:", error);
                     if (i === retries - 1) {

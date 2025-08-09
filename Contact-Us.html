@@ -87,6 +87,27 @@
         .form-input { width: 100%; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--color-gray-800); color: var(--color-white); padding: 0.75rem 1rem; border-radius: 0.5rem; transition: all 0.3s ease; font-size: 1rem; box-sizing: border-box; }
         .form-input:focus { outline: none; border-color: var(--color-purple-500); box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3); }
         textarea.form-input { min-height: 150px; resize: vertical; }
+        .form-status {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            line-height: 1.5;
+            display: none; /* संदेश सेट होने तक छिपाएँ */
+        }
+        .form-status.success {
+            color: #e0f2e9;
+            background-color: rgba(74, 222, 128, 0.15);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            display: block; /* सफलता पर दिखाएँ */
+        }
+        .form-status.error {
+            color: #fdd8d8;
+            background-color: rgba(248, 113, 113, 0.15);
+            border: 1px solid rgba(248, 113, 113, 0.3);
+            display: block; /* त्रुटि पर दिखाएँ */
+        }
         .footer { background-color: var(--color-black); padding-top: 4rem; padding-bottom: 2rem; }
         .footer-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem; text-align: center; }
         @media (min-width: 640px) { .footer-grid { grid-template-columns: repeat(2, 1fr); text-align: left;} }
@@ -180,12 +201,12 @@
                         </div>
                     </div>
                     <div class="contact-form-wrapper fade-in-up" style="transition-delay: 300ms;">
-                        <form action="https://formspree.io/f/manbeajk" method="POST" class="contact-form">
+                        <form id="contactForm" action="https://formspree.io/f/manbeajk" method="POST" class="contact-form">
                             <div class="form-group"><label for="name" class="form-label">Full Name</label><input type="text" id="name" name="name" class="form-input" required></div>
                             <div class="form-group"><label for="email" class="form-label">Email Address</label><input type="email" id="email" name="email" class="form-input" required></div>
-                            <div class="form-group"><label for="subject" class="form-label">Subject</label><input type="text" id="subject" name="subject" class="form-input" required></div>
                             <div class="form-group"><label for="message" class="form-label">Your Message</label><textarea id="message" name="message" class="form-input" required></textarea></div>
                             <button type="submit" class="btn-3d" style="width: 100%;">Send Message</button>
+                            <p id="form-status" class="form-status"></p>
                         </form>
                     </div>
                 </div>
@@ -215,6 +236,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // --- पुराना मोबाइल मेनू और एनिमेशन कोड वैसा ही है ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('show'); });
@@ -229,6 +251,49 @@
             }, { threshold: 0.1 });
             const fadeUpElements = document.querySelectorAll('.fade-in-up');
             fadeUpElements.forEach(el => observer.observe(el));
+
+            // --- नया जावास्क्रिप्ट कोड यहाँ से शुरू होता है ---
+
+            var form = document.getElementById("contactForm");
+            var status = document.getElementById("form-status");
+
+            async function handleSubmit(event) {
+                event.preventDefault();
+                var data = new FormData(event.target);
+                
+                if (!event.target.checkValidity()) {
+                    status.innerHTML = "Please fill out all required fields correctly.";
+                    status.className = "form-status error";
+                    return;
+                }
+
+                fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        status.innerHTML = "<strong>Thank you!</strong><br>Your message has been sent successfully. We'll get back to you within 24 hours.";
+                        status.className = "form-status success";
+                        form.reset();
+                    } else {
+                        response.json().then(data => {
+                            if (Object.hasOwn(data, 'errors')) {
+                                status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                            } else {
+                                status.innerHTML = "Oops! There was a problem submitting your form";
+                            }
+                            status.className = "form-status error";
+                        })
+                    }
+                }).catch(error => {
+                    status.innerHTML = "Oops! There was a problem submitting your form";
+                    status.className = "form-status error";
+                });
+            }
+            form.addEventListener("submit", handleSubmit)
         });
     </script>
 </body>

@@ -480,33 +480,40 @@
 	<!-- AI Chatbot Start -->
 <div id="famtoolapp-chatbot-container"></div>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const container = document.getElementById('famtoolapp-chatbot-container');
-        const iframe = document.createElement('iframe');
-        iframe.src = "chatbot.html"; // सुनिश्चित करें कि यह पथ सही है
-        iframe.style.position = 'fixed';
-        iframe.style.bottom = '0';
-        iframe.style.right = '0';
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.maxWidth = '450px';
-        iframe.style.maxHeight = '80vh';
-        iframe.style.border = 'none';
-        iframe.style.zIndex = '9999';
-        iframe.style.pointerEvents = 'none'; // iframe को क्लिक करने योग्य नहीं बनाता
-        iframe.setAttribute('allowtransparency', 'true');
-        
-        // iframe के अंदर के कंटेंट को क्लिक करने योग्य बनाने के लिए
-        iframe.onload = function() {
-            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-            const chatWidget = iframeDoc.getElementById('chat-widget-container');
-            if (chatWidget) {
-                chatWidget.style.pointerEvents = 'auto';
-            }
-        };
+    // यह जाँच सुनिश्चित करती है कि कोड iframe के अंदर दोबारा न चले
+    if (window.self === window.top) {
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.getElementById('famtoolapp-chatbot-container');
+            const iframe = document.createElement('iframe');
+            iframe.src = "chatbot.html"; // सुनिश्चित करें कि यह पथ सही है
+            iframe.style.position = 'fixed';
+            iframe.style.bottom = '0';
+            iframe.style.right = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.maxWidth = '450px';
+            iframe.style.maxHeight = '80vh';
+            iframe.style.border = 'none';
+            iframe.style.zIndex = '9999';
+            iframe.style.pointerEvents = 'none'; // iframe को क्लिक करने योग्य नहीं बनाता
+            iframe.setAttribute('allowtransparency', 'true');
+            
+            // iframe के अंदर के कंटेंट को क्लिक करने योग्य बनाने के लिए
+            iframe.onload = function() {
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    const chatWidget = iframeDoc.getElementById('chat-widget-container');
+                    if (chatWidget) {
+                        chatWidget.style.pointerEvents = 'auto';
+                    }
+                } catch (e) {
+                    console.error("Chatbot iframe content could not be accessed. This might be due to cross-origin restrictions if you are running this from local files.", e);
+                }
+            };
 
-        container.appendChild(iframe);
-    });
+            container.appendChild(iframe);
+        });
+    }
 </script>
 <!-- AI Chatbot End -->
 

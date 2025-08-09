@@ -307,12 +307,26 @@
             const apiKey = ""; // कुंजी की आवश्यकता नहीं है
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
             
-            const fullPrompt = `${WEBSITE_CONTEXT}\n\n---\n\nINSTRUCTION: You are a helpful and friendly assistant for the FamToolApp website. Your name is FamToolApp Assistant. Answer the user's question based *only* on the information provided above. If the answer is not in the information, say "I'm sorry, I don't have information on that. Please visit our contact page for more specific questions." Do not make up answers. Answer in the same language as the user's question.\n\nUSER QUESTION: "${prompt}"\n\nANSWER:`;
+            // This is the history of the conversation
+            let chatHistory = [
+                {
+                    "role": "user",
+                    "parts": [{ "text": `You are a helpful and friendly assistant for the FamToolApp website. Your name is FamToolApp Assistant. Answer the user's question based *only* on the following information. If the answer is not in the information, say "I'm sorry, I don't have information on that. Please visit our contact page for more specific questions." Do not make up answers. Answer in the same language as the user's question.\n\nCONTEXT:\n${WEBSITE_CONTEXT}` }]
+                },
+                {
+                    "role": "model",
+                    "parts": [{ "text": "Okay, I am ready to answer questions based on the provided information about FamToolApp. How can I help?" }]
+                }
+            ];
+
+            // Add the new user prompt to the history
+            chatHistory.push({
+                "role": "user",
+                "parts": [{ "text": prompt }]
+            });
 
             const payload = {
-                contents: [{
-                    parts: [{ text: fullPrompt }]
-                }]
+                contents: chatHistory
             };
             
             let retries = 3, delay = 1000;
@@ -324,12 +338,9 @@
                         if (response.status === 429) {
                             await new Promise(res => setTimeout(res, delay));
                             delay *= 2;
-                            continue; // फिर से प्रयास करें
+                            continue;
                         }
-                        // अन्य त्रुटियों के लिए, लॉग करें और बाहर निकलें
                         console.error(`API Error: ${response.status} ${response.statusText}`);
-                        const errorBody = await response.text();
-                        console.error("Error Body:", errorBody);
                         return "I'm sorry, there was a server error. Please try again later.";
                     }
 
@@ -339,6 +350,11 @@
                         return result.candidates[0].content.parts[0].text;
                     } else {
                        console.warn("API response was successful but did not contain expected content.", result);
+                       // Check for safety blocks
+                       if (result.promptFeedback && result.promptFeedback.blockReason) {
+                           console.error("Prompt was blocked:", result.promptFeedback.blockReason);
+                           return "I'm sorry, I can't respond to that question.";
+                       }
                        return "I'm sorry, I couldn't find a specific answer for that. Could you try asking in a different way?";
                     }
 

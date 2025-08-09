@@ -1,5 +1,5 @@
 // FamToolApp AI Chatbot Script
-// Version 3.0 - Self-Contained CSS (No Tailwind)
+// Version 3.1 - API Call Fix
 (function() {
 
     // 1. AI के लिए आपकी वेबसाइट की पूरी जानकारी (इसमें कोई बदलाव नहीं)
@@ -68,7 +68,7 @@
         - Disclaimer: The service is provided "AS IS". FamToolApp is not liable for any damages resulting from your use or misuse of the service.
     `;
 
-    // 2. चैटबॉट के लिए आत्मनिर्भर CSS
+    // 2. चैटबॉट के लिए आत्मनिर्भर CSS (इसमें कोई बदलाव नहीं)
     const chatbotCSS = `
         #chat-widget-container {
             position: fixed;
@@ -137,7 +137,7 @@
         .cw-message { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; max-width: 90%; }
         .cw-message.cw-user { margin-left: auto; justify-content: flex-end; }
         .cw-message-avatar { width: 32px; height: 32px; background-color: #8b5cf6; border-radius: 9999px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .cw-message-content { padding: 12px; border-radius: 0.5rem; font-size: 0.875rem; }
+        .cw-message-content { padding: 12px; border-radius: 0.5rem; font-size: 0.875rem; word-wrap: break-word; }
         .cw-message.cw-ai .cw-message-content { background-color: #1f2937; color: white; border-top-left-radius: 0; }
         .cw-message.cw-user .cw-message-content { background-color: #8b5cf6; color: white; border-bottom-right-radius: 0; }
         .cw-input-area { padding: 1rem; background-color: #111827; border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem; border-top: 1px solid #374151; flex-shrink: 0; }
@@ -151,7 +151,7 @@
             color: white;
             outline: none;
         }
-        #chat-input:focus { border-color: #8b5cf6; box-shadow: 0 0 0 2px #8b5cf6; }
+        #chat-input:focus { border-color: #8b5cf6; box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.5); }
         #chat-form button {
             background-color: #8b5cf6;
             color: white;
@@ -167,7 +167,7 @@
         @keyframes cw-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
     `;
 
-    // 3. चैटबॉट का HTML स्ट्रक्चर
+    // 3. चैटबॉट का HTML स्ट्रक्चर (इसमें कोई बदलाव नहीं)
     const chatbotHTML = `
         <div id="chat-widget-container">
             <div id="chat-window" class="cw-hidden">
@@ -267,11 +267,20 @@
         function addMessage(text, sender) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `cw-message ${sender === 'user' ? 'cw-user' : 'cw-ai'}`;
-            const content = `
-                ${sender === 'ai' ? `<div class="cw-message-avatar"><svg xmlns="http://www.w3.org/2000/svg" style="height: 20px; width: 20px; color: white;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg></div>` : ''}
-                <div class="cw-message-content"><p>${text.replace(/\n/g, '<br>')}</p></div>
-            `;
-            messageDiv.innerHTML = content;
+            const p = document.createElement('p');
+            p.innerHTML = text.replace(/\n/g, '<br>'); // Sanitize text before adding
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'cw-message-content';
+            contentDiv.appendChild(p);
+            
+            if (sender === 'ai') {
+                const avatar = document.createElement('div');
+                avatar.className = 'cw-message-avatar';
+                avatar.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" style="height: 20px; width: 20px; color: white;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>`;
+                messageDiv.appendChild(avatar);
+            }
+            
+            messageDiv.appendChild(contentDiv);
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
@@ -293,34 +302,64 @@
             if (indicator) indicator.remove();
         }
 
+        // *** API कॉल में बदलाव ***
         async function getAIResponse(prompt) {
-            const apiKey = "";
+            const apiKey = ""; // कुंजी की आवश्यकता नहीं है
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-            const fullPrompt = `${WEBSITE_CONTEXT}\n\n---\n\nINSTRUCTION: You are a helpful and friendly assistant for the FamToolApp website. Your name is FamToolApp Assistant. Answer the user's question based *only* on the information provided above. If the answer is not in the information, say "I'm sorry, I don't have information on that. Please visit our contact page for more specific questions." Do not make up answers. Answer in the same language as the user's question.\n\nUSER QUESTION: "${prompt}"\n\nANSWER:`;
-            const payload = { contents: [{ parts: [{ text: fullPrompt }] }] };
+            
+            const chatHistory = [
+              {
+                "role": "user",
+                "parts": [{ "text": WEBSITE_CONTEXT }]
+              },
+              {
+                "role": "model",
+                "parts": [{ "text": "Okay, I am ready to answer questions based on the provided information about FamToolApp. How can I help?" }]
+              },
+              {
+                 "role": "user",
+                 "parts": [{ "text": `INSTRUCTION: You are a helpful and friendly assistant for the FamToolApp website. Your name is FamToolApp Assistant. Answer the user's question based *only* on the information provided above. If the answer is not in the information, say "I'm sorry, I don't have information on that. Please visit our contact page for more specific questions." Do not make up answers. Answer in the same language as the user's question.\n\nUSER QUESTION: "${prompt}"`}]
+              }
+            ];
+
+            const payload = { contents: chatHistory };
+            
             let retries = 3, delay = 1000;
             for (let i = 0; i < retries; i++) {
                 try {
                     const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
                     if (response.ok) {
                         const result = await response.json();
-                        if (result.candidates && result.candidates[0].content.parts[0].text) {
+                        if (result.candidates && result.candidates[0].content && result.candidates[0].content.parts[0].text) {
                             return result.candidates[0].content.parts[0].text;
+                        } else {
+                           // अगर कोई जवाब नहीं मिलता है तो एक सामान्य संदेश भेजें
+                           console.warn("API response was successful but did not contain expected content.", result);
+                           return "I'm sorry, I couldn't find a specific answer for that. Could you try asking in a different way?";
                         }
                     }
-                    if (response.status === 429) {
+                    if (response.status === 429) { // थ्रॉटलिंग के लिए फिर से प्रयास करें
                         await new Promise(res => setTimeout(res, delay));
                         delay *= 2;
                         continue;
                     }
-                    throw new Error(`API Error: ${response.statusText}`);
+                    // अन्य सर्वर त्रुटियों के लिए एक विशिष्ट संदेश लॉग करें
+                    console.error(`API Error: ${response.status} ${response.statusText}`);
+                    const errorBody = await response.text();
+                    console.error("Error Body:", errorBody);
+                    // उपयोगकर्ता को एक सामान्य त्रुटि संदेश दिखाएं
+                    return "I'm sorry, there was a server error. Please try again later.";
+
                 } catch (error) {
-                    if (i === retries - 1) throw error;
+                    console.error("Network or fetch error:", error);
+                    if (i === retries - 1) {
+                         return "I'm having trouble connecting to the network. Please check your internet connection and try again.";
+                    }
                     await new Promise(res => setTimeout(res, delay));
                     delay *= 2;
                 }
             }
-            return "I'm sorry, I couldn't process your request at the moment. Please try again.";
+            return "I'm sorry, I couldn't process your request after multiple attempts. Please try again later.";
         }
     }
 })();

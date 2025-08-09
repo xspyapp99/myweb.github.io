@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- मॉडिफिकेशन 1: SEO टैग्स को नए, सुरक्षित ब्रांड नाम और विवरण के साथ अपडेट किया गया है। -->
     <title>SMS Review Feature - FamToolApp</title>
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
@@ -16,7 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* --- सीएसएस स्टाइल में कोई बदलाव नहीं किया गया है --- */
         :root {
             --color-purple-400: #a78bfa;
             --color-purple-500: #8b5cf6;
@@ -27,6 +25,7 @@
             --color-white: #ffffff;
             --color-black: #000000;
             --bg-dark: #0a0a1a;
+            --surface-color: rgba(17, 24, 39, 0.5);
             --border-color: rgba(167, 223, 255, 0.1);
         }
         html { scroll-behavior: smooth; }
@@ -152,7 +151,6 @@
             gap: 3rem;
             align-items: center;
         }
-        .feature-description { text-align: center; }
         .feature-description h2 {
             font-size: 1.875rem;
             font-weight: 700;
@@ -176,22 +174,63 @@
             transition: background-color 0.3s;
         }
         .feature-description .cta-button:hover { background-color: #7c3aed; }
-        .feature-image img {
-            width: 100%;
-            border-radius: 1rem;
-            box-shadow: 0 25px 50px -12px rgba(124, 58, 237, 0.2);
-            background: rgba(17, 24, 39, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+        
+        /* --- नया कोड-आधारित SMS विज़ुअलाइज़ेशन स्टाइल --- */
+        .feature-visualization-sms {
+            background: #030712;
             border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(124, 58, 237, 0.15);
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
         }
+        .sms-chat-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            padding: 1rem;
+        }
+        .sms-bubble {
+            padding: 0.75rem 1rem;
+            border-radius: 1.25rem;
+            max-width: 75%;
+            line-height: 1.5;
+            opacity: 0;
+            animation: popIn 0.5s ease-out forwards;
+        }
+        .sms-bubble.received {
+            background-color: #374151;
+            color: var(--color-white);
+            align-self: flex-start;
+            border-bottom-left-radius: 0.25rem;
+        }
+        .sms-bubble.sent {
+            background-color: var(--color-purple-500);
+            color: var(--color-white);
+            align-self: flex-end;
+            border-bottom-right-radius: 0.25rem;
+        }
+        .sms-bubble:nth-child(1) { animation-delay: 0.2s; }
+        .sms-bubble:nth-child(2) { animation-delay: 0.7s; }
+        .sms-bubble:nth-child(3) { animation-delay: 1.2s; }
+        .sms-bubble:nth-child(4) { animation-delay: 1.7s; }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        /* --- अंत नया विज़ुअलाइज़ेशन स्टाइल --- */
+        
         .benefits-section .section-title {
             text-align: center;
             max-width: 48rem;
             margin: 0 auto 3rem auto;
         }
         .card {
-            background: rgba(17, 24, 39, 0.5);
+            background: var(--surface-color);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
@@ -324,7 +363,6 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <!-- मॉडिफिकेशन 2: लोगो का टेक्स्ट नए ब्रांड नाम "FamToolApp" से बदल दिया गया है। -->
                 <a href="index.html" class="logo"><span>Fam</span>ToolApp</a>
                 <nav class="nav-desktop">
                    <a href="index.html">Home</a>
@@ -361,7 +399,6 @@
     <main>
         <section class="hero-section">
             <div class="container hero-content">
-                <!-- मॉडिफिकेशन 3: शीर्षक को "Monitoring" से बदलकर "Review" किया गया है। -->
                 <h1>SMS Message <span>Review</span></h1>
                 <p>Read every text message sent and received on your child's phone. Stay aware of their conversations and protect them from potential dangers.</p>
             </div>
@@ -371,13 +408,27 @@
             <div class="container">
                 <div class="grid grid-lg-2">
                     <div class="feature-description">
-                        <!-- मॉडिफिकेशन 4: विवरण को सुरक्षा और मार्गदर्शन पर केंद्रित किया गया है। -->
                         <h2>Know Who They're Talking To</h2>
                         <p>In the age of digital communication, text messages are a primary way children interact. FamToolApp's SMS Review feature gives you a complete log of all incoming and outgoing text messages, so you're never in the dark. See the full content of each message, who it's from or to, and the exact time it was sent or received. This insight is crucial for protecting your child from cyberbullying, scams, or communication with strangers.</p>
                         <a href="index.html" class="cta-button">Review SMS for Free</a>
                     </div>
-                    <div class="feature-image">
-                        <img src="images/sms.png" alt="Dashboard showing SMS conversations">
+                    
+                    <!-- इमेज टैग को नए कोड-आधारित विज़ुअलाइज़ेशन से बदला गया है -->
+                    <div class="feature-visualization-sms">
+                        <div class="sms-chat-container">
+                            <div class="sms-bubble received">
+                                Hey, are you coming to the park later?
+                            </div>
+                            <div class="sms-bubble sent">
+                                Yeah! I'll be there around 5 PM.
+                            </div>
+                            <div class="sms-bubble received">
+                                Awesome! See you then. Don't forget the frisbee!
+                            </div>
+                             <div class="sms-bubble sent">
+                                Wouldn't forget it! 😄
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -387,7 +438,6 @@
             <div class="container">
                 <div class="section-title">
                     <h2>Complete Conversation Insight</h2>
-                    <!-- मॉडिफिकेशन 5: "tracker" को "feature" से बदला गया है। -->
                     <p>Our SMS review feature provides all the details you need to understand the context and ensure your child's safety.</p>
                 </div>
                 <div class="grid">
@@ -420,7 +470,6 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <!-- मॉडिफिकेशन 6: फुटर में ब्रांड का नाम बदला गया है। -->
                 <div>
                     <h4>FamToolApp</h4>
                     <p>Providing parents with the tools they need to ensure their children's digital safety.</p>

@@ -15,17 +15,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* --- सीएसएस स्टाइल में कोई बदलाव नहीं किया गया है --- */
         :root {
             --color-purple-400: #a78bfa;
             --color-purple-500: #8b5cf6;
             --color-purple-600: #7c3aed;
+            --color-green-400: #4ade80;
+            --color-blue-400: #60a5fa;
+            --color-red-500: #ef4444;
             --color-gray-300: #d1d5db;
             --color-gray-400: #9ca3af;
             --color-gray-800: #1f2937;
             --color-white: #ffffff;
             --color-black: #000000;
             --bg-dark: #0a0a1a;
+            --surface-color: rgba(17, 24, 39, 0.5);
             --border-color: rgba(167, 223, 255, 0.1);
         }
         html { scroll-behavior: smooth; }
@@ -176,22 +179,89 @@
             transition: background-color 0.3s;
         }
         .feature-description .cta-button:hover { background-color: #7c3aed; }
-        .feature-image img {
-            width: 100%;
-            border-radius: 1rem;
-            box-shadow: 0 25px 50px -12px rgba(124, 58, 237, 0.2);
-            background: rgba(17, 24, 39, 0.5);
+        
+        /* --- नया कोड-आधारित कॉल लॉग विज़ुअलाइज़ेशन स्टाइल --- */
+        .feature-visualization-call-log {
+            background: var(--surface-color);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(124, 58, 237, 0.15);
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
+        .call-log-header {
+            text-align: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .call-log-header h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--color-white);
+            font-weight: 600;
+        }
+        .call-log-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .call-log-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        .call-log-item:nth-child(1) { animation-delay: 0.2s; }
+        .call-log-item:nth-child(2) { animation-delay: 0.4s; }
+        .call-log-item:nth-child(3) { animation-delay: 0.6s; }
+        .call-log-item:nth-child(4) { animation-delay: 0.8s; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .call-icon {
+            flex-shrink: 0;
+        }
+        .call-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+        .icon-incoming { color: var(--color-green-400); }
+        .icon-outgoing { color: var(--color-blue-400); transform: rotate(90deg); }
+        .icon-missed { color: var(--color-red-500); }
+        .call-details {
+            flex-grow: 1;
+        }
+        .call-details p {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-white);
+        }
+        .call-details span {
+            font-size: 0.875rem;
+            color: var(--color-gray-400);
+        }
+        .call-time {
+            font-size: 0.875rem;
+            color: var(--color-gray-400);
+            white-space: nowrap;
+        }
+        /* --- अंत नया विज़ुअलाइज़ेशन स्टाइल --- */
+        
         .benefits-section .section-title {
             text-align: center;
             max-width: 48rem;
             margin: 0 auto 3rem auto;
         }
         .card {
-            background: rgba(17, 24, 39, 0.5);
+            background: var(--surface-color);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
@@ -373,8 +443,54 @@
                         <p>Understanding who your child communicates with is essential for their safety. FamToolApp's Call Log Review feature provides a detailed record of all phone calls, including contact names, phone numbers, call duration, and the exact time and date of each call. This empowers you to identify any communication with unknown or suspicious contacts and start important conversations about phone safety.</p>
                         <a href="index.html" class="cta-button">Start Protecting Now</a>
                     </div>
-                    <div class="feature-image">
-                        <img src="images/call.png" alt="Dashboard showing call log data">
+                    
+                    <!-- इमेज टैग को नए कोड-आधारित विज़ुअलाइज़ेशन से बदला गया है -->
+                    <div class="feature-visualization-call-log">
+                        <div class="call-log-header">
+                            <h3>Recent Calls</h3>
+                        </div>
+                        <div class="call-log-list">
+                            <div class="call-log-item">
+                                <div class="call-icon icon-incoming">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 4.5l-15 15m0 0v-11.25m0 11.25h11.25" /></svg>
+                                </div>
+                                <div class="call-details">
+                                    <p>Sarah</p>
+                                    <span>Incoming (2m 15s)</span>
+                                </div>
+                                <div class="call-time">10:45 AM</div>
+                            </div>
+                            <div class="call-log-item">
+                                <div class="call-icon icon-outgoing">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 4.5l-15 15m0 0v-11.25m0 11.25h11.25" /></svg>
+                                </div>
+                                <div class="call-details">
+                                    <p>+1-987-658-3210</p>
+                                    <span>Outgoing (5m 30s)</span>
+                                </div>
+                                <div class="call-time">10:32 AM</div>
+                            </div>
+                            <div class="call-log-item">
+                                <div class="call-icon icon-missed">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 4.5l-15 15m0 0v-11.25m0 11.25h11.25" /></svg>
+                                </div>
+                                <div class="call-details">
+                                    <p>David</p>
+                                    <span>Missed Call</span>
+                                </div>
+                                <div class="call-time">9:15 AM</div>
+                            </div>
+                             <div class="call-log-item">
+                                <div class="call-icon icon-incoming">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 4.5l-15 15m0 0v-11.25m0 11.25h11.25" /></svg>
+                                </div>
+                                <div class="call-details">
+                                    <p>Mom</p>
+                                    <span>Incoming (10m 5s)</span>
+                                </div>
+                                <div class="call-time">Yesterday</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- मॉडिफिकेशन 1: SEO टैग्स को नए, सुरक्षित ब्रांड नाम और विवरण के साथ अपडेट किया गया है। -->
     <title>Keystroke Review Feature - FamToolApp</title>
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
@@ -16,17 +15,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* --- सीएसएस स्टाइल में कोई बदलाव नहीं किया गया है --- */
         :root {
             --color-purple-400: #a78bfa;
             --color-purple-500: #8b5cf6;
             --color-purple-600: #7c3aed;
+            --color-yellow-400: #facc15;
             --color-gray-300: #d1d5db;
             --color-gray-400: #9ca3af;
             --color-gray-800: #1f2937;
             --color-white: #ffffff;
             --color-black: #000000;
             --bg-dark: #0a0a1a;
+            --surface-color: rgba(17, 24, 39, 0.5);
             --border-color: rgba(167, 223, 255, 0.1);
         }
         html { scroll-behavior: smooth; }
@@ -175,22 +175,110 @@
             transition: background-color 0.3s;
         }
         .feature-description .cta-button:hover { background-color: #7c3aed; }
-        .feature-image img {
-            width: 100%;
-            border-radius: 1rem;
-            box-shadow: 0 25px 50px -12px rgba(124, 58, 237, 0.2);
-            background: rgba(17, 24, 39, 0.5);
+        
+        /* --- नया कोड-आधारित कीस्ट्रोक विज़ुअलाइज़ेशन स्टाइल --- */
+        .feature-visualization-keystroke {
+            background: var(--surface-color);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(124, 58, 237, 0.15);
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
+        .keystroke-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .keystroke-header h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            color: var(--color-white);
+            font-weight: 600;
+        }
+        .keystroke-log {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            overflow: hidden;
+        }
+        .log-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+        .log-item:nth-child(1) { animation-delay: 0.2s; }
+        .log-item:nth-child(2) { animation-delay: 0.4s; }
+        .log-item:nth-child(3) { animation-delay: 0.6s; }
+        .log-item:nth-child(4) { animation-delay: 0.8s; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .log-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+            background-color: #1f2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .log-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-gray-300);
+        }
+        .log-content p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: var(--color-gray-400);
+        }
+        .log-content p strong {
+            color: var(--color-white);
+            font-weight: 500;
+        }
+        .log-text {
+            margin-top: 0.25rem;
+            font-family: monospace;
+            font-size: 1rem;
+            color: var(--color-yellow-400);
+            background-color: rgba(0,0,0,0.2);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            display: inline-block;
+        }
+        .log-text .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1rem;
+            background-color: var(--color-yellow-400);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        /* --- अंत नया विज़ुअलाइज़ेशन स्टाइल --- */
+        
         .benefits-section .section-title {
             text-align: center;
             max-width: 48rem;
             margin: 0 auto 3rem auto;
         }
         .card {
-            background: rgba(17, 24, 39, 0.5);
+            background: var(--surface-color);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
@@ -323,7 +411,6 @@
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <!-- मॉडिफिकेशन 2: लोगो का टेक्स्ट नए ब्रांड नाम "FamToolApp" से बदल दिया गया है। -->
                 <a href="index.html" class="logo"><span>Fam</span>ToolApp</a>
                 <nav class="nav-desktop">
                     <a href="index.html">Home</a>
@@ -360,7 +447,6 @@
     <main>
         <section class="hero-section">
             <div class="container hero-content">
-                <!-- मॉडिफिकेशन 3: शीर्षक को "Keylogger" से बदलकर "Keystroke Review" किया गया है। -->
                 <h1>Keystroke <span>Review</span> for Safety</h1>
                 <p>See what your child types on their phone to better understand their conversations, searches, and interactions across all apps.</p>
             </div>
@@ -370,13 +456,54 @@
             <div class="container">
                 <div class="grid grid-lg-2">
                     <div class="feature-description">
-                        <!-- मॉडिफिकेशन 4: विवरण को सुरक्षा और मार्गदर्शन पर केंद्रित किया गया है। -->
                         <h2>Understand the Full Context</h2>
                         <p>Messages and notifications only show one side of the story. FamToolApp's powerful Keystroke Review feature lets you see exactly what your child is typing, word for word. From private messages on social media to web searches, you get a complete view of their digital life, helping you protect them from cyberbullying, online predators, and inappropriate content.</p>
                         <a href="index.html" class="cta-button">Start Protecting Now</a>
                     </div>
-                    <div class="feature-image">
-                        <img src="images/Keylogger.png" alt="Dashboard showing keystroke review data">
+                    
+                    <!-- इमेज टैग को नए कोड-आधारित विज़ुअलाइज़ेशन से बदला गया है -->
+                    <div class="feature-visualization-keystroke">
+                        <div class="keystroke-header">
+                            <h3>Keystroke Log</h3>
+                        </div>
+                        <div class="keystroke-log">
+                            <div class="log-item">
+                                <div class="log-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+                                </div>
+                                <div class="log-content">
+                                    <p>Typed in <strong>Browser</strong></p>
+                                    <span class="log-text">latest video games<span class="cursor"></span></span>
+                                </div>
+                            </div>
+                            <div class="log-item">
+                                <div class="log-icon" style="background-color: #25D366;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg>
+                                </div>
+                                <div class="log-content">
+                                    <p>Typed in <strong>Chat App</strong></p>
+                                    <span class="log-text">meet me after school?</span>
+                                </div>
+                            </div>
+                            <div class="log-item">
+                                <div class="log-icon" style="background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);">
+                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z" /></svg>
+                                </div>
+                                <div class="log-content">
+                                    <p>Typed in <strong>Social Media</strong></p>
+                                    <span class="log-text">new post soon!</span>
+                                </div>
+                            </div>
+                             <div class="log-item">
+                                <div class="log-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                                </div>
+                                <div class="log-content">
+                                    <p>Typed in <strong>Email</strong></p>
+                                    <span class="log-text">project submission</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -385,7 +512,6 @@
         <section class="section section-dark benefits-section">
             <div class="container">
                 <div class="section-title">
-                    <!-- मॉडिफिकेशन 5: लाभों के शीर्षक को अधिक सकारात्मक बनाया गया है। -->
                     <h2>Why Keystroke Review is Essential</h2>
                     <p>Gain crucial insights that other tools might miss, ensuring you have the complete context to guide your child safely.</p>
                 </div>
@@ -419,7 +545,6 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <!-- मॉडिफिकेशन 6: फुटर में ब्रांड का नाम बदला गया है। -->
                 <div>
                     <h4>FamToolApp</h4>
                     <p>Providing parents with the tools they need to ensure their children's digital safety.</p>
